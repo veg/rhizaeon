@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Introgression & Ghost Lineage Benchmark Suite | RhizAeon Systematic Benchmark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-group">
+        <a href="../../index.html" class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          RhizAeon
+        </a>
+        <span class="brand-badge">Cohort 08 of 10</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../../index.html">&larr; Master Compendium</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">Primary Paper (DOI) &nearr;</a>
+        <a href="../../data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download style="color: #059669; font-weight: 600;">Data Package (.tar.gz) &darr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../index.html">Home</a>
+      <span class="separator">/</span>
+      <a href="../../index.html#benchmarks-table">Benchmark Cohorts</a>
+      <span class="separator">/</span>
+      <span>Deep Introgression & Ghost Lineage Benchmark Suite</span>
+    </nav>
+
+    <!-- Study Header -->
+    <section class="study-header">
+      <div class="study-title-area">
+        <h1 class="study-title">
+          <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-title-link" title="Open primary publication in new tab">
+            Deep Introgression and Ghost Lineages: Recombination from Unsampled Evolutionary Donors &nearr;
+          </a>
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 0.35rem;">
+          Kosakovsky Pond et al. (2026) &bull; Clean Breaks / Current Study (2026) &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-citation-link"><em>DOI: 10.1101/2026.rhizaeon.ghost &nearr;</em></a>
+        </p>
+      </div>
+      <div class="study-pills">
+        <span class="badge badge-macro">Deep Phylogenomics & Introgression</span>
+        <span class="badge badge-neutral">Taxa: 5 to 100 taxa</span>
+        <span class="badge badge-neutral">Length: 3,000 nt</span>
+        <span class="badge badge-neutral">Scale: 370 phylogenomic alignments (Axis A: 120 introgression; Axis B: 250 scaling)</span>
+        <span class="badge badge-concordant">SUPERIOR SENSITIVITY</span>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="badge badge-neutral" style="color: var(--primary); font-weight: 600; text-decoration: none;">DOI: 10.1101/2026.rhizaeon.ghost &nearr;</a>
+        <a href="../../data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download class="badge badge-neutral" style="color: #059669; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Reproducibility Package (.tar.gz) &darr;
+        </a>
+      </div>
+    </section>
+
+    <!-- Topline Scorecards -->
+    <section class="scorecard-grid">
+      <div class="scorecard-card">
+        <div class="scorecard-label">Historical Baseline Runtime</div>
+        <div class="scorecard-value" style="font-size: 1.15rem; color: #475569;">Seconds to hours for exhaustive O(N^3) triplet scanning (161,700 triplets at N=100)</div>
+        <div class="scorecard-meta">Triplet Enumeration, Fisher Exact Test, D-statistic (ABBA-BABA)</div>
+      </div>
+      <div class="scorecard-card" style="border-top: 3px solid #10b981;">
+        <div class="scorecard-label">RhizAeon Execution Latency</div>
+        <div class="scorecard-value" style="color: #059669; font-weight: 700;">19.8 ms (N=5), 46.8 ms (N=20), 157.3 ms (N=50), 608.0 ms (N=100)</div>
+        <div class="scorecard-meta">Prefix Tensor Coordinate Engine</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Computational Acceleration</div>
+        <div class="scorecard-value" style="color: var(--primary);">O(N^2)</div>
+        <div class="scorecard-meta">O(N^2) prefix distance tensors vs O(N^3) triplet enumeration (up to 266x faster)</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Detection Sensitivity</div>
+        <div class="scorecard-value" style="font-size: 1.15rem; color: #166534;">95.0% to 100.0% sensitivity under donor drift up to 5.0%</div>
+        <div class="scorecard-meta">95.0% to 100.0% sensitivity under donor drift up to 5.0% (Delta d <= 0.05)</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Empirical Error Control</div>
+        <div class="scorecard-value" style="font-size: 1.15rem;">2.0% mean FPR on non-recombinant null cohorts</div>
+        <div class="scorecard-meta">2.0% mean FPR on non-recombinant null cohorts (0.0% at N=100)</div>
+      </div>
+    </section>
+
+    <!-- Section 1: Biological Rationale & Historical Context -->
+    <section class="topline-card">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          1. Biological Rationale and Historical Context
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.98rem; line-height: 1.7; color: #334155;">
+        <p>Natural viral transmission networks and wildlife reservoir spillovers rarely sample the exact parental isolate that contributed an ancestral recombinant cassette. In deep phylogenomics, introgression frequently originates from extinct or unsampled 'ghost' lineages. Traditional triplet heuristics rely on identifying a close sister taxon sharing the introgressed segment; when the donor has diverged substantially or is entirely unrepresented in the alignment, triplet tests fail. This benchmark systematically evaluates two structural axes across 370 alignments (L = 3,000 nt): Axis A examines ghost lineage introgression across 120 alignments (N = 25 taxa, d = 0.05), where the recombinant inherits a 600-nt cassette from a donor whose closest sampled surrogate drifted by Delta d in {0.0%, 1.0%, 3.0%, 5.0%, 10.0%}, alongside complete donor clade excision; Axis B evaluates taxonomic cohort scaling across 250 alignments spanning N in {5, 10, 20, 50, 100} taxa under low (d = 0.02) and moderate (d = 0.05) divergence.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Recombination Detection & Algorithmic Findings -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          2. Systematic Benchmark Evaluation and Key Findings
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.98rem; line-height: 1.7; color: #334155;">
+        <p style="margin-bottom: 1rem;">RhizAeon proved exceptionally resilient to substantial parental donor drift. Across moderate drift levels (Delta d in [1%, 5%]), event detection power remained at 95.0% to 100.0%. Detection is driven by an escalating Procrustes kinetic signal, where standardized residual displacement rises from Z = 3.90 at Delta d = 0% to Z = 8.01 at Delta d = 5%. Dual-breakpoint recovery reached 60.0% to 75.0%, maintaining spatial precision between 10.6 and 19.7 nucleotides MAE. Power contracted to 35.0% at Delta d = 10% and dropped to 0.0% under complete clade excision, confirming that detection requires at least one sampled lineage sharing ancestral donor identity. In non-recombinant null cohorts spanning N = 5 to 100, the cohort-adaptive Fisher gate suppressed false alarms to 2.0% on average, achieving 0.0% at N = 100. In scaling tests, RhizAeon required 19.8 ms at N=5, 46.8 ms at N=20, 157.3 ms at N=50, and 608.0 ms at N=100 isolates.</p>
+        <p>Exhaustive triplet methods scale combinatorially as O(N^3), requiring evaluation of 161,700 triplet combinations at N = 100. Furthermore, triplet scoring collapses when donor drift introduces private substitutions that violate strict parental compatibility. Genome-wide introgression statistics like Patterson's D (ABBA-BABA) detect global admixture but provide no spatial coordinate boundaries. RhizAeon projects pairwise distance tensors onto Riemannian Grassmannian manifolds, isolating introgressed tracts as out-of-plane Procrustes kinetic displacements in O(N^2) time.</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Comparative Head-to-Head Benchmark Table -->
+    <section class="topline-card" style="margin-top: 1.5rem; padding-bottom: 0;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          3. Comparative Quantitative Benchmark Performance
+        </div>
+      </div>
+      <div class="table-responsive" style="margin-top: 1rem;">
+        <table class="data-table" style="font-size: 0.88rem;">
+          <thead>
+            <tr>
+              <th>Evaluation Dimension</th>
+              <th>RhizAeon Continuous Coordinate Engine</th>
+              <th>Historical Benchmark Baselines</th>
+              <th>Comparative Distinction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Computational Latency</strong></td>
+              <td class="code-mono" style="color: #059669; font-weight: 600;">19.8 ms (N=5), 46.8 ms (N=20), 157.3 ms (N=50), 608.0 ms (N=100)</td>
+              <td class="code-mono">Seconds to hours for exhaustive O(N^3) triplet scanning (161,700 triplets at N=100)</td>
+              <td><span class="badge badge-concordant">O(N^2) prefix distance tensors vs O(N^3) triplet enumeration (up to 266x faster)</span></td>
+            </tr>
+            <tr>
+              <td><strong>Statistical Sensitivity</strong></td>
+              <td style="color: #166534; font-weight: 600;">95.0% to 100.0% sensitivity under donor drift up to 5.0% (Delta d <= 0.05)</td>
+              <td>Variable / Parameter-dependent</td>
+              <td>High sensitivity maintained at mutational saturation</td>
+            </tr>
+            <tr>
+              <td><strong>Type-I Error Control (Null)</strong></td>
+              <td style="color: #059669; font-weight: 600;">2.0% mean FPR on non-recombinant null cohorts (0.0% at N=100)</td>
+              <td>Up to 90% (Homoplasy) / 12% (MaxChi)</td>
+              <td><span class="badge badge-concordant">Strict Invariant Calibration</span></td>
+            </tr>
+            <tr>
+              <td><strong>Spatial Resolution</strong></td>
+              <td class="code-mono" style="color: var(--primary); font-weight: 600;">10.6 to 19.7 nt MAE across moderate donor drift regimes</td>
+              <td>Window-discretized or omnibus binary</td>
+              <td>Profile likelihood polishing on uninformative plateaus</td>
+            </tr>
+            <tr>
+              <td><strong>Algorithmic Complexity</strong></td>
+              <td class="code-mono">O(N^2 log L) via prefix distance tensors</td>
+              <td class="code-mono">O(N^3) triplets or O(N^4) tree partitions</td>
+              <td>Decouples changepoint testing from combinatorial search</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 4: Multi-Panel Vector Diagnostics / High-Resolution Figure -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header" style="justify-content: space-between;">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          4. High-Resolution Vector Diagnostic Figure
+        </div>
+        <div>
+          <a href="../../assets/figures/fig_ghost_benchmark.pdf" target="_blank" rel="noopener" class="badge badge-neutral" style="color: var(--primary); font-weight: 600; text-decoration: none;">
+            Download Vector PDF &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="study-figure-container" style="margin-top: 1.25rem; text-align: center;">
+        <div class="figure-wrapper" style="cursor: zoom-in; display: inline-block; max-width: 100%; border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px; background: #fafafa;">
+          <img src="../../assets/figures/fig_ghost_benchmark.png" alt="Deep Introgression & Ghost Lineage Benchmark Suite Multi-Panel Validation Figure" style="max-width: 100%; height: auto; border-radius: 4px; display: block;" loading="lazy">
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; text-align: left; line-height: 1.5;">
+          <strong>Figure: Systematic Head-to-Head Replication.</strong> High-resolution multi-panel diagnostic figure comparing RhizAeon performance against historical baseline methods across parameter tiers. Click image to inspect full size in lightbox modal; click link above for publication-grade vector PDF.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 5: Reproducibility Package & CLI Invocations -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          5. Standalone Reproduction Harness and CLI Invocations
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.95rem; line-height: 1.6; color: #334155;">
+        <p style="margin-bottom: 0.75rem;">
+          Simulation generator (generator_ghost.py), execution harness (run_ghost_benchmark.py), and summary tables (ghost_summary.csv, scaling_summary.csv) are archived in data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz. Command line: `python3 run_ghost_benchmark.py --cores 8`.
+        </p>
+
+        <div style="background: #0f172a; color: #f8fafc; padding: 1rem 1.25rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; margin-top: 1rem; position: relative;">
+          <button class="copy-btn" data-target="repro-code-08" style="position: absolute; top: 0.75rem; right: 0.75rem; background: #334155; color: #fff; border: none; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Copy</button>
+          <pre id="repro-code-08" style="margin: 0; overflow-x: auto;"><code># 1. Download and unpack reproducibility archive
+curl -O https://raw.githubusercontent.com/veg/rhizaeon/main/data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz
+tar -xzf 08_ghost_introgression_suite_reproducibility.tar.gz
+
+# 2. Execute benchmark replication suite
+python3 run_ghost_introgression_suite__benchmark.py --cores 8
+
+# 3. Regenerate publication figure
+python3 plot_ghost_introgression_suite__benchmark.py</code></pre>
+        </div>
+
+        <div style="margin-top: 1.25rem;">
+          <a href="../../data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download class="rams-access-btn" style="display: inline-flex; width: auto; padding: 0.5rem 1.2rem;">
+            <span>Download Full Cohort Archive (08_ghost_introgression_suite_reproducibility.tar.gz)</span>
+            <span>&darr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <button id="lightbox-close" class="lightbox-close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="nav-container footer-flex">
+      <div>
+        <p style="font-weight: 600; color: #1e293b;">RhizAeon Benchmark Compendium &bull; veg/rhizaeon</p>
+        <p style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">
+          Funded by BRC-Analytics (NIAID). Sergei L. Kosakovsky Pond, Darren P. Martin et al. (2026).
+        </p>
+      </div>
+      <div>
+        <a href="../../index.html" style="margin-right: 1.5rem;">Master Compendium</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

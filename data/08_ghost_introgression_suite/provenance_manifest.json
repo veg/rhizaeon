@@ -1,0 +1,33 @@
+{
+  "study_id": "08_ghost_introgression_suite",
+  "title": "Ghost Introgression Suite Across Deep Phylogenies and Unsampled Ancestral Lineages",
+  "framework": "Pyvolve continuous-time Markov evolver across bifurcating coalescent genealogies",
+  "axes": {
+    "ghost_donor_drift": {
+      "donor_divergence_levels": [0.0, 0.01, 0.03, 0.05, 0.10],
+      "complete_ghost_scenario": true,
+      "replicates_per_condition": 20,
+      "total_alignments": 120,
+      "taxa_per_alignment": 25,
+      "length_nt": 3000
+    },
+    "taxonomic_cohort_scaling": {
+      "cohort_sizes_N": [5, 10, 20, 50, 100],
+      "divergence_levels": [0.02, 0.05],
+      "null_replicates_per_cell": 10,
+      "recombinant_replicates_per_cell": 15,
+      "total_alignments": 250,
+      "length_nt": 3000
+    }
+  },
+  "workflow": {
+    "engine": "PrefixDistanceEngine(mat, codon_aligned=False, compute_transitions=True)",
+    "screen": "run_recursive_partition_fda_screen",
+    "min_z": 1.8,
+    "min_pir": 0.06,
+    "crossover_validation": true,
+    "crossover_p_threshold": 0.005,
+    "min_informative_sites": 3,
+    "polish_ml": true
+  }
+}

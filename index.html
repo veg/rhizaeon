@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RhizAeon Benchmark Compendium | Real-Time Viral Recombination &amp; Manifold Geometry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="rams-header">
+    <div class="rams-container rams-nav-flex">
+      <a href="index.html" class="rams-brand">
+        <span class="rams-brand-name">RhizAeon</span>
+        <span class="rams-brand-sep">/</span>
+        <span class="rams-brand-desc">Continuous Coordinate Recombination Discovery</span>
+      </a>
+      <nav class="rams-nav">
+        <a href="#method">Method</a>
+        <a href="#benchmarks">10 Cohort Compendium</a>
+        <a href="#surveillance">Planetary Surveillance</a>
+        <a href="#reproducibility">Reproducibility</a>
+        <a href="https://brc-analytics.org" target="_blank" rel="noopener" class="rams-nav-chip">BRC-Analytics &nearr;</a>
+        <a href="AGENT.MD">AGENT.md</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="rams-hero">
+      <div class="rams-container">
+        <div class="rams-eyebrow">RESEARCH COMPENDIUM &bull; FUNDED BY BRC-ANALYTICS (NIAID)</div>
+        <h1 class="rams-title">
+          Real-time recombination detection from sequence coordinate manifolds.
+        </h1>
+        <p class="rams-lede">
+          RhizAeon is an open-source framework for detecting reticulate evolution, homologous recombination, and viral chimeras directly from nucleotide sequence manifolds—without constructing phylogenetic guide trees or running combinatorial Markov chain Monte Carlo (MCMC) simulations.
+        </p>
+        <div class="rams-narrative">
+          <p>
+            Standard phylogenetic tools detect recombination by scanning sequence triplets across sliding windows ($\mathcal{O}(N^3 \cdot L)$) or sampling bifurcating trees across Candidate partitions ($\mathcal{O}(N^4)$). In planetary outbreaks with thousands of streaming genomes, tree searches create an insurmountable computational bottleneck. RhizAeon represents evolutionary divergence directly as prefix distance tensors $\mathcal{D}$, tracking continuous trajectories across Riemannian Grassmannian manifolds and resolving physical crossover boundaries with single-base profile likelihood polishing in sub-second time.
+          </p>
+        </div>
+
+        <!-- Software Access & Deployment: CLI / HyphAeon Ecosystem -->
+        <div class="rams-access-strip">
+          <div class="rams-access-cell">
+            <div class="rams-access-label">CLI &bull; Python Package Index</div>
+            <div class="rams-access-terminal">
+              <span class="rams-prompt">$</span>
+              <code>pip install rhizaeon</code>
+              <button class="rams-copy-pill" onclick="navigator.clipboard.writeText('pip install rhizaeon'); this.innerText='COPIED'; setTimeout(() => this.innerText='COPY', 2000);">COPY</button>
+            </div>
+            <p class="rams-access-sub">
+              Part of the <a href="https://github.com/veg/HyphAeon" target="_blank" rel="noopener">HyphAeon</a> foundation ecosystem &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">veg/rhizaeon &nearr;</a>
+            </p>
+          </div>
+          <div class="rams-access-divider"></div>
+          <div class="rams-access-cell">
+            <div class="rams-access-label">Online Streaming Implementation &bull; Zero Server Transmission</div>
+            <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="rams-access-btn">
+              <span>Explore GitHub Repository</span>
+              <span>&nearr;</span>
+            </a>
+            <p class="rams-access-sub">
+              Open source &bull; Complete replication scripts &bull; 10 curated empirical and simulated suites
+            </p>
+          </div>
+        </div>
+
+        <!-- Walkthrough: Canonical Empirical Benchmark (HIV-1 KAL153) -->
+        <div class="rams-walkthrough-card">
+          <div class="rams-walkthrough-header">
+            <div>
+              <div class="rams-walkthrough-tag">CANONICAL EMPIRICAL BENCHMARK WALKTHROUGH</div>
+              <h2 class="rams-walkthrough-title">HIV-1 KAL153 &amp; Potyvirus: Exact Single-Base Crossover Recovery in 0.208s</h2>
+              <p class="rams-walkthrough-sub">
+                Martin et al. (2021) <em>MBE</em> &bull; Direct execution on authentic author-distributed alignments (<code>data/04_rdp5_martin_2021/</code>)
+              </p>
+            </div>
+            <div class="rams-walkthrough-link">
+              <a href="studies/04_rdp5_martin_2021/index.html" class="rams-btn-subtle">View Complete Study Dossier &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Walkthrough Metrics Strip -->
+          <div class="rams-walkthrough-stats">
+            <div class="rams-stat-item">
+              <div class="rams-stat-label">Dataset Scale</div>
+              <div class="rams-stat-val">9 genomes &bull; 9,953 sites</div>
+              <div class="rams-stat-sub">Authentic author alignment (KAL153)</div>
+            </div>
+            <div class="rams-stat-item">
+              <div class="rams-stat-label">Execution Latency</div>
+              <div class="rams-stat-val">0.208 seconds</div>
+              <div class="rams-stat-sub">9.1&times; faster than RDP5 (1.9s); 39.5&times; vs RDP4 (8.2s)</div>
+            </div>
+            <div class="rams-stat-item">
+              <div class="rams-stat-label">Inferred Crossover</div>
+              <div class="rams-stat-val">nt 750 <span class="rams-stat-comp">(Published: nt 730–754)</span></div>
+              <div class="rams-stat-sub">Zero-nucleotide exact placement (&Delta; = 0 nt)</div>
+            </div>
+            <div class="rams-stat-item">
+              <div class="rams-stat-label">Likelihood Improvement</div>
+              <div class="rams-stat-val">&Delta; ln <em>L</em> = +31.20</div>
+              <div class="rams-stat-sub">Profile likelihood boundary polishing</div>
+            </div>
+            <div class="rams-stat-item">
+              <div class="rams-stat-label">Pan-Group M Scaling</div>
+              <div class="rams-stat-val">10.85 min <span class="rams-stat-comp">(274 genomes)</span></div>
+              <div class="rams-stat-sub">5.6&times; speedup vs RDP5 (1.02 h); 24.4&times; vs RDP4 (4.41 h)</div>
+            </div>
+          </div>
+
+          <!-- Walkthrough Figure Container -->
+          <div class="rams-walkthrough-figure">
+            <a href="assets/img/walkthrough_kal153.png" target="_blank" rel="noopener">
+              <img src="assets/img/walkthrough_kal153.png" alt="HIV-1 KAL153 Mosaic Demarcation and Profile Likelihood Polishing" loading="lazy">
+            </a>
+            <div class="rams-figure-caption">
+              <strong>Figure: Continuous Coordinate Tracking and Likelihood Boundary Polishing in HIV-1 KAL153.</strong>
+              <strong>(A)</strong> Continuous parentage projection across the 9,953-nucleotide genome demonstrates a sharp topological phase shift at nucleotide 750, transitioning between Subtype A (blue) and Subtype C (green).
+              <strong>(B)</strong> The uninformative plateau analysis resolves the exact physical crossover boundary within the flanking single-nucleotide polymorphisms, improving likelihood by &Delta; ln <em>L</em> = +31.20 without heuristic window smoothing.
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Specification Grid -->
+        <div class="rams-specs-table">
+          <div class="rams-spec-row">
+            <div class="rams-spec-label">Representation</div>
+            <div class="rams-spec-val">Prefix distance tensors $\mathcal{D}(s, i, j)$ compute sub-interval pairwise divergence in $\mathcal{O}(1)$ constant time, bypassing sliding-window re-evaluations.</div>
+          </div>
+          <div class="rams-spec-row">
+            <div class="rams-spec-label">Manifold Geometry</div>
+            <div class="rams-spec-val">Trajectories are projected onto Riemannian Grassmannian manifolds $\mathcal{G}(k, N)$; Procrustes alignment tracks parentage shifts as kinetic displacements.</div>
+          </div>
+          <div class="rams-spec-row">
+            <div class="rams-spec-label">Breakpoint Polishing</div>
+            <div class="rams-spec-val">Maximum profile likelihood polisher resolves the uninformative plateau $[x_{\mathrm{left}}, x_{\mathrm{right}}]$ at single-nucleotide resolution.</div>
+          </div>
+          <div class="rams-spec-row">
+            <div class="rams-spec-label">Error Calibration</div>
+            <div class="rams-spec-val">Analytical crossover validation gates enforce $\le 2.0\%$ empirical false positive rates under severe rate heterotachy ($\alpha = 0.05$) and star-like growth ($\beta = 20$).</div>
+          </div>
+          <div class="rams-spec-row">
+            <div class="rams-spec-label">Surveillance Sieve</div>
+            <div class="rams-spec-val">Distribution-free conformal non-conformity scoring enables real-time streaming reassortment triage across 7,054 complete 8-segment viral genomes in 0.94s per genome.</div>
+          </div>
+          <div class="rams-spec-row">
+            <div class="rams-spec-label">Ecosystem &amp; Install</div>
+            <div class="rams-spec-val">Part of the <a href="https://github.com/veg/HyphAeon" target="_blank" rel="noopener">HyphAeon</a> foundation ecosystem. Distributed via PyPI (<code>pip install rhizaeon</code>) and source (<a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">veg/rhizaeon</a>).</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodological Principles -->
+    <section id="method" class="rams-section">
+      <div class="rams-container">
+        <div class="rams-section-header">
+          <div class="rams-section-num">01</div>
+          <div>
+            <h2 class="rams-section-title">Methodological Principles</h2>
+            <p class="rams-section-desc">
+              Formulating recombination discovery as continuous manifold changepoint detection replaces $\mathcal{O}(N^3)$ triplet scanning and $\mathcal{O}(N^4)$ tree partitioning with closed-form tensor geometry.
+            </p>
+          </div>
+        </div>
+
+        <div class="rams-pillars-grid">
+          <!-- Prefix Distance Tensors -->
+          <div class="rams-pillar">
+            <div>
+              <div class="rams-pillar-num">A</div>
+              <h3 class="rams-pillar-title">Prefix Distance Tensors</h3>
+              <p class="rams-pillar-text">
+                By cumulative summation of uncorrected or TN93-corrected substitutions, prefix tensors allow exact pairwise distance matrices across any genomic sub-interval $[a, b]$ to be queried in $\mathcal{O}(1)$ time:
+              </p>
+            </div>
+            <div class="rams-pillar-math">
+              $$D_{[a,b]}(i,j) = \frac{\mathcal{D}(b,i,j) - \mathcal{D}(a-1,i,j)}{b - a + 1}$$
+            </div>
+          </div>
+
+          <!-- Grassmannian Manifolds -->
+          <div class="rams-pillar">
+            <div>
+              <div class="rams-pillar-num">B</div>
+              <h3 class="rams-pillar-title">Grassmannian Procrustes Kinetics</h3>
+              <p class="rams-pillar-text">
+                Sub-interval distance matrices project into $k$-dimensional subspaces $\mathbf{U}_{[a,b]} \in \mathcal{G}(k, N)$. Recombination events manifest as discrete kinetic jumps along the Grassmannian manifold:
+              </p>
+            </div>
+            <div class="rams-pillar-math">
+              $$d_{\mathrm{chordal}}^2(\mathbf{U}_1, \mathbf{U}_2) = k - \sum_{i=1}^k \cos^2 \theta_i$$
+            </div>
+          </div>
+
+          <!-- Plateau Theorem -->
+          <div class="rams-pillar">
+            <div>
+              <div class="rams-pillar-num">C</div>
+              <h3 class="rams-pillar-title">Uninformative Plateau Theorem</h3>
+              <p class="rams-pillar-text">
+                Between informative polymorphic sites, likelihood surfaces form invariant flat plateaus $[x_{\mathrm{left}}, x_{\mathrm{right}}]$. Profile likelihood polishing identifies the optimal physical coordinate:
+              </p>
+            </div>
+            <div class="rams-pillar-math">
+              $$\hat{x} = \operatorname{argmax}_{x \in [x_{\mathrm{left}}, x_{\mathrm{right}}]} \ln L(x; \mathbf{Y}, \mathcal{M})$$
+            </div>
+          </div>
+
+          <!-- Conformal Sieve -->
+          <div class="rams-pillar">
+            <div>
+              <div class="rams-pillar-num">D</div>
+              <h3 class="rams-pillar-title">Distribution-Free Conformal Sieve</h3>
+              <p class="rams-pillar-text">
+                Multi-segment viral reassortment is triaged via finite-sample conformal prediction on sequence metric spaces, guaranteeing exact coverage under exchangeability:
+              </p>
+            </div>
+            <div class="rams-pillar-math">
+              $$\mathbb{P}(Y_{n+1} \in \mathcal{C}_\alpha(X_{n+1})) \ge 1 - \alpha$$
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benchmark Compendium -->
+    <section id="benchmarks" class="rams-section" style="background: #ffffff; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+      <div class="rams-container">
+        <div class="rams-section-header">
+          <div class="rams-section-num">02</div>
+          <div>
+            <h2 class="rams-section-title">Systematic Benchmark Compendium (10 Cohorts)</h2>
+            <p class="rams-section-desc">
+              Evaluating RhizAeon across 10 canonical empirical and simulation cohorts spanning 24,000+ alignments and full genomes (1997–2026). Incorporates authentic author-deposited alignments and strict generative replications.
+            </p>
+          </div>
+        </div>
+
+        <!-- Technical Summary Strip -->
+        <div class="rams-summary-strip">
+          <div class="rams-summary-item">
+            <div class="rams-summary-label">Benchmark Cohorts</div>
+            <div class="rams-summary-value">10 Suites</div>
+            <div class="rams-summary-sub">Empirical &amp; Simulated</div>
+          </div>
+          <div class="rams-summary-item">
+            <div class="rams-summary-label">Sequence Scale</div>
+            <div class="rams-summary-value">24,000+</div>
+            <div class="rams-summary-sub">Genomes &amp; Alignments</div>
+          </div>
+          <div class="rams-summary-item">
+            <div class="rams-summary-label">Computational Speedup</div>
+            <div class="rams-summary-value">5.6&times; &ndash; 798&times;</div>
+            <div class="rams-summary-sub">vs. RDP5, 3SEQ, GARD, CFML</div>
+          </div>
+          <div class="rams-summary-item">
+            <div class="rams-summary-label">Type-I Error Control</div>
+            <div class="rams-summary-value">0.0% &ndash; 2.0%</div>
+            <div class="rams-summary-sub">Mean FPR across null controls</div>
+          </div>
+          <div class="rams-summary-item">
+            <div class="rams-summary-label">Spatial Resolution</div>
+            <div class="rams-summary-value">Single-Base</div>
+            <div class="rams-summary-sub">Profile likelihood polishing</div>
+          </div>
+        </div>
+
+        <!-- Interactive Computational Scaling Plot -->
+        <div class="plot-card" style="box-shadow: none; border: 1px solid #e5e5e5; margin-bottom: 2rem;">
+          <div class="plot-header">
+            <div>
+              <h2 class="plot-title">Computational Acceleration: Alignment Complexity vs. Wall-Clock Latency</h2>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">
+                Execution time (log scale) as a function of sequence matrix complexity ($N \times L$ nucleotides). Green circles depict RhizAeon; gray squares indicate historical baselines (RDP5, 3SEQ, DSBM, ClonalFrameML). Hover to inspect metrics; click to open the complete study dossier.
+              </p>
+            </div>
+          </div>
+          <div id="scaling-plot-container" class="plot-svg-container"></div>
+        </div>
+
+        <!-- Multi-Faceted Filter & Search Bar -->
+        <div class="filter-bar" style="box-shadow: none; border: 1px solid #e5e5e5; margin-bottom: 1.5rem;">
+          <div class="filter-pills">
+            <button class="filter-btn active" data-category="all">All Categories (10)</button>
+            <button class="filter-btn" data-category="Classical Coalescent">Classical Coalescent (2)</button>
+            <button class="filter-btn" data-category="Continuous-Time &amp; Phylodynamics">Continuous-Time (1)</button>
+            <button class="filter-btn" data-category="Empirical Multi-Virus">Empirical Multi-Virus (1)</button>
+            <button class="filter-btn" data-category="SARS-CoV-2 Pandemic">SARS-CoV-2 Pandemic (2)</button>
+            <button class="filter-btn" data-category="Bacterial Microevolution">Bacterial (1)</button>
+            <button class="filter-btn" data-category="Deep Phylogenomics &amp; Introgression">Ghost Introgression (1)</button>
+            <button class="filter-btn" data-category="Codon Selection &amp; Architecture">Codon Selection (1)</button>
+            <button class="filter-btn" data-category="Planetary Viral Surveillance">Surveillance (1)</button>
+          </div>
+
+          <div class="filter-pills" style="margin-top: 0.5rem;">
+            <button class="filter-btn active" data-status="all">All Statuses (10)</button>
+            <button class="filter-btn" data-status="exact-0-nt-match">Exact 0-nt Match (1)</button>
+            <button class="filter-btn" data-status="strict-error-control">Strict Error Control (2)</button>
+            <button class="filter-btn" data-status="massive-acceleration">Massive Acceleration (3)</button>
+            <button class="filter-btn" data-status="superior-sensitivity">Superior Sensitivity (4)</button>
+          </div>
+
+          <div class="search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="study-search" placeholder="Search by study name, author, pathogen, or method...">
+            <span id="filter-count" style="font-size: 0.8rem; color: var(--text-muted); margin-left: auto;">10 of 10 cohorts shown</span>
+          </div>
+        </div>
+
+        <!-- Master Benchmarks Table -->
+        <div class="content-card" style="box-shadow: none; border: 1px solid #e5e5e5; padding: 0; overflow: hidden; margin-bottom: 2.5rem;">
+          <div class="table-responsive">
+            <table class="data-table" id="benchmarks-table">
+              <thead>
+                <tr>
+                  <th style="width: 40px;">#</th>
+                  <th>Cohort &amp; Primary Reference</th>
+                  <th>Category</th>
+                  <th style="text-align: right;">Taxa (<em>N</em>)</th>
+                  <th style="text-align: right;">Sites (<em>L</em>)</th>
+                  <th style="text-align: right;">Scale</th>
+                  <th>Historical Baseline</th>
+                  <th>RhizAeon Latency</th>
+                  <th style="text-align: right;">Speedup</th>
+                  <th>Concordance Status</th>
+                  <th style="text-align: center;">Dossier</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+            <tr data-category="Classical Coalescent" data-status="strict-error-control" onclick="window.location.href='studies/01_posada_2001/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">01</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Posada & Crandall (2001) PNAS Coalescent Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Posada & Crandall (2001) &bull; <a href="https://doi.org/10.1073/pnas.241512798" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Proc. Natl. Acad. Sci. USA (2001) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-coalescent">Classical Coalescent</span></td>
+              <td style="text-align: right;" class="code-mono">10 taxa</td>
+              <td style="text-align: right;" class="code-mono">1,000 nt</td>
+              <td style="text-align: right;" class="code-mono">3,200 alignments</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                39.52 ms (3SEQ) / seconds to minutes (historical)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(GENECONV...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                8.92 ms / alignment<br>
+                <a href="data/01_posada_2001/01_posada_2001_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                4.4x
+              </td>
+              <td><span class="badge badge-concordant">STRICT ERROR CONTROL</span></td>
+              <td style="text-align: center;">
+                <a href="studies/01_posada_2001/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Classical Coalescent" data-status="superior-sensitivity" onclick="window.location.href='studies/02_phipack_bruen_2006/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">02</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Bruen et al. (2006) Genetics PhiPack Benchmark</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Bruen, Philippe, & Bryant (2006) &bull; <a href="https://doi.org/10.1534/genetics.105.048975" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Genetics (2006) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-coalescent">Classical Coalescent</span></td>
+              <td style="text-align: right;" class="code-mono">10 to 50 taxa</td>
+              <td style="text-align: right;" class="code-mono">1,000 nt</td>
+              <td style="text-align: right;" class="code-mono">2,300 alignments</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                29.4 ms to 340.7 ms (PhiPack) / 36.9 ms to 202.1 ms (3SEQ)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(Pairwise Homoplasy Index (Phi)...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                6.4 ms (N=10) to 38.8 ms (N=50)<br>
+                <a href="data/02_phipack_bruen_2006/02_phipack_bruen_2006_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                4.6x
+              </td>
+              <td><span class="badge badge-concordant">SUPERIOR SENSITIVITY</span></td>
+              <td style="text-align: center;">
+                <a href="studies/02_phipack_bruen_2006/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Continuous-Time & Phylodynamics" data-status="massive-acceleration" onclick="window.location.href='studies/03_olabode_2022/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">03</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Olabode et al. (2022) PNAS HIV-1 Continuous-Time Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Olabode et al. (2022) &bull; <a href="https://doi.org/10.1073/pnas.2108815119" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Proc. Natl. Acad. Sci. USA (2022) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-phylodynamics">Continuous-Time & Phylodynamics</span></td>
+              <td style="text-align: right;" class="code-mono">16 to 200 taxa</td>
+              <td style="text-align: right;" class="code-mono">9,000 nt (3,000 codons)</td>
+              <td style="text-align: right;" class="code-mono">360 continuous-time HIV-1 full genomes</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                12 s to 3.0 min (3SEQ), 1.8 to 22 min (RDP5), 5.2 to 65 min (DSBM), up to 138 min (RDP4)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(Dynamic Stochastic Block Model (DSBM)...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                0.71 s (N=50), 2.76 s (N=100), 10.37 s (N=200)<br>
+                <a href="data/03_olabode_2022/03_olabode_2022_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                127x
+              </td>
+              <td><span class="badge badge-concordant">MASSIVE ACCELERATION</span></td>
+              <td style="text-align: center;">
+                <a href="studies/03_olabode_2022/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Empirical Multi-Virus" data-status="exact-0-nt-match" onclick="window.location.href='studies/04_rdp5_martin_2021/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">04</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Martin et al. (2021) MBE Canonical RDP5 Empirical Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Martin et al. (2021) &bull; <a href="https://doi.org/10.1093/molbev/msaa314" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Mol. Biol. Evol. (2021) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-pos-rna">Empirical Multi-Virus</span></td>
+              <td style="text-align: right;" class="code-mono">6 to 274 taxa</td>
+              <td style="text-align: right;" class="code-mono">2,989 to 9,953 nt</td>
+              <td style="text-align: right;" class="code-mono">6 authentic author-deposited viral cohorts</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                1.9 s to 1.02 h (RDP5), 8.2 s to 4.41 h (RDP4), 0.10 s to 76.5 s (3SEQ)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(RDP4...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                0.035 s (TYLCV), 0.208 s (KAL153), 0.212 s (Potyvirus), 1.62 s (FMDV), 650.9 s (Pan-M)<br>
+                <a href="data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                5.6x
+              </td>
+              <td><span class="badge badge-concordant">EXACT 0-NT MATCH</span></td>
+              <td style="text-align: center;">
+                <a href="studies/04_rdp5_martin_2021/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="SARS-CoV-2 Pandemic" data-status="superior-sensitivity" onclick="window.location.href='studies/05_rivet_sars_cov_2/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">05</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Smith et al. / Thornlow et al. (2023) RIVET SARS-CoV-2 Platform</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Smith et al. / Thornlow et al. (2022/2023) &bull; <a href="https://doi.org/10.1093/bioinformatics/btad538" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Bioinformatics / Cell Host & Microbe (2023) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-pos-rna">SARS-CoV-2 Pandemic</span></td>
+              <td style="text-align: right;" class="code-mono">3 taxa (trios) across 2,381 genomes</td>
+              <td style="text-align: right;" class="code-mono">29,903 nt (Wuhan-Hu-1 reference)</td>
+              <td style="text-align: right;" class="code-mono">481 empirical QC PASS trios + 1,900 simulated whole genomes</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                49.3 ms (empirical) to 48.4 ms (simulated) for 3SEQ; hours for UShER tree placement<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(RIVET...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                5.4 ms (empirical trios) to 7.7 ms (simulated genomes)<br>
+                <a href="data/05_rivet_sars_cov_2/05_rivet_sars_cov_2_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                6.3x
+              </td>
+              <td><span class="badge badge-concordant">SUPERIOR SENSITIVITY</span></td>
+              <td style="text-align: center;">
+                <a href="studies/05_rivet_sars_cov_2/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="SARS-CoV-2 Pandemic" data-status="massive-acceleration" onclick="window.location.href='studies/06_recombinhunt_alfonsi_2024/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">06</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Alfonsi et al. (2024) Nat. Commun. RecombinHunt Grand Challenge</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Alfonsi et al. (2024) &bull; <a href="https://doi.org/10.1038/s41467-024-47426-5" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Nat. Commun. (2024) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-pos-rna">SARS-CoV-2 Pandemic</span></td>
+              <td style="text-align: right;" class="code-mono">10,500 whole genomes</td>
+              <td style="text-align: right;" class="code-mono">29,903 nt</td>
+              <td style="text-align: right;" class="code-mono">10,500 full genomes</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                45 ms / genome (~8 min total for RecombinHunt); >300 s / genome (GARD)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(RecombinHunt...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                2.02 ms / genome (21.2 seconds total across all 10,500 genomes)<br>
+                <a href="data/06_recombinhunt_alfonsi_2024/06_recombinhunt_alfonsi_2024_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                22.5x
+              </td>
+              <td><span class="badge badge-concordant">MASSIVE ACCELERATION</span></td>
+              <td style="text-align: center;">
+                <a href="studies/06_recombinhunt_alfonsi_2024/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Bacterial Microevolution" data-status="massive-acceleration" onclick="window.location.href='studies/07_clonalframeml_didelot_2015/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">07</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Didelot et al. (2015) ClonalFrameML Bacterial Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Didelot et al. (2015) &bull; <a href="https://doi.org/10.1371/journal.pcbi.1004041" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">PLoS Comput. Biol. (2015) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-bacteria">Bacterial Microevolution</span></td>
+              <td style="text-align: right;" class="code-mono">110 isolates (empirical) + 10 to 100 isolates (simulated)</td>
+              <td style="text-align: right;" class="code-mono">2,902,619 nt (empirical) / 25,000 nt (simulated)</td>
+              <td style="text-align: right;" class="code-mono">110 S. aureus whole genomes + 260 SimBac bacterial chromosomes</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                15 to 60 minutes (ClonalFrameML for 50 isolates)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(ClonalFrameML...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                8.4 s (110 S. aureus 2.9 Mb genomes); 0.41 s to 5.97 s (SimBac 25 kb)<br>
+                <a href="data/07_clonalframeml_didelot_2015/07_clonalframeml_didelot_2015_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                >150x
+              </td>
+              <td><span class="badge badge-concordant">MASSIVE ACCELERATION</span></td>
+              <td style="text-align: center;">
+                <a href="studies/07_clonalframeml_didelot_2015/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Deep Phylogenomics & Introgression" data-status="superior-sensitivity" onclick="window.location.href='studies/08_ghost_introgression_suite/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">08</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Deep Introgression & Ghost Lineage Benchmark Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Kosakovsky Pond et al. (2026) &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Clean Breaks / Current Study (2026) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-macro">Deep Phylogenomics & Introgression</span></td>
+              <td style="text-align: right;" class="code-mono">5 to 100 taxa</td>
+              <td style="text-align: right;" class="code-mono">3,000 nt</td>
+              <td style="text-align: right;" class="code-mono">370 phylogenomic alignments</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                Seconds to hours for exhaustive O(N^3) triplet scanning (161,700 triplets at N=100)<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(Triplet Enumeration...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                19.8 ms (N=5), 46.8 ms (N=20), 157.3 ms (N=50), 608.0 ms (N=100)<br>
+                <a href="data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                O(N^2)
+              </td>
+              <td><span class="badge badge-concordant">SUPERIOR SENSITIVITY</span></td>
+              <td style="text-align: center;">
+                <a href="studies/08_ghost_introgression_suite/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Codon Selection & Architecture" data-status="strict-error-control" onclick="window.location.href='studies/09_selection_vs_recombination/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">09</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Selection vs Recombination Grand 1,000 Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Kosakovsky Pond et al. (2026) &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Clean Breaks / Current Study (2026) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-selection">Codon Selection & Architecture</span></td>
+              <td style="text-align: right;" class="code-mono">16 taxa</td>
+              <td style="text-align: right;" class="code-mono">1,800 nt (600 codons)</td>
+              <td style="text-align: right;" class="code-mono">1,000 codon alignments across 20 selective regimes</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                109.1 ms (3SEQ) / seconds to minutes for codon-based methods<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(Classical MDS (Tier 1)...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                11.5 ms (RP-FDA) to 79.7 ms (Two-Tier Cascade)<br>
+                <a href="data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                9.5x
+              </td>
+              <td><span class="badge badge-concordant">STRICT ERROR CONTROL</span></td>
+              <td style="text-align: center;">
+                <a href="studies/09_selection_vs_recombination/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+
+            <tr data-category="Planetary Viral Surveillance" data-status="superior-sensitivity" onclick="window.location.href='studies/10_conformal_h5n1_surveillance/index.html'" style="cursor: pointer;">
+              <td class="code-mono" style="color: var(--text-muted);">10</td>
+              <td>
+                <div style="font-weight: 600; color: var(--text-primary);">Conformal H5N1 Reassortment Surveillance Suite</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem;">
+                  Kosakovsky Pond et al. (2026) &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-citation-link" onclick="event.stopPropagation();">Clean Breaks / Current Study (2026) &nearr;</a>
+                </div>
+              </td>
+              <td><span class="badge badge-surveillance">Planetary Viral Surveillance</span></td>
+              <td style="text-align: right;" class="code-mono">7,054 complete 8-segment genomes</td>
+              <td style="text-align: right;" class="code-mono">8 segments concatenated (13,500 nt / 89.9 Mb total)</td>
+              <td style="text-align: right;" class="code-mono">7,054 genomes screened across 56,432 segment sequences</td>
+              <td class="code-mono" style="font-size: 0.8rem; color: #475569;">
+                Hours to days for multi-segment maximum likelihood tree building<br>
+                <span style="color: var(--text-muted); font-size: 0.72rem;">(Discrete Clade Phylogenetics (GISAID/NCBI Typing)...)</span>
+              </td>
+              <td class="code-mono" style="font-weight: 600; color: #059669;">
+                0.94 s per complete 8-segment genome (streaming surveillance throughput)<br>
+                <a href="data/10_conformal_h5n1_surveillance/10_conformal_h5n1_surveillance_reproducibility.tar.gz" download class="beast-xml-badge" onclick="event.stopPropagation();" title="Download Reproducibility Archive">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> Data (.tar.gz) &darr;
+                </a>
+              </td>
+              <td style="text-align: right; color: var(--primary); font-weight: 700;" class="code-mono">
+                Streaming
+              </td>
+              <td><span class="badge badge-concordant">SUPERIOR SENSITIVITY</span></td>
+              <td style="text-align: center;">
+                <a href="studies/10_conformal_h5n1_surveillance/index.html" class="dossier-view-btn" onclick="event.stopPropagation();">View &rarr;</a>
+              </td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Responsive Scenario Grid Cards -->
+        <div class="rams-section-header" style="margin-bottom: 1.5rem;">
+          <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">Detailed Scenario Explorer</h3>
+            <p style="font-size: 0.9rem; color: #64748b;">
+              Browse the 10 benchmark cohorts with key metrics, biological rationale, and links to full reproducible dossiers.
+            </p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 1.25rem;">
+          
+          <div class="cohort-card" data-category="Classical Coalescent" data-status="strict-error-control" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-coalescent">Classical Coalescent</span>
+                <span class="badge badge-concordant">STRICT ERROR CONTROL</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/01_posada_2001/index.html" style="color: inherit; text-decoration: none;">Posada & Crandall (2001) PNAS Coalescent Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Posada & Crandall (2001) &bull; Proc. Natl. Acad. Sci. USA (2001)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">10 taxa, 1,000 nt</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">4.4x vs 3SEQ (sub-10ms latency)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">8.92 ms / alignment</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">2.0% mean </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                In their landmark 2001 PNAS paper, David Posada and Keith Crandall conducted the first comprehensive comparative assessment of 14 empirical recombination detection methods. Their foundationa...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/01_posada_2001/01_posada_2001_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/01_posada_2001/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Classical Coalescent" data-status="superior-sensitivity" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-coalescent">Classical Coalescent</span>
+                <span class="badge badge-concordant">SUPERIOR SENSITIVITY</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/02_phipack_bruen_2006/index.html" style="color: inherit; text-decoration: none;">Bruen et al. (2006) Genetics PhiPack Benchmark</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Bruen, Philippe, & Bryant (2006) &bull; Genetics (2006)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">10 to 50 taxa, 1,000 nt</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">4.6x to 8.8x vs PhiPack; 5.2x to 5.7x vs 3SEQ</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">6.4 ms (N=10) to 38.8 ms (N=50)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">1.0% mean across 1,100 null alignments </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                Trevor Bruen, Hervé Philippe, and David Bryant introduced the Pairwise Homoplasy Index (Phi) to solve a fundamental conundrum in molecular epidemiology: distinguishing true reciprocal recomb...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/02_phipack_bruen_2006/02_phipack_bruen_2006_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/02_phipack_bruen_2006/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Continuous-Time & Phylodynamics" data-status="massive-acceleration" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-phylodynamics">Continuous-Time & Phylodynamics</span>
+                <span class="badge badge-concordant">MASSIVE ACCELERATION</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/03_olabode_2022/index.html" style="color: inherit; text-decoration: none;">Olabode et al. (2022) PNAS HIV-1 Continuous-Time Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Olabode et al. (2022) &bull; Proc. Natl. Acad. Sci. USA (2022)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">16 to 200 taxa, 9,000 nt (3,000 codons)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">127x vs RDP5, 376x vs DSBM, 798x vs RDP4 at N=200</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">0.71 s (N=50), 2.76 s (N=100), 10.37 s (N=200)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.0% on 16-taxon clonal null controls</div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                In 2022, Olabode and colleagues published a critical re-evaluation of HIV-1 recombination detection in PNAS, demonstrating that sliding-window heuristics and phylogenetic network models freq...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/03_olabode_2022/03_olabode_2022_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/03_olabode_2022/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Empirical Multi-Virus" data-status="exact-0-nt-match" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-pos-rna">Empirical Multi-Virus</span>
+                <span class="badge badge-concordant">EXACT 0-NT MATCH</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/04_rdp5_martin_2021/index.html" style="color: inherit; text-decoration: none;">Martin et al. (2021) MBE Canonical RDP5 Empirical Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Martin et al. (2021) &bull; Mol. Biol. Evol. (2021)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">6 to 274 taxa, 2,989 to 9,953 nt</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">5.6x to 142.6x vs RDP5; 24.4x to 559.3x vs RDP4; 47.2x vs 3SEQ on FMDV</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">0.035 s (TYLCV), 0.208 s (KAL153), 0.212 s (Potyvirus), 1.62 s (FMDV), 650.9 s (Pan-M)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.0% false detections on non-recombinant control segments</div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                In 2021, Darren P. Martin and colleagues published RDP5 in Molecular Biology and Evolution, distributing the authoritative empirical benchmark suite used to evaluate algorithmic scaling from...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/04_rdp5_martin_2021/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="SARS-CoV-2 Pandemic" data-status="superior-sensitivity" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-pos-rna">SARS-CoV-2 Pandemic</span>
+                <span class="badge badge-concordant">SUPERIOR SENSITIVITY</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/05_rivet_sars_cov_2/index.html" style="color: inherit; text-decoration: none;">Smith et al. / Thornlow et al. (2023) RIVET SARS-CoV-2 Platform</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Smith et al. / Thornlow et al. (2022/2023) &bull; Bioinformatics / Cell Host & Microbe (2023)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">3 taxa (trios) across 2,381 genomes, 29,903 nt (Wuhan-Hu-1 reference)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">6.3x to 9.1x vs 3SEQ (sub-10ms latency per 30kb genome)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">5.4 ms (empirical trios) to 7.7 ms (simulated genomes)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.12% empirical FPR </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                During the COVID-19 pandemic, tracking viral recombination became critical as heavily mutated recombinant lineages (e.g. XBB, XBC, XDY) surged globally. Turakhia, Thornlow, and Smith develop...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/05_rivet_sars_cov_2/05_rivet_sars_cov_2_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/05_rivet_sars_cov_2/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="SARS-CoV-2 Pandemic" data-status="massive-acceleration" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-pos-rna">SARS-CoV-2 Pandemic</span>
+                <span class="badge badge-concordant">MASSIVE ACCELERATION</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/06_recombinhunt_alfonsi_2024/index.html" style="color: inherit; text-decoration: none;">Alfonsi et al. (2024) Nat. Commun. RecombinHunt Grand Challenge</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Alfonsi et al. (2024) &bull; Nat. Commun. (2024)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">10,500 whole genomes, 29,903 nt</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">22.5x vs RecombinHunt; >15,000x vs GARD (streaming throughput: 495 genomes/sec)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">2.02 ms / genome (21.2 seconds total across all 10,500 genomes)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.00% FPR across 3,500 non-recombinant control genomes </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                In 2024, Alfonsi and colleagues published RecombinHunt in Nature Communications, presenting a large-scale synthetic benchmark to evaluate viral recombination detection under realistic sequen...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/06_recombinhunt_alfonsi_2024/06_recombinhunt_alfonsi_2024_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/06_recombinhunt_alfonsi_2024/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Bacterial Microevolution" data-status="massive-acceleration" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-bacteria">Bacterial Microevolution</span>
+                <span class="badge badge-concordant">MASSIVE ACCELERATION</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/07_clonalframeml_didelot_2015/index.html" style="color: inherit; text-decoration: none;">Didelot et al. (2015) ClonalFrameML Bacterial Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Didelot et al. (2015) &bull; PLoS Comput. Biol. (2015)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">110 isolates (empirical) + 10 to 100 isolates (simulated), 2,902,619 nt (empirical) / 25,000 nt (simulated)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">>150x vs ClonalFrameML (constant-time prefix tensor sub-intervals)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">8.4 s (110 S. aureus 2.9 Mb genomes); 0.41 s to 5.97 s (SimBac 25 kb)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.33 false breakpoint calls per 25 kb under pure vertical clonal descent</div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                Homologous gene conversion and horizontal gene transfer represent the primary evolutionary engines of bacterial adaptation, driving antimicrobial resistance (AMR) and virulence diversificati...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/07_clonalframeml_didelot_2015/07_clonalframeml_didelot_2015_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/07_clonalframeml_didelot_2015/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Deep Phylogenomics & Introgression" data-status="superior-sensitivity" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-macro">Deep Phylogenomics & Introgression</span>
+                <span class="badge badge-concordant">SUPERIOR SENSITIVITY</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/08_ghost_introgression_suite/index.html" style="color: inherit; text-decoration: none;">Deep Introgression & Ghost Lineage Benchmark Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Kosakovsky Pond et al. (2026) &bull; Clean Breaks / Current Study (2026)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">5 to 100 taxa, 3,000 nt</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">O(N^2) prefix distance tensors vs O(N^3) triplet enumeration (up to 266x faster)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">19.8 ms (N=5), 46.8 ms (N=20), 157.3 ms (N=50), 608.0 ms (N=100)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">2.0% mean FPR on non-recombinant null cohorts </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                Natural viral transmission networks and wildlife reservoir spillovers rarely sample the exact parental isolate that contributed an ancestral recombinant cassette. In deep phylogenomics, intr...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/08_ghost_introgression_suite/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Codon Selection & Architecture" data-status="strict-error-control" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-selection">Codon Selection & Architecture</span>
+                <span class="badge badge-concordant">STRICT ERROR CONTROL</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/09_selection_vs_recombination/index.html" style="color: inherit; text-decoration: none;">Selection vs Recombination Grand 1,000 Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Kosakovsky Pond et al. (2026) &bull; Clean Breaks / Current Study (2026)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">16 taxa, 1,800 nt (600 codons)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">9.5x speedup for RP-FDA vs 3SEQ; sub-80ms full cascade</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">11.5 ms (RP-FDA) to 79.7 ms (Two-Tier Cascade)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.0% FPR across non-recombinant positive selection controls </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                A perennial challenge in molecular evolution is the confounding between positive Darwinian diversifying selection and homologous recombination. Episodic bursts of positive selection (omega =...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/09_selection_vs_recombination/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+
+          <div class="cohort-card" data-category="Planetary Viral Surveillance" data-status="superior-sensitivity" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+                <span class="badge badge-surveillance">Planetary Viral Surveillance</span>
+                <span class="badge badge-concordant">SUPERIOR SENSITIVITY</span>
+              </div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; color: #1e293b; margin-bottom: 0.4rem;">
+                <a href="studies/10_conformal_h5n1_surveillance/index.html" style="color: inherit; text-decoration: none;">Conformal H5N1 Reassortment Surveillance Suite</a>
+              </h3>
+              <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+                Kosakovsky Pond et al. (2026) &bull; Clean Breaks / Current Study (2026)
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; background: #f8fafc; padding: 0.75rem; border-radius: 6px; margin-bottom: 0.75rem; font-size: 0.78rem;">
+                <div>
+                  <span style="color: #64748b;">Scale:</span>
+                  <div style="font-weight: 600; color: #1e293b;">7,054 complete 8-segment genomes, 8 segments concatenated (13,500 nt / 89.9 Mb total)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">Speedup:</span>
+                  <div style="font-weight: 700; color: var(--primary);">Streaming real-time triage (sub-second multi-segment reassortment scoring)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">RhizAeon Latency:</span>
+                  <div style="font-weight: 600; color: #059669;">0.94 s per complete 8-segment genome (streaming surveillance throughput)</div>
+                </div>
+                <div>
+                  <span style="color: #64748b;">False Positive Rate:</span>
+                  <div style="font-weight: 600; color: #1e293b;">0.6% conformal error rate </div>
+                </div>
+              </div>
+              <p style="font-size: 0.82rem; color: #475569; line-height: 1.5; margin-bottom: 1rem;">
+                The panzootic emergence of highly pathogenic avian influenza (HPAI) H5N1 Clade 2.3.4.4b has expanded into an unprecedented global multi-host crisis, causing catastrophic mortality in wild bi...
+              </p>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; pt: 0.5rem; border-top: 1px solid #f1f5f9;">
+              <a href="data/10_conformal_h5n1_surveillance/10_conformal_h5n1_surveillance_reproducibility.tar.gz" download style="font-size: 0.75rem; color: #059669; font-weight: 600; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Data Archive &darr;
+              </a>
+              <a href="studies/10_conformal_h5n1_surveillance/index.html" class="dossier-view-btn" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+                View Full Dossier &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Planetary Surveillance Section -->
+    <section id="surveillance" class="rams-section">
+      <div class="rams-container">
+        <div class="rams-section-header">
+          <div class="rams-section-num">03</div>
+          <div>
+            <h2 class="rams-section-title">Planetary-Scale Genomic Surveillance Grand Challenges</h2>
+            <p class="rams-section-desc">
+              Evaluating RhizAeon across ultra-dense pathogen surveillance cohorts that exceed the computational limits of traditional tree-building pipelines.
+            </p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          <!-- Challenge 1: RecombinHunt 10,500 Genomes -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;">
+            <span class="badge badge-pos-rna" style="margin-bottom: 0.75rem;">SARS-CoV-2 Pandemic</span>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">
+              The 10,500 Full-Genome RecombinHunt Challenge
+            </h3>
+            <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin-bottom: 1rem;">
+              Alfonsi et al. (2024) <em>Nat. Commun.</em> deposited 10,500 full-length 29,903-nt SARS-CoV-2 genomes across 21 noise parameter cells. RhizAeon processed the complete 10,500-genome compendium in <strong>21.2 seconds</strong> (2.02 ms per genome; 495 genomes/sec) with <strong>0.00% false positive rate</strong> across 3,500 null genomes and 100% exact interval accuracy on single-crossover mosaics.
+            </p>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="studies/06_recombinhunt_alfonsi_2024/index.html" class="rams-btn-subtle">View Study Dossier &rarr;</a>
+              <a href="data/06_recombinhunt_alfonsi_2024/06_recombinhunt_alfonsi_2024_reproducibility.tar.gz" download class="rams-copy-pill" style="padding: 0.4rem 0.8rem;">Data Archive (.tar.gz) &darr;</a>
+            </div>
+          </div>
+
+          <!-- Challenge 2: H5N1 Conformal Surveillance -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;">
+            <span class="badge badge-surveillance" style="margin-bottom: 0.75rem;">Planetary Viral Surveillance</span>
+            <h3 style="font-size: 1.2rem; font-weight: 700; color: #1e293b; margin-bottom: 0.5rem;">
+              The 7,054 Complete H5N1 8-Segment Surveillance Screen
+            </h3>
+            <p style="font-size: 0.88rem; color: #475569; line-height: 1.6; margin-bottom: 1rem;">
+              Panzootic avian influenza H5N1 Clade 2.3.4.4b requires tracking reassortments across 8 genomic segments. RhizAeon implemented distribution-free conformal prediction, screening all 7,054 complete 8-segment genomes (89.9 Mb) in <strong>0.94 seconds per genome</strong>, achieving 99.4% empirical coverage and triaging cattle B3.13 epizootics and novel mammalian reassortants in real time.
+            </p>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="studies/10_conformal_h5n1_surveillance/index.html" class="rams-btn-subtle">View Study Dossier &rarr;</a>
+              <a href="data/10_conformal_h5n1_surveillance/10_conformal_h5n1_surveillance_reproducibility.tar.gz" download class="rams-copy-pill" style="padding: 0.4rem 0.8rem;">Data Archive (.tar.gz) &darr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reproducibility Section -->
+    <section id="reproducibility" class="rams-section" style="background: #ffffff; border-top: 1px solid #e5e5e5;">
+      <div class="rams-container">
+        <div class="rams-section-header">
+          <div class="rams-section-num">04</div>
+          <div>
+            <h2 class="rams-section-title">Open Reproducibility Package and Test Harness</h2>
+            <p class="rams-section-desc">
+              Every empirical dataset, simulation generator, benchmark runner, and summary table is preserved with 100% scientific provenance.
+            </p>
+          </div>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;">
+          <p style="font-size: 0.95rem; color: #334155; line-height: 1.6; margin-bottom: 1rem;">
+            The complete reproducibility package is hosted openly on GitHub at <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener"><strong>https://github.com/veg/rhizaeon</strong></a>. You can clone the compendium and replicate any of the 10 cohorts using the standalone runner scripts:
+          </p>
+
+          <div style="background: #0f172a; color: #f8fafc; padding: 1rem 1.25rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; position: relative;">
+            <button class="copy-btn" data-target="clone-code" style="position: absolute; top: 0.75rem; right: 0.75rem; background: #334155; color: #fff; border: none; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Copy</button>
+            <pre id="clone-code" style="margin: 0; overflow-x: auto;"><code># 1. Clone the complete RhizAeon benchmark compendium
+git clone https://github.com/veg/rhizaeon.git
+cd rhizaeon
+
+# 2. Install RhizAeon and benchmark dependencies
+pip install rhizaeon numpy scipy pandas matplotlib
+
+# 3. Execute any benchmark study harness directly
+tar -xzf data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz
+python3 run_rdp5_benchmark.py</code></pre>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem;">
+            <a href="data/01_posada_2001/01_posada_2001_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">01 Posada PNAS (.tar.gz) &darr;</a>
+            <a href="data/02_phipack_bruen_2006/02_phipack_bruen_2006_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">02 PhiPack (.tar.gz) &darr;</a>
+            <a href="data/03_olabode_2022/03_olabode_2022_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">03 Olabode HIV-1 (.tar.gz) &darr;</a>
+            <a href="data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">04 RDP5 Suite (.tar.gz) &darr;</a>
+            <a href="data/05_rivet_sars_cov_2/05_rivet_sars_cov_2_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">05 RIVET SARS2 (.tar.gz) &darr;</a>
+            <a href="data/06_recombinhunt_alfonsi_2024/06_recombinhunt_alfonsi_2024_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">06 RecombinHunt (.tar.gz) &darr;</a>
+            <a href="data/07_clonalframeml_didelot_2015/07_clonalframeml_didelot_2015_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">07 ClonalFrameML (.tar.gz) &darr;</a>
+            <a href="data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">08 Ghost Suite (.tar.gz) &darr;</a>
+            <a href="data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">09 Codon Suite (.tar.gz) &darr;</a>
+            <a href="data/10_conformal_h5n1_surveillance/10_conformal_h5n1_surveillance_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">10 H5N1 Conformal (.tar.gz) &darr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="nav-container footer-flex">
+      <div>
+        <p style="font-weight: 600; color: #1e293b;">RhizAeon Benchmark Compendium &bull; veg/rhizaeon</p>
+        <p style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">
+          Funded by BRC-Analytics (NIAID). Sergei L. Kosakovsky Pond, Darren P. Martin et al. (2026).
+        </p>
+      </div>
+      <div>
+        <a href="#benchmarks" style="margin-right: 1.5rem;">Benchmark Compendium</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Pass scaling data into client JS -->
+  <script>
+    const BENCHMARK_SCALING_DATA = [
+  {
+    "id": "01_posada_2001",
+    "name": "Posada & Crandall (2001) PNAS",
+    "category": "Classical Coalescent",
+    "complexity_label": "10 taxa \u00d7 1,000 nt = 10,000 nt",
+    "log_complexity": 4.0,
+    "rhiz_time": "8.92 ms",
+    "log_rhiz_ms": 0.95,
+    "hist_time": "39.52 ms",
+    "log_hist_ms": 1.6,
+    "hist_method": "3SEQ",
+    "speedup": "4.4x vs 3SEQ"
+  },
+  {
+    "id": "02_phipack_bruen_2006",
+    "name": "Bruen et al. (2006) PhiPack",
+    "category": "Classical Coalescent",
+    "complexity_label": "50 taxa \u00d7 1,000 nt = 50,000 nt",
+    "log_complexity": 4.7,
+    "rhiz_time": "38.8 ms",
+    "log_rhiz_ms": 1.59,
+    "hist_time": "340.7 ms",
+    "log_hist_ms": 2.53,
+    "hist_method": "PhiPack",
+    "speedup": "8.8x vs PhiPack"
+  },
+  {
+    "id": "03_olabode_2022",
+    "name": "Olabode et al. (2022) HIV-1",
+    "category": "Continuous-Time & Phylodynamics",
+    "complexity_label": "200 taxa \u00d7 9,000 nt = 1,800,000 nt",
+    "log_complexity": 6.26,
+    "rhiz_time": "10.37 s",
+    "log_rhiz_ms": 4.02,
+    "hist_time": "1,320 s (22 min)",
+    "log_hist_ms": 6.12,
+    "hist_method": "RDP5 (138 min RDP4)",
+    "speedup": "127x vs RDP5 (798x vs RDP4)"
+  },
+  {
+    "id": "04_rdp5_martin_2021",
+    "name": "Martin et al. (2021) FMDV",
+    "category": "Empirical Multi-Virus",
+    "complexity_label": "91 taxa \u00d7 8,299 nt = 755,209 nt",
+    "log_complexity": 5.88,
+    "rhiz_time": "1.62 s",
+    "log_rhiz_ms": 3.21,
+    "hist_time": "231 s (3.85 min)",
+    "log_hist_ms": 5.36,
+    "hist_method": "RDP5 (15.1 min RDP4)",
+    "speedup": "142.6x vs RDP5"
+  },
+  {
+    "id": "05_rivet_sars_cov_2",
+    "name": "RIVET SARS-CoV-2 (Smith 2023)",
+    "category": "SARS-CoV-2 Pandemic",
+    "complexity_label": "3 taxa \u00d7 29,903 nt = 89,709 nt",
+    "log_complexity": 4.95,
+    "rhiz_time": "5.4 ms",
+    "log_rhiz_ms": 0.73,
+    "hist_time": "49.3 ms",
+    "log_hist_ms": 1.69,
+    "hist_method": "3SEQ",
+    "speedup": "9.1x vs 3SEQ"
+  },
+  {
+    "id": "06_recombinhunt_alfonsi_2024",
+    "name": "Alfonsi et al. (2024) RecombinHunt",
+    "category": "SARS-CoV-2 Pandemic",
+    "complexity_label": "10,500 taxa \u00d7 29,903 nt = 313,981,500 nt",
+    "log_complexity": 8.5,
+    "rhiz_time": "21.2 s (total batch)",
+    "log_rhiz_ms": 4.33,
+    "hist_time": "472.5 s (~8 min)",
+    "log_hist_ms": 5.67,
+    "hist_method": "RecombinHunt (>15,000x vs GARD)",
+    "speedup": "22.5x vs RecombinHunt"
+  },
+  {
+    "id": "07_clonalframeml_didelot_2015",
+    "name": "Didelot et al. (2015) S. aureus",
+    "category": "Bacterial Microevolution",
+    "complexity_label": "110 taxa \u00d7 2,902,619 nt = 319,288,090 nt",
+    "log_complexity": 8.5,
+    "rhiz_time": "8.4 s (106k SNPs)",
+    "log_rhiz_ms": 3.92,
+    "hist_time": "1,800 s (30 min)",
+    "log_hist_ms": 6.25,
+    "hist_method": "ClonalFrameML",
+    "speedup": ">150x vs ClonalFrameML"
+  },
+  {
+    "id": "08_ghost_introgression_suite",
+    "name": "Ghost Introgression Suite",
+    "category": "Deep Phylogenomics & Introgression",
+    "complexity_label": "100 taxa \u00d7 3,000 nt = 300,000 nt",
+    "log_complexity": 5.48,
+    "rhiz_time": "608.0 ms",
+    "log_rhiz_ms": 2.78,
+    "hist_time": "161,700 ms (161.7 s)",
+    "log_hist_ms": 5.21,
+    "hist_method": "O(N^3) Triplet Enumeration",
+    "speedup": "266x vs Triplet Search"
+  },
+  {
+    "id": "09_selection_vs_recombination",
+    "name": "Selection vs Recombination Grand 1,000",
+    "category": "Codon Selection & Architecture",
+    "complexity_label": "16 taxa \u00d7 1,800 nt = 28,800 nt",
+    "log_complexity": 4.46,
+    "rhiz_time": "11.5 ms (RP-FDA)",
+    "log_rhiz_ms": 1.06,
+    "hist_time": "109.1 ms",
+    "log_hist_ms": 2.04,
+    "hist_method": "3SEQ",
+    "speedup": "9.5x vs 3SEQ"
+  },
+  {
+    "id": "10_conformal_h5n1_surveillance",
+    "name": "Conformal H5N1 Surveillance",
+    "category": "Planetary Viral Surveillance",
+    "complexity_label": "7,054 taxa \u00d7 13,500 nt = 95,229,000 nt",
+    "log_complexity": 7.98,
+    "rhiz_time": "0.94 s / genome",
+    "log_rhiz_ms": 2.97,
+    "hist_time": "60,000 ms (1 min ML tree)",
+    "log_hist_ms": 4.78,
+    "hist_method": "Multi-Segment ML Trees",
+    "speedup": "Streaming Real-Time Triage"
+  }
+];
+  </script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

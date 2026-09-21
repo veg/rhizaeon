@@ -1,0 +1,7 @@
+Method Key,Architecture / Paradigm,Power (%),FPR (%),MAE (codons),Exact (%),<=1 Codon (%),<=3 Codons (%),Taxon Acc (%),Latency (ms)
+1_classical_mds,Classical MDS (Scalar Tier 1),,,,,,,,49.5
+2_two_tier,Two-Tier Cascaded (Hybrid),70.1,0.0,3.99,18.5,34.5,49.2,69.0,79.7
+3_rp_fda,RP-FDA (1D Total Variation),53.2,0.0,3.53,11.8,24.2,39.2,52.6,11.5
+4_wavelet_wtmm,Continuous Wavelets (WTMM),74.8,24.5,14.61,18.6,34.1,51.1,68.0,39.8
+5_adaptive_3tier,Adaptive 3-Tier Cascade,64.6,1.5,9.97,9.1,25.6,36.9,60.0,19.3
+6_three_seq,3SEQ (Exhaustive Triplet),,,,,,,,109.1

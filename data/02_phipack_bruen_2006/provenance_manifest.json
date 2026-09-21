@@ -1,0 +1,32 @@
+{
+  "study_id": "02_phipack_bruen_2006",
+  "study_title": "Replication of the Bruen et al. 2006 PhiPack Benchmark Suite",
+  "reference": {
+    "citation": "Bruen, T. C., Philippe, H., & Bryant, D. (2006). A simple and robust statistical test for detecting the presence of recombination. Genetics, 172(4), 2665-2681.",
+    "doi": "10.1534/genetics.105.048975",
+    "pmid": "16489234",
+    "pmcid": "PMC1456399",
+    "year": 2006
+  },
+  "data_provenance": {
+    "classification": "faithfully_regenerated_simulation",
+    "og_data_available": false,
+    "og_data_note": "Original synthetic alignments were simulated using Treevolve and Hudson's coalescent in 2006; alignments were not deposited in an online repository. Regenerated strictly from published parameters.",
+    "policy": "ALWAYS use original alignments when archived; otherwise regenerate strictly following the published procedure."
+  },
+  "dataset_specifications": {
+    "total_alignments": 2300,
+    "taxa_levels": [10, 50],
+    "sequence_length_nt": 1000,
+    "replicates_per_scenario": 50,
+    "parameter_space": {
+      "theta_levels": [5.0, 10.0, 20.0],
+      "rho_levels": [0.0, 1.0, 4.0, 16.0, 64.0],
+      "growth_rates_beta": [0.0, 5.0, 20.0],
+      "gamma_alpha_levels": ["inf", 2.0, 0.5]
+    }
+  },
+  "evaluated_methods": {
+    "head_to_head_executed": ["RhizAeon", "PHI", "MaxChi2", "NSS", "3SEQ"]
+  }
+}

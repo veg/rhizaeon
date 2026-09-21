@@ -1,0 +1,43 @@
+{
+  "study_id": "05_rivet_sars_cov_2",
+  "study_title": "Evaluation on SARS-CoV-2 Recombinants from the RIVET Platform",
+  "reference": {
+    "citation": "Smith, K., Ye, C., & Turakhia, Y. (2023). Tracking and curating putative SARS-CoV-2 recombinants with RIVET. Bioinformatics, 39(9), btad538.",
+    "doi": "10.1093/bioinformatics/btad538",
+    "pmid": "37651464",
+    "pmcid": "PMC10493179",
+    "year": 2023,
+    "companion_reference": {
+      "citation": "Turakhia, Y., Thornlow, B., Hinrichs, A. S., De Maio, N., Gozashti, L., Lanfear, R., Haussler, D., & Corbett-Detig, R. (2022). Pandemic-scale phylogenomics reveals the SARS-CoV-2 recombination landscape. Nature, 609(7929), 994-997.",
+      "doi": "10.1038/s41586-022-05189-9",
+      "pmid": "35921869",
+      "pmcid": "PMC9519458"
+    }
+  },
+  "data_provenance": {
+    "classification": "hybrid_empirical_and_regenerated_simulation",
+    "og_data_available": true,
+    "og_data_source": "https://rivet.ucsd.edu/download_public_table",
+    "og_data_file": "data/rivet_public_recombinants.tsv",
+    "og_data_description": "Original empirical public database containing 6,432 inferred recombinant trios, 481 QC PASS trios, and 62 Pango recombinant lineages across the 29,903 nt SARS-CoV-2 genome.",
+    "simulation_protocol_source": "https://github.com/bpt26/recombination/ (Bryan Thornlow & Yatish Turakhia)",
+    "policy": "ALWAYS use original alignments when archived; otherwise regenerate strictly following the published procedure."
+  },
+  "dataset_specifications": {
+    "empirical_trios_count": 481,
+    "simulated_genomes_count": 1200,
+    "sequence_length_nt": 29903,
+    "reference_genome": "Wuhan-Hu-1 (NC_045512.2)",
+    "simulation_grid": {
+      "breakpoint_types": [1, 2],
+      "mutational_distances_d": [10, 20, 30, 50],
+      "post_recombination_mutations_m": [0, 1, 2, 3],
+      "negative_control_conditions": [10, 20, 30, 50],
+      "replicates_per_condition": 50
+    }
+  },
+  "evaluated_methods": {
+    "head_to_head_executed": ["RhizAeon", "3SEQ"],
+    "comparator_reference": "RIVET/RIPPLES"
+  }
+}

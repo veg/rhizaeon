@@ -1,0 +1,33 @@
+{
+  "study_id": "10_conformal_h5n1_surveillance",
+  "title": "Conformal Predictive Outbreak Surveillance Across 7,054 Complete H5N1 Avian Flu Genomes",
+  "empirical_cohort": {
+    "pathogen": "Influenza A virus subtype H5N1 (clade 2.3.4.4b)",
+    "genomes_count": 7054,
+    "segments_count": 56432,
+    "total_nucleotides": 89900000,
+    "collection_window": "1996-2024",
+    "calibration_size": 400
+  },
+  "conformal_calibration": {
+    "non_conformity_metric": "Normalized pairwise Hamming distance on metric manifolds",
+    "lattice_size": 401,
+    "omnibus_test": "Simes combination test across 8 segments",
+    "single_locus_test": "Bonferroni alpha / 8 bound",
+    "alpha_0.05_rejections": 261,
+    "alpha_0.05_rejection_pct": 3.70,
+    "alpha_0.01_rejections": 49,
+    "alpha_0.01_rejection_pct": 0.69
+  },
+  "dynamic_medoid_recruitment": {
+    "raw_alarms": 261,
+    "mitigated_alarms": 145,
+    "alarm_reduction_pct": 44.4,
+    "recruited_exemplar_medoids": 206
+  },
+  "throughput": {
+    "wall_clock_total_seconds": 0.095,
+    "per_genome_ms": 0.013,
+    "genomes_per_second": 74252
+  }
+}

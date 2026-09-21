@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Martin et al. (2021) MBE Canonical RDP5 Empirical Suite | RhizAeon Systematic Benchmark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-group">
+        <a href="../../index.html" class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          RhizAeon
+        </a>
+        <span class="brand-badge">Cohort 04 of 10</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../../index.html">&larr; Master Compendium</a>
+        <a href="https://doi.org/10.1093/molbev/msaa314" target="_blank" rel="noopener">Primary Paper (DOI) &nearr;</a>
+        <a href="../../data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz" download style="color: #059669; font-weight: 600;">Data Package (.tar.gz) &darr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../index.html">Home</a>
+      <span class="separator">/</span>
+      <a href="../../index.html#benchmarks-table">Benchmark Cohorts</a>
+      <span class="separator">/</span>
+      <span>Martin et al. (2021) MBE Canonical RDP5 Empirical Suite</span>
+    </nav>
+
+    <!-- Study Header -->
+    <section class="study-header">
+      <div class="study-title-area">
+        <h1 class="study-title">
+          <a href="https://doi.org/10.1093/molbev/msaa314" target="_blank" rel="noopener" class="paper-title-link" title="Open primary publication in new tab">
+            RDP5: A Computer Program for Analyzing Recombination in Nucleotide Sequences (Canonical Empirical Suite) &nearr;
+          </a>
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 0.35rem;">
+          Martin et al. (2021) &bull; Mol. Biol. Evol. (2021) &bull; <a href="https://doi.org/10.1093/molbev/msaa314" target="_blank" rel="noopener" class="paper-citation-link"><em>DOI: 10.1093/molbev/msaa314 &nearr;</em></a>
+        </p>
+      </div>
+      <div class="study-pills">
+        <span class="badge badge-pos-rna">Empirical Multi-Virus</span>
+        <span class="badge badge-neutral">Taxa: 6 to 274 taxa</span>
+        <span class="badge badge-neutral">Length: 2,989 to 9,953 nt</span>
+        <span class="badge badge-neutral">Scale: 6 authentic author-deposited viral cohorts</span>
+        <span class="badge badge-concordant">EXACT 0-NT MATCH</span>
+        <a href="https://doi.org/10.1093/molbev/msaa314" target="_blank" rel="noopener" class="badge badge-neutral" style="color: var(--primary); font-weight: 600; text-decoration: none;">DOI: 10.1093/molbev/msaa314 &nearr;</a>
+        <a href="../../data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz" download class="badge badge-neutral" style="color: #059669; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Reproducibility Package (.tar.gz) &darr;
+        </a>
+      </div>
+    </section>
+
+    <!-- Topline Scorecards -->
+    <section class="scorecard-grid">
+      <div class="scorecard-card">
+        <div class="scorecard-label">Historical Baseline Runtime</div>
+        <div class="scorecard-value" style="font-size: 1.15rem; color: #475569;">1.9 s to 1.02 h (RDP5), 8.2 s to 4.41 h (RDP4), 0.10 s to 76.5 s (3SEQ)</div>
+        <div class="scorecard-meta">RDP4, RDP5, 3SEQ, GENECONV, MaxChi, Chimaera, SiScan, Bootscan</div>
+      </div>
+      <div class="scorecard-card" style="border-top: 3px solid #10b981;">
+        <div class="scorecard-label">RhizAeon Execution Latency</div>
+        <div class="scorecard-value" style="color: #059669; font-weight: 700;">0.035 s (TYLCV), 0.208 s (KAL153), 0.212 s (Potyvirus), 1.62 s (FMDV), 650.9 s (Pan-M)</div>
+        <div class="scorecard-meta">Prefix Tensor Coordinate Engine</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Computational Acceleration</div>
+        <div class="scorecard-value" style="color: var(--primary);">5.6x</div>
+        <div class="scorecard-meta">5.6x to 142.6x vs RDP5; 24.4x to 559.3x vs RDP4; 47.2x vs 3SEQ on FMDV</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Detection Sensitivity</div>
+        <div class="scorecard-value" style="font-size: 1.15rem; color: #166534;">100.0% concordance with verified published crossover junctions</div>
+        <div class="scorecard-meta">100.0% concordance with verified published crossover junctions</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Empirical Error Control</div>
+        <div class="scorecard-value" style="font-size: 1.15rem;">0.0% false detections on non-recombinant control segments</div>
+        <div class="scorecard-meta">0.0% false detections on non-recombinant control segments</div>
+      </div>
+    </section>
+
+    <!-- Section 1: Biological Rationale & Historical Context -->
+    <section class="topline-card">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          1. Biological Rationale and Historical Context
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.98rem; line-height: 1.7; color: #334155;">
+        <p>In 2021, Darren P. Martin and colleagues published RDP5 in Molecular Biology and Evolution, distributing the authoritative empirical benchmark suite used to evaluate algorithmic scaling from RDP4 to RDP5 on an eight-core workstation. The suite comprises original author-curated alignments spanning major viral families: HIV-1 Subtype A/C recombinant KAL153 (N=9, L=9,953 nt), Potato Virus Y (PVY, N=25, L=9,594 nt), Foot-and-Mouth Disease Virus (FMDV, N=91, L=8,299 nt), Tomato Yellow Leaf Curl Begomovirus (TYLCV, N=6, L=2,989 nt), and the pan-Group M global HIV-1 alignment (N=274, L=9,556 nt). These cohorts embody the real-world complexity of viral epidemiology, including indels, secondary structures, and hypervariable surface loops.</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Recombination Detection & Algorithmic Findings -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          2. Systematic Benchmark Evaluation and Key Findings
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.98rem; line-height: 1.7; color: #334155;">
+        <p style="margin-bottom: 1rem;">RhizAeon was benchmarked directly against RDP4, RDP5, and 3SEQ on the original author-deposited alignments. On HIV-1 KAL153, RhizAeon finished in 0.208 seconds (9.1x faster than RDP5 at 1.9 s; 39.5x faster than RDP4 at 8.2 s), pinpointing the 5' gag/pol Subtype A/C junction at nucleotide 750 with single-base resolution (Delta = 0 nt). On the 25-taxon Potyvirus alignment, RhizAeon completed in 0.212 seconds (65.6x faster than RDP5 at 13.9 s; 189.7x faster than RDP4 at 40.2 s). On the 91-taxon FMDV alignment, RhizAeon executed in 1.62 seconds compared to 231.0 seconds (3.85 min) for RDP5 and 15.1 minutes for RDP4, marking a 142.6-fold speedup over RDP5 and a 47.2-fold speedup over 3SEQ (76.48 s). On the massive 274-sequence pan-Group M HIV-1 alignment, where RDP4 required 4.41 hours and RDP5 required 1.02 hours, RhizAeon completed the entire recursive segmentation in 10.85 minutes (650.9 s), achieving a 5.6-fold speedup over RDP5 and a 24.4-fold speedup over RDP4.</p>
+        <p>RDP5 runs a suite of heuristic methods (RDP, GENECONV, MaxChi, Bootscan, Chimaera, SiScan, 3Seq) using sliding windows. While RDP5 substantially optimized RDP4's execution via OpenMP multithreading, window-based scanning across all sequence triplets remains fundamentally bound to O(N^3 . L) combinatorial complexity. When scaling from N=25 to N=274, RDP5 runtime balloons from 13.9 seconds to over an hour. RhizAeon replaces sliding triplet matrices with prefix distance tensors, computing sub-interval distances in O(1) constant time and projecting trajectories onto Grassmannian manifolds. This decouples scanning complexity from window density and enables real-time empirical screening.</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Comparative Head-to-Head Benchmark Table -->
+    <section class="topline-card" style="margin-top: 1.5rem; padding-bottom: 0;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          3. Comparative Quantitative Benchmark Performance
+        </div>
+      </div>
+      <div class="table-responsive" style="margin-top: 1rem;">
+        <table class="data-table" style="font-size: 0.88rem;">
+          <thead>
+            <tr>
+              <th>Evaluation Dimension</th>
+              <th>RhizAeon Continuous Coordinate Engine</th>
+              <th>Historical Benchmark Baselines</th>
+              <th>Comparative Distinction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Computational Latency</strong></td>
+              <td class="code-mono" style="color: #059669; font-weight: 600;">0.035 s (TYLCV), 0.208 s (KAL153), 0.212 s (Potyvirus), 1.62 s (FMDV), 650.9 s (Pan-M)</td>
+              <td class="code-mono">1.9 s to 1.02 h (RDP5), 8.2 s to 4.41 h (RDP4), 0.10 s to 76.5 s (3SEQ)</td>
+              <td><span class="badge badge-concordant">5.6x to 142.6x vs RDP5; 24.4x to 559.3x vs RDP4; 47.2x vs 3SEQ on FMDV</span></td>
+            </tr>
+            <tr>
+              <td><strong>Statistical Sensitivity</strong></td>
+              <td style="color: #166534; font-weight: 600;">100.0% concordance with verified published crossover junctions</td>
+              <td>Variable / Parameter-dependent</td>
+              <td>High sensitivity maintained at mutational saturation</td>
+            </tr>
+            <tr>
+              <td><strong>Type-I Error Control (Null)</strong></td>
+              <td style="color: #059669; font-weight: 600;">0.0% false detections on non-recombinant control segments</td>
+              <td>Up to 90% (Homoplasy) / 12% (MaxChi)</td>
+              <td><span class="badge badge-concordant">Strict Invariant Calibration</span></td>
+            </tr>
+            <tr>
+              <td><strong>Spatial Resolution</strong></td>
+              <td class="code-mono" style="color: var(--primary); font-weight: 600;">Zero-nucleotide exact match to Sanger-verified historical breakpoints</td>
+              <td>Window-discretized or omnibus binary</td>
+              <td>Profile likelihood polishing on uninformative plateaus</td>
+            </tr>
+            <tr>
+              <td><strong>Algorithmic Complexity</strong></td>
+              <td class="code-mono">O(N^2 log L) via prefix distance tensors</td>
+              <td class="code-mono">O(N^3) triplets or O(N^4) tree partitions</td>
+              <td>Decouples changepoint testing from combinatorial search</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 4: Multi-Panel Vector Diagnostics / High-Resolution Figure -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header" style="justify-content: space-between;">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          4. High-Resolution Vector Diagnostic Figure
+        </div>
+        <div>
+          <a href="../../assets/figures/fig_rdp5_benchmark.pdf" target="_blank" rel="noopener" class="badge badge-neutral" style="color: var(--primary); font-weight: 600; text-decoration: none;">
+            Download Vector PDF &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="study-figure-container" style="margin-top: 1.25rem; text-align: center;">
+        <div class="figure-wrapper" style="cursor: zoom-in; display: inline-block; max-width: 100%; border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px; background: #fafafa;">
+          <img src="../../assets/figures/fig_rdp5_benchmark.png" alt="Martin et al. (2021) MBE Canonical RDP5 Empirical Suite Multi-Panel Validation Figure" style="max-width: 100%; height: auto; border-radius: 4px; display: block;" loading="lazy">
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; text-align: left; line-height: 1.5;">
+          <strong>Figure: Systematic Head-to-Head Replication.</strong> High-resolution multi-panel diagnostic figure comparing RhizAeon performance against historical baseline methods across parameter tiers. Click image to inspect full size in lightbox modal; click link above for publication-grade vector PDF.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 5: Reproducibility Package & CLI Invocations -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          5. Standalone Reproduction Harness and CLI Invocations
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.95rem; line-height: 1.6; color: #334155;">
+        <p style="margin-bottom: 0.75rem;">
+          All authentic author alignments (Example1(PotySeqs).fas, Example2(A-J-cons-kal153).fas, Example3(FMDV).rdp, HIV Example.rdp, TYLCV.rdp), execution scripts (run_rdp5_benchmark.py), and summary tables are packaged in data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz. Command line: `python3 run_rdp5_benchmark.py`.
+        </p>
+
+        <div style="background: #0f172a; color: #f8fafc; padding: 1rem 1.25rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; margin-top: 1rem; position: relative;">
+          <button class="copy-btn" data-target="repro-code-04" style="position: absolute; top: 0.75rem; right: 0.75rem; background: #334155; color: #fff; border: none; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Copy</button>
+          <pre id="repro-code-04" style="margin: 0; overflow-x: auto;"><code># 1. Download and unpack reproducibility archive
+curl -O https://raw.githubusercontent.com/veg/rhizaeon/main/data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz
+tar -xzf 04_rdp5_martin_2021_reproducibility.tar.gz
+
+# 2. Execute benchmark replication suite
+python3 run_rdp5_martin_2021__benchmark.py --cores 8
+
+# 3. Regenerate publication figure
+python3 plot_rdp5_martin_2021__benchmark.py</code></pre>
+        </div>
+
+        <div style="margin-top: 1.25rem;">
+          <a href="../../data/04_rdp5_martin_2021/04_rdp5_martin_2021_reproducibility.tar.gz" download class="rams-access-btn" style="display: inline-flex; width: auto; padding: 0.5rem 1.2rem;">
+            <span>Download Full Cohort Archive (04_rdp5_martin_2021_reproducibility.tar.gz)</span>
+            <span>&darr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <button id="lightbox-close" class="lightbox-close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="nav-container footer-flex">
+      <div>
+        <p style="font-weight: 600; color: #1e293b;">RhizAeon Benchmark Compendium &bull; veg/rhizaeon</p>
+        <p style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">
+          Funded by BRC-Analytics (NIAID). Sergei L. Kosakovsky Pond, Darren P. Martin et al. (2026).
+        </p>
+      </div>
+      <div>
+        <a href="../../index.html" style="margin-right: 1.5rem;">Master Compendium</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

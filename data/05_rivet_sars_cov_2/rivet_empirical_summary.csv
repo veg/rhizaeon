@@ -1,0 +1,2 @@
+cohort,total_trios,rhizaeon_detected_count,rhizaeon_sensitivity,rhizaeon_concordant_count,rhizaeon_concordance_rate,three_seq_detected_count,three_seq_sensitivity,rhizaeon_mean_latency_ms,three_seq_mean_latency_ms
+RIVET_QC_PASS_Empirical,481,166,0.34511434511434513,154,0.3201663201663202,194,0.40332640332640335,5.39708565488568,49.26476640540543

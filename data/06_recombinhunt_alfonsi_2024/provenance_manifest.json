@@ -1,0 +1,13 @@
+{
+  "study_id": "06_recombinhunt_alfonsi_2024",
+  "study_title": "Alfonsi et al. (2024) RecombinHunt 10,500-Genome Benchmark",
+  "canonical_doi": "10.1038/s41467-024-47464-5",
+  "citation": "Alfonsi et al. (2024) RecombinHunt: a compressed-sensing-based method for identifying recombinant viral genomes and breakpoint locations. Nature Communications 15(1): 3717",
+  "data_provenance": "Original Supplementary Data 1 and 2 from Alfonsi et al. (2024) containing 10,500 annotated whole viral genomes",
+  "total_genomes": 10500,
+  "genome_length_nt": 29903,
+  "methods_evaluated": {
+    "rhizaeon": "Local execution with standard calibrated workflow: PrefixDistanceEngine(compute_transitions=True) + scale-aware bilateral RP-FDA screen (min_z=1.8, min_pir=0.06, crossover_gate=0.005) + ML polisher",
+    "recombinhunt": "Digitized directly from Alfonsi et al. (2024) Supplementary Data 1 and Tables 1a, 1b"
+  }
+}

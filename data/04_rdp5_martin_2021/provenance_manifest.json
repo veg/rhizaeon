@@ -1,0 +1,63 @@
+{
+  "study_id": "04_rdp5_martin_2021",
+  "study_title": "Canonical RDP5 Empirical Multi-Virus Benchmark Suite",
+  "canonical_doi": "10.1093/ve/veab003",
+  "citation": "Martin et al. (2021) RDP5: a computer program for analyzing recombination in, and removing signals of recombination from, nucleotide sequence datasets. Virus Evol 7(1): veab003",
+  "data_provenance": "Official empirical alignments distributed directly with RDP5 (RDP5.93Setup.exe)",
+  "datasets": [
+    {
+      "name": "HIV-1 KAL153",
+      "file": "Example2_kal153_aligned.fasta",
+      "num_taxa": 9,
+      "length_nt": 15203,
+      "published_rdp4_sec": 8.2,
+      "published_rdp5_sec": 1.9,
+      "biological_target": "5' gag/pol Subtype A/C mosaicism ~nt 730-754"
+    },
+    {
+      "name": "Potyvirus Full",
+      "file": "Example1_PotySeqs_aligned.fasta",
+      "num_taxa": 25,
+      "length_nt": 14306,
+      "published_rdp4_sec": 40.2,
+      "published_rdp5_sec": 13.9,
+      "biological_target": "Polyprotein P1 and NIa-NIb cistrons"
+    },
+    {
+      "name": "FMDV Multi-Strain",
+      "file": "Example3_FMDV_aligned.fasta",
+      "num_taxa": 91,
+      "length_nt": 8299,
+      "published_rdp4_sec": 906.0,
+      "published_rdp5_sec": 231.0,
+      "biological_target": "Capsid / VP1 mosaicism ~nt 3300-3500"
+    },
+    {
+      "name": "Pan-Group M HIV-1",
+      "file": "HIV_Example_aligned.fasta",
+      "num_taxa": 274,
+      "length_nt": 9556,
+      "published_rdp4_sec": 15876.0,
+      "published_rdp5_sec": 3672.0,
+      "biological_target": "Multiple recombinant circulating forms (CRFs)"
+    },
+    {
+      "name": "TYLCV Begomovirus",
+      "file": "tylcv_aligned.fasta",
+      "num_taxa": 6,
+      "length_nt": 2989,
+      "published_rdp4_sec": null,
+      "published_rdp5_sec": null,
+      "biological_target": "IS76 Rep/CP inter-species crossover ~nt 1292"
+    },
+    {
+      "name": "Potato Virus Y",
+      "file": "PVY_Example_aligned.fasta",
+      "num_taxa": 25,
+      "length_nt": 9594,
+      "published_rdp4_sec": null,
+      "published_rdp5_sec": null,
+      "biological_target": "PVY-NTN dual crossover at nt 6576 and 313"
+    }
+  ]
+}

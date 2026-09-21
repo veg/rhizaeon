@@ -1,0 +1,32 @@
+{
+  "study_id": "01_posada_2001",
+  "study_title": "Replication of the Posada and Crandall 2001 Benchmark Suite",
+  "reference": {
+    "citation": "Posada, D., & Crandall, K. A. (2001). Evaluation of methods for detecting recombination from DNA sequences: Computer simulations. Proceedings of the National Academy of Sciences, 98(24), 13757-13762.",
+    "doi": "10.1073/pnas.241136198",
+    "pmid": "11717435",
+    "year": 2001
+  },
+  "data_provenance": {
+    "classification": "faithfully_regenerated_simulation",
+    "og_data_available": false,
+    "og_data_note": "Original alignments were not archived in public repositories in 2001. Regenerated strictly from published specifications using Hudson's coalescent model and Seq-Gen Markov substitution.",
+    "policy": "ALWAYS use original alignments when archived; otherwise regenerate strictly following the published procedure."
+  },
+  "dataset_specifications": {
+    "total_alignments": 3200,
+    "taxa": 10,
+    "sequence_length_nt": 1000,
+    "replicates_per_scenario": 100,
+    "scenarios_count": 32,
+    "parameter_space": {
+      "theta_levels": [10.0, 50.0, 100.0, 200.0],
+      "rho_levels": [0.0, 1.0, 4.0, 16.0, 64.0],
+      "gamma_alpha_levels": ["inf", 2.0, 0.5, 0.05]
+    }
+  },
+  "evaluated_methods": {
+    "head_to_head_executed": ["RhizAeon", "3SEQ"],
+    "historical_digitized": ["GENECONV", "MAXCHI", "HOMOPLASY_TEST", "RETICULATE", "RDP"]
+  }
+}

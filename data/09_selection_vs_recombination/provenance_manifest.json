@@ -1,0 +1,46 @@
+{
+  "study_id": "09_selection_vs_recombination",
+  "title": "Selection vs Recombination Benchmark Across the Mechanistic Codon Spectrum",
+  "framework": "Pyvolve codon-level Markov substitution simulation (Goldman-Yang / Muse-Gaut models)",
+  "dimensions": {
+    "dimension_a_null_controls": {
+      "scenarios": ["null_homogeneous", "null_selection", "null_srv_mild", "null_srv_strong"],
+      "replicates_per_scenario": 50,
+      "total_alignments": 200,
+      "taxa": 16,
+      "codons": 600
+    },
+    "dimension_b_divergence_spectrum": {
+      "scenarios": ["div_ultra_shallow", "div_shallow", "div_medium", "div_deep", "div_ultra_deep"],
+      "tree_scales": [0.05, 0.20, 0.50, 1.50, 4.00],
+      "replicates_per_scenario": 50,
+      "total_alignments": 250
+    },
+    "dimension_c_event_complexity": {
+      "scenarios": ["double_cassette", "triple_mosaic", "quad_mosaic", "deep_inter_clade"],
+      "replicates_per_scenario": 50,
+      "total_alignments": 200
+    },
+    "dimension_d_tract_length": {
+      "scenarios": ["tract_micro_30", "tract_short_60", "tract_asymmetric_head", "tract_asymmetric_tail"],
+      "replicates_per_scenario": 50,
+      "total_alignments": 200
+    },
+    "dimension_e_donor_architecture": {
+      "scenarios": ["ghost_donor_close", "ghost_donor_distant", "subtle_intra_clade"],
+      "replicates_per_scenario": 50,
+      "total_alignments": 150
+    }
+  },
+  "grand_total_alignments": 1000,
+  "workflow": {
+    "engine": "PrefixDistanceEngine(mat, codon_aligned=True, compute_transitions=True)",
+    "screen": "run_recursive_partition_fda_screen",
+    "min_z": 1.8,
+    "min_pir": 0.06,
+    "crossover_validation": true,
+    "crossover_p_threshold": 0.005,
+    "min_informative_sites": 3,
+    "polish_ml": true
+  }
+}

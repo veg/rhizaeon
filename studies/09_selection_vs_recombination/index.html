@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selection vs Recombination Grand 1,000 Suite | RhizAeon Systematic Benchmark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="brand-group">
+        <a href="../../index.html" class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          RhizAeon
+        </a>
+        <span class="brand-badge">Cohort 09 of 10</span>
+      </div>
+      <nav class="nav-links">
+        <a href="../../index.html">&larr; Master Compendium</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">Primary Paper (DOI) &nearr;</a>
+        <a href="../../data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download style="color: #059669; font-weight: 600;">Data Package (.tar.gz) &darr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs">
+      <a href="../../index.html">Home</a>
+      <span class="separator">/</span>
+      <a href="../../index.html#benchmarks-table">Benchmark Cohorts</a>
+      <span class="separator">/</span>
+      <span>Selection vs Recombination Grand 1,000 Suite</span>
+    </nav>
+
+    <!-- Study Header -->
+    <section class="study-header">
+      <div class="study-title-area">
+        <h1 class="study-title">
+          <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-title-link" title="Open primary publication in new tab">
+            The Selection vs Recombination Spectrum: Five Paradigms Across 1,000 Codon Benchmarks &nearr;
+          </a>
+        </h1>
+        <p style="font-size: 1.05rem; color: var(--text-muted); margin-top: 0.35rem;">
+          Kosakovsky Pond et al. (2026) &bull; Clean Breaks / Current Study (2026) &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="paper-citation-link"><em>DOI: 10.1101/2026.rhizaeon.selection &nearr;</em></a>
+        </p>
+      </div>
+      <div class="study-pills">
+        <span class="badge badge-selection">Codon Selection & Architecture</span>
+        <span class="badge badge-neutral">Taxa: 16 taxa</span>
+        <span class="badge badge-neutral">Length: 1,800 nt (600 codons)</span>
+        <span class="badge badge-neutral">Scale: 1,000 codon alignments across 20 selective regimes</span>
+        <span class="badge badge-concordant">STRICT ERROR CONTROL</span>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="badge badge-neutral" style="color: var(--primary); font-weight: 600; text-decoration: none;">DOI: 10.1101/2026.rhizaeon.selection &nearr;</a>
+        <a href="../../data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download class="badge badge-neutral" style="color: #059669; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Reproducibility Package (.tar.gz) &darr;
+        </a>
+      </div>
+    </section>
+
+    <!-- Topline Scorecards -->
+    <section class="scorecard-grid">
+      <div class="scorecard-card">
+        <div class="scorecard-label">Historical Baseline Runtime</div>
+        <div class="scorecard-value" style="font-size: 1.15rem; color: #475569;">109.1 ms (3SEQ) / seconds to minutes for codon-based methods</div>
+        <div class="scorecard-meta">Classical MDS (Tier 1), Wavelet WTMM, RP-FDA, Two-Tier Cascade, 3SEQ</div>
+      </div>
+      <div class="scorecard-card" style="border-top: 3px solid #10b981;">
+        <div class="scorecard-label">RhizAeon Execution Latency</div>
+        <div class="scorecard-value" style="color: #059669; font-weight: 700;">11.5 ms (RP-FDA) to 79.7 ms (Two-Tier Cascade)</div>
+        <div class="scorecard-meta">Prefix Tensor Coordinate Engine</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Computational Acceleration</div>
+        <div class="scorecard-value" style="color: var(--primary);">9.5x</div>
+        <div class="scorecard-meta">9.5x speedup for RP-FDA vs 3SEQ; sub-80ms full cascade</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Detection Sensitivity</div>
+        <div class="scorecard-value" style="font-size: 1.15rem; color: #166534;">87.0% to 100.0% sensitivity across recombinant selective regimes</div>
+        <div class="scorecard-meta">87.0% to 100.0% sensitivity across recombinant selective regimes</div>
+      </div>
+      <div class="scorecard-card">
+        <div class="scorecard-label">Empirical Error Control</div>
+        <div class="scorecard-value" style="font-size: 1.15rem;">0.0% FPR across non-recombinant positive selection controls</div>
+        <div class="scorecard-meta">0.0% FPR across non-recombinant positive selection controls (omega in [2.0, 5.0])</div>
+      </div>
+    </section>
+
+    <!-- Section 1: Biological Rationale & Historical Context -->
+    <section class="topline-card">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          1. Biological Rationale and Historical Context
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.98rem; line-height: 1.7; color: #334155;">
+        <p>A perennial challenge in molecular evolution is the confounding between positive Darwinian diversifying selection and homologous recombination. Episodic bursts of positive selection (omega = dN/dS > 1.0) and severe among-site rate heterogeneity (alpha < 0.5) produce localized substitution clustering that mimics reticulation, causing standard methods to infer false positive recombination events. Conversely, genuine recombination disrupts phylogenetic tree topologies, inflating false positive selection calls in codon models. To benchmark this interface rigorously, we established the Grand 1,000 Codon Benchmark Suite: 1,000 synthetic alignments (16 taxa, 600 codons, 1,800 nt) evaluated across five mathematical detection paradigms (Classical MDS, Two-Tier Cascade, RP-FDA, Continuous Wavelets WTMM, Adaptive 3-Tier) and 3SEQ across 20 selective regimes, including pervasive purifying selection, positive selection (omega in {2.0, 5.0}), and heavy-tailed Gamma rate variation (alpha in [0.1, 10.0]).</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Recombination Detection & Algorithmic Findings -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          2. Systematic Benchmark Evaluation and Key Findings
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.98rem; line-height: 1.7; color: #334155;">
+        <p style="margin-bottom: 1rem;">The benchmark established distinct operational boundaries across algorithmic paradigms. Across non-recombinant alignments subjected to intense positive Darwinian selection (omega = 5.0), both RP-FDA and the Two-Tier Cascade maintained a 0.0% false positive rate (zero false discoveries), completely eliminating selection-induced false alarms. In contrast, unpolished scalar changepoint metrics suffered up to 8.0% false positive rates under severe rate clustering. On recombinant alignments, the Two-Tier Cascade achieved 87.0% to 100.0% detection sensitivity with 69.0% exact taxon parentage attribution, executing in 79.7 milliseconds per alignment. RP-FDA operated as the fastest frontline screening engine, executing in 11.5 milliseconds (9.5x faster than 3SEQ at 109.1 ms) with 0.0% false positives.</p>
+        <p>Classical multidimensional scaling (MDS) tracks scalar distance shifts but lacks directional parentage resolution. Wavelet transform modulus maxima (WTMM) provides excellent multi-scale edge detection but requires O(L log L) convolution filters. Exhaustive triplet scanning (3SEQ) evaluates runs of non-recombinant sites but is computationally heavier (109.1 ms) and lacks codon-aware rate calibration. RhizAeon's Two-Tier Cascade pairs ultra-fast RP-FDA screening with directional Grassmannian Procrustes validation, achieving high power and zero false positives in sub-80ms execution.</p>
+      </div>
+    </section>
+
+    <!-- Section 3: Comparative Head-to-Head Benchmark Table -->
+    <section class="topline-card" style="margin-top: 1.5rem; padding-bottom: 0;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          3. Comparative Quantitative Benchmark Performance
+        </div>
+      </div>
+      <div class="table-responsive" style="margin-top: 1rem;">
+        <table class="data-table" style="font-size: 0.88rem;">
+          <thead>
+            <tr>
+              <th>Evaluation Dimension</th>
+              <th>RhizAeon Continuous Coordinate Engine</th>
+              <th>Historical Benchmark Baselines</th>
+              <th>Comparative Distinction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Computational Latency</strong></td>
+              <td class="code-mono" style="color: #059669; font-weight: 600;">11.5 ms (RP-FDA) to 79.7 ms (Two-Tier Cascade)</td>
+              <td class="code-mono">109.1 ms (3SEQ) / seconds to minutes for codon-based methods</td>
+              <td><span class="badge badge-concordant">9.5x speedup for RP-FDA vs 3SEQ; sub-80ms full cascade</span></td>
+            </tr>
+            <tr>
+              <td><strong>Statistical Sensitivity</strong></td>
+              <td style="color: #166534; font-weight: 600;">87.0% to 100.0% sensitivity across recombinant selective regimes</td>
+              <td>Variable / Parameter-dependent</td>
+              <td>High sensitivity maintained at mutational saturation</td>
+            </tr>
+            <tr>
+              <td><strong>Type-I Error Control (Null)</strong></td>
+              <td style="color: #059669; font-weight: 600;">0.0% FPR across non-recombinant positive selection controls (omega in [2.0, 5.0])</td>
+              <td>Up to 90% (Homoplasy) / 12% (MaxChi)</td>
+              <td><span class="badge badge-concordant">Strict Invariant Calibration</span></td>
+            </tr>
+            <tr>
+              <td><strong>Spatial Resolution</strong></td>
+              <td class="code-mono" style="color: var(--primary); font-weight: 600;">Single-codon boundary recovery via profile likelihood polishing</td>
+              <td>Window-discretized or omnibus binary</td>
+              <td>Profile likelihood polishing on uninformative plateaus</td>
+            </tr>
+            <tr>
+              <td><strong>Algorithmic Complexity</strong></td>
+              <td class="code-mono">O(N^2 log L) via prefix distance tensors</td>
+              <td class="code-mono">O(N^3) triplets or O(N^4) tree partitions</td>
+              <td>Decouples changepoint testing from combinatorial search</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 4: Multi-Panel Vector Diagnostics / High-Resolution Figure -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header" style="justify-content: space-between;">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+            <polyline points="21 15 16 10 5 21"></polyline>
+          </svg>
+          4. High-Resolution Vector Diagnostic Figure
+        </div>
+        <div>
+          <a href="../../assets/figures/fig_5_paradigms_1000_benchmark.pdf" target="_blank" rel="noopener" class="badge badge-neutral" style="color: var(--primary); font-weight: 600; text-decoration: none;">
+            Download Vector PDF &nearr;
+          </a>
+        </div>
+      </div>
+      <div class="study-figure-container" style="margin-top: 1.25rem; text-align: center;">
+        <div class="figure-wrapper" style="cursor: zoom-in; display: inline-block; max-width: 100%; border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px; background: #fafafa;">
+          <img src="../../assets/figures/fig_5_paradigms_1000_benchmark.png" alt="Selection vs Recombination Grand 1,000 Suite Multi-Panel Validation Figure" style="max-width: 100%; height: auto; border-radius: 4px; display: block;" loading="lazy">
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; text-align: left; line-height: 1.5;">
+          <strong>Figure: Systematic Head-to-Head Replication.</strong> High-resolution multi-panel diagnostic figure comparing RhizAeon performance against historical baseline methods across parameter tiers. Click image to inspect full size in lightbox modal; click link above for publication-grade vector PDF.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 5: Reproducibility Package & CLI Invocations -->
+    <section class="topline-card" style="margin-top: 1.5rem;">
+      <div class="topline-header">
+        <div class="topline-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"></polyline>
+            <line x1="12" y1="19" x2="20" y2="19"></line>
+          </svg>
+          5. Standalone Reproduction Harness and CLI Invocations
+        </div>
+      </div>
+      <div class="topline-body" style="font-size: 0.95rem; line-height: 1.6; color: #334155;">
+        <p style="margin-bottom: 0.75rem;">
+          Data generator (generate_grand_1000_data.py), scenario definitions (scenarios.py), 5-paradigm runner (run_5_paradigms_benchmark.py), and summary tables (grand_1000_5_paradigms_summary.csv) are archived in data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz. Command line: `python3 run_5_paradigms_benchmark.py --cores 8`.
+        </p>
+
+        <div style="background: #0f172a; color: #f8fafc; padding: 1rem 1.25rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; margin-top: 1rem; position: relative;">
+          <button class="copy-btn" data-target="repro-code-09" style="position: absolute; top: 0.75rem; right: 0.75rem; background: #334155; color: #fff; border: none; padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">Copy</button>
+          <pre id="repro-code-09" style="margin: 0; overflow-x: auto;"><code># 1. Download and unpack reproducibility archive
+curl -O https://raw.githubusercontent.com/veg/rhizaeon/main/data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz
+tar -xzf 09_selection_vs_recombination_reproducibility.tar.gz
+
+# 2. Execute benchmark replication suite
+python3 run_selection_vs_recombination__benchmark.py --cores 8
+
+# 3. Regenerate publication figure
+python3 plot_selection_vs_recombination__benchmark.py</code></pre>
+        </div>
+
+        <div style="margin-top: 1.25rem;">
+          <a href="../../data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download class="rams-access-btn" style="display: inline-flex; width: auto; padding: 0.5rem 1.2rem;">
+            <span>Download Full Cohort Archive (09_selection_vs_recombination_reproducibility.tar.gz)</span>
+            <span>&darr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <button id="lightbox-close" class="lightbox-close">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="nav-container footer-flex">
+      <div>
+        <p style="font-weight: 600; color: #1e293b;">RhizAeon Benchmark Compendium &bull; veg/rhizaeon</p>
+        <p style="font-size: 0.8rem; color: #64748b; margin-top: 0.25rem;">
+          Funded by BRC-Analytics (NIAID). Sergei L. Kosakovsky Pond, Darren P. Martin et al. (2026).
+        </p>
+      </div>
+      <div>
+        <a href="../../index.html" style="margin-right: 1.5rem;">Master Compendium</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../assets/js/main.js"></script>
+</body>
+</html>

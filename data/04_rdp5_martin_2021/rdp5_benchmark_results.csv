@@ -1,0 +1,7 @@
+id,dataset_name,taxa,length_nt,biological_target,rhiz_bps_count,rhiz_bps,rhiz_encode_ms,rhiz_engine_ms,rhiz_screen_ms,rhiz_total_sec,rdp5_published_sec,rdp4_published_sec,speedup_vs_rdp5,speedup_vs_rdp4,three_seq_sec,three_seq_events
+kal153,HIV-1 KAL153,9,9953,5' gag/pol Subtype A/C mosaicism ~nt 730-754,10,328;2252;2826;4238;4360;4714;4900;5462;8842;9447,12.9,6.2,188.6,0.208,1.9,8.2,9.1,39.5,0.1,7.0
+potyvirus,Potyvirus Full,25,9594,Polyprotein P1 and NIa-NIb cistrons,2,313;6576,19.9,45.8,146.2,0.212,13.9,40.2,65.6,189.7,1.87,25.0
+fmdv,FMDV Multi-Strain,91,8299,Capsid / VP1 mosaicism ~nt 3300-3500,27,120;331;405;422;1214;1770;2100;3979;4092;4246,59.3,520.7,1039.9,1.62,231.0,906.0,142.6,559.3,76.48,91.0
+tylcv,TYLCV Begomovirus,6,2989,IS76 Rep/CP inter-species crossover ~nt 1292,3,1292;1306;2584,6.8,1.2,27.3,0.035,,,,,0.04,0.0
+pvy,Potato Virus Y,25,9594,PVY-NTN dual crossover at nt 6576 and 313,2,313;6576,24.0,47.8,155.4,0.227,,,,,1.94,25.0
+hiv_pan_m,Pan-Group M HIV-1,274,9556,Multiple recombinant circulating forms (CRFs),51,4826;6588;86;5658;2842;...,223.8,5658.9,645025.2,650.9,3672.0,15876.0,5.6,24.4,,

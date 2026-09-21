@@ -1,0 +1,17 @@
+Dimension,Method,Power_Pct,FPR_Pct,MAE_Codons,Within_1Codon_Pct,Taxon_Accuracy_Pct,Avg_Runtime_ms
+Dimension A: Null Controls,rhizaeon_embed_contextual,,3.5000000000000004,,,,448.7394819000005
+Dimension A: Null Controls,rhizaeon_embed_static,,1.5,,,,44.65730917999977
+Dimension A: Null Controls,rhizaeon_scalar,,16.5,,,,26.98234581999964
+Dimension A: Null Controls,three_seq,,1.5,,,,87.2596633499996
+Dimension B: Divergence Spectrum,rhizaeon_embed_contextual,56.39999999999999,,3.021276595744681,26.400000000000002,56.39999999999999,448.8675536680014
+Dimension B: Divergence Spectrum,rhizaeon_embed_static,56.39999999999999,,3.021276595744681,27.6,56.39999999999999,52.90854682399885
+Dimension B: Divergence Spectrum,rhizaeon_scalar,80.4,,13.124378109452737,33.2,75.2,40.971378160000164
+Dimension B: Divergence Spectrum,three_seq,18.4,,13.347826086956522,2.0,10.4,93.4896585159994
+Dimension C: Tract Architecture,rhizaeon_embed_contextual,88.85714285714286,,5.745980707395498,47.714285714285715,87.71428571428571,561.3436124257139
+Dimension C: Tract Architecture,rhizaeon_embed_static,87.71428571428571,,5.52442996742671,47.714285714285715,86.57142857142858,83.91988581428701
+Dimension C: Tract Architecture,rhizaeon_scalar,88.85714285714286,,5.019292604501608,50.857142857142854,87.14285714285714,63.45174095714487
+Dimension C: Tract Architecture,three_seq,31.71428571428571,,1.990990990990991,20.0,16.28571428571429,118.13768357714324
+Dimension D: Topological Difficulty,rhizaeon_embed_contextual,64.0,,9.609375,21.5,56.49999999999999,585.2224066649976
+Dimension D: Topological Difficulty,rhizaeon_embed_static,62.0,,9.185483870967742,21.0,56.00000000000001,78.55741713000235
+Dimension D: Topological Difficulty,rhizaeon_scalar,79.0,,23.974683544303797,24.5,65.0,58.42402772999769
+Dimension D: Topological Difficulty,three_seq,15.5,,11.483870967741936,5.5,2.0,134.80840666499708

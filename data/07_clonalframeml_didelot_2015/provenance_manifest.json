@@ -1,0 +1,37 @@
+{
+  "study_id": "07_clonalframeml_didelot_2015",
+  "title": "ClonalFrameML and SimBac Bacterial Microevolution & Homologous Gene Conversion Benchmark",
+  "canonical_citations": [
+    "Didelot, X., & Wilson, D. J. (2015). ClonalFrameML: Efficient Inference of Recombination in Whole Bacterial Genomes. PLoS Comput Biol, 11(2), e1004041. DOI: 10.1371/journal.pcbi.1004041",
+    "Didelot, X., & Falush, D. (2007). Inference of bacterial microevolution using multilocus sequence data. Genetics, 175(3), 1251-1266. DOI: 10.1534/genetics.106.063305",
+    "Brown, T., Didelot, X., Wilson, D. J., & Eyre, D. W. (2016). SimBac: simulation of whole bacterial genomes with homologous recombination. Microbial Genomics, 2(1), e000044. DOI: 10.1099/mgen.0.000044"
+  ],
+  "components": {
+    "empirical_s_aureus": {
+      "source_url": "https://doi.org/10.6084/m9.figshare.19626912.v1",
+      "archive": "og_data/cfml.tgz",
+      "taxa_count": 110,
+      "alignment_length_nt": 2902619,
+      "variable_sites": 106480,
+      "reference_genome": "MRSA252"
+    },
+    "parametric_simulation_suite": {
+      "recombination_intensity_rm": [0.0, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0],
+      "tract_lengths_delta": [250, 500, 1000, 2500, 5000],
+      "divergences_nu": [0.005, 0.01, 0.03, 0.08],
+      "taxa_counts_N": [10, 20, 50, 100],
+      "total_alignments": 260,
+      "alignment_length_nt": 25000
+    }
+  },
+  "workflow": {
+    "tensor_engine": "PrefixDistanceEngine(mat, codon_aligned=False, compute_transitions=True)",
+    "fda_screen": "run_recursive_partition_fda_screen",
+    "min_z": 1.8,
+    "min_pir": 0.06,
+    "crossover_validation": true,
+    "crossover_p_threshold": 0.005,
+    "min_informative_sites": 3,
+    "polish_ml": true
+  }
+}

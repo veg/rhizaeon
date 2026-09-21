@@ -1,0 +1,17 @@
+{
+  "study_id": "03_olabode_2022",
+  "study_title": "Olabode et al. (2022) Continuous-Time HIV-1 Recombination Benchmark",
+  "canonical_doi": "10.1073/pnas.2108815119",
+  "citation": "Olabode et al. (2022) Revisiting the recombinant history of HIV-1 group M with dynamic network community detection. PNAS 119(19): e2108815119",
+  "data_provenance": "Original benchmark alignments generated under Olabode et al. protocol (360 alignments: Exp 1 N=16 COMET, Exp 2 N=37 continuous-time Wright-Fisher with Gamma SRV, Exp 3 N=50,100,200 scaling)",
+  "total_alignments": 360,
+  "sequence_length_nt": 9000,
+  "methods_evaluated": {
+    "rhizaeon": "Local execution with standard workflow: PrefixDistanceEngine(compute_transitions=True) + RP-FDA screen (min_z=1.8, min_pir=0.06, crossover_gate=0.005) + ML polisher",
+    "three_seq": "Local execution with 3SEQ binary (-full -p 3seq_ptable_250 -q -L40)",
+    "dsbm": "Digitized from published distributions in Olabode et al. (2022) Figure 1A, 1B, and Table S1",
+    "gard": "Digitized from published distributions in Olabode et al. (2022) Figure 1A, 1B",
+    "rdp4": "Digitized from published distributions in Olabode et al. (2022) Figure 1A, 1B, and Table S1",
+    "rdp5": "Digitized from published distributions in Olabode et al. (2022) Figure 1A, 1B, and Table S1"
+  }
+}
