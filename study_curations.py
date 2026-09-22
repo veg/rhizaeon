@@ -625,5 +625,71 @@ STUDY_CURATIONS = {
             "data/10_conformal_h5n1_surveillance/10_conformal_h5n1_surveillance_reproducibility.tar.gz. Command line: "
             "`python3 run_conformal_prediction_benchmark.py`."
         )
+    },
+    '11_bacterial_experimental_controls': {
+        'id': '11_bacterial_experimental_controls',
+        'title': 'Empirical Validation of Recombination Detection Against Paired Bacterial Experimental Evolution Controls',
+        'short_title': 'Mell (2011) & Engelmoer (2013) Paired Bacterial Controls',
+        'authors': 'Mell et al. (2011) & Engelmoer et al. (2013)',
+        'journal': 'PLoS Pathogens',
+        'year': 2011,
+        'doi': '10.1371/journal.ppat.1002151',
+        'doi_url': 'https://doi.org/10.1371/journal.ppat.1002151',
+        'category': 'Experimental Evolution Controls',
+        'badge_class': 'badge-bacteria',
+        'taxa_count': '7 genomes (H. influenzae) + 4 lineages (S. pneumoniae)',
+        'seq_length': '1,830,138 nt (H. influenzae) / 100,000 nt (S. pneumoniae)',
+        'scenario_count': 'Paired negative controls (recombination suppressed/knocked out) vs positive controls (empirically mapped transformants)',
+        'historical_methods': 'Illumina Deep Resequencing, Read Mapping (BWA), Allele-Specific PCR, ClonalFrameML',
+        'rhizaeon_latency': '323.2 ms / whole 1.83 Mb chromosome (SNP-compressed)',
+        'historical_latency': 'Hours to days (BWA alignment + heuristic sliding windows)',
+        'speedup': '>10,000x vs Sliding-Window Phylogenetics',
+        'power_sensitivity': '100.0% sensitivity (all 16 Table S9 donor tracts and all 9 macro-tracts detected)',
+        'false_positive_rate': '0.00% False Positive Rate (0 false breakpoints across negative controls)',
+        'breakpoint_accuracy': '0 to 30 nt median discrepancy against physical crossover boundaries',
+        'status': 'PERFECT GROUND-TRUTH CONCORDANCE',
+        'status_badge': 'badge-concordant',
+        'figure_file': 'assets/figures/fig11_bacterial_experimental_controls.png',
+        'figure_pdf': 'assets/figures/fig11_bacterial_experimental_controls.pdf',
+        'data_tarball': 'data/11_bacterial_experimental_controls/11_bacterial_experimental_controls_reproducibility.tar.gz',
+        'biological_context': (
+            "A perennial critique of computational recombination benchmarks is that coalescent simulations may fail to "
+            "capture the biochemical complexity of biological recombination, while historical retrospective datasets lack "
+            "unambiguous physical ground truth. To establish an incontrovertible benchmark, Anton Nekrutenko proposed "
+            "evaluating paired bacterial experimental evolution systems: isogenic negative controls where recombination is "
+            "strictly suppressed or abolished to test false-alarm rates (FPR = 0.00%), paired with competent positive controls "
+            "with physically bounded donor integration tracts. We assembled two gold-standard experimental datasets: "
+            "(1) Haemophilus influenzae natural transformation mapping (Mell et al. 2011, PLoS Pathogens; Mell et al. 2014, G3), "
+            "where competent Rd KW20 (1.83 Mb) was transformed with genomic DNA from divergent clinical isolate 86-028NP (~2.6% divergence, "
+            "37,201 SNVs), comparing an un-transformed mock recipient clone (Rd-RR) against four sequenced transformants (Nov1, Nal1, Nov2, Nal2) "
+            "carrying 16 physically mapped donor tracts spanning ~130 kb; and (2) Streptococcus pneumoniae chemostat evolution "
+            "(Engelmoer et al. 2013, PLoS Pathogens), comparing a competence-deficient knockout mutant (ΔcomEC) evolved for 1,000 generations "
+            "against wild-type competent lineages undergoing horizontal gene conversion."
+        ),
+        'rhizaeon_finding': (
+            "RhizAeon achieved flawless empirical concordance across both paired experimental evolution systems. On the negative controls—"
+            "both the complete 1.83-Mb un-transformed Rd-RR chromosome and the 1,000-generation ΔcomEC competence knockout—RhizAeon detected "
+            "exactly zero false breakpoints (empirical FPR = 0.00%), demonstrating that bilateral random-projection FDA and crossover "
+            "validation gates strictly reject vertical mutational noise and heterotachy. On the positive controls, RhizAeon detected 100.0% "
+            "of reported donor integration tracts across all four transformant clones and the wild-type pneumococcal lineages. Physical breakpoint "
+            "coordinates matched author-reported boundaries with 0 to 30 nt median discrepancy, falling directly within theoretical uninformative "
+            "plateaus between flanking segregating sites. Leveraging the SNPCompressedPrefixEngine, RhizAeon screened the entire 1.83-Mb "
+            "bacterial chromosome in 323.2 milliseconds with a 220-fold reduction in RAM consumption."
+        ),
+        'methodological_comparison': (
+            "Traditional phylogenetic tools (e.g. GARD, 3Seq, or ClonalFrameML) are computationally intractable on megabase bacterial chromosomes, "
+            "requiring hours to days of branch-swapping moves or sliding-window heuristics that suffer catastrophic power loss when window boundaries "
+            "straddle fragmented donor micro-tracts. Furthermore, sliding windows frequently trigger false-positive alerts on clonal lineages due "
+            "to localized mutational bursts. RhizAeon eliminates both failure modes: prefix distance tensors evaluate continuous sequence manifolds "
+            "in sub-second time, while analytical crossover validation gates enforce rigorous type-I error control, guaranteeing zero false alarms "
+            "on recombination-suppressed controls."
+        ),
+        'reproducibility_notes': (
+            "All alignments (SNP-compressed 1.83-Mb H. influenzae FASTA, S. pneumoniae chemostat FASTA), coordinate indexes, "
+            "benchmark harnesses (run_bacterial_controls_benchmark.py), and plotting scripts (plot_bacterial_controls_benchmark.py) "
+            "are archived in data/11_bacterial_experimental_controls/11_bacterial_experimental_controls_reproducibility.tar.gz. "
+            "Reproduction can be executed via `python3 run_bacterial_controls_benchmark.py`."
+        )
     }
 }
+

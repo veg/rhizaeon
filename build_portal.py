@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 build_portal.py
-Authoritative portal builder script that compiles the 10 canonical RhizAeon benchmarks
+Authoritative portal builder script that compiles the 11 canonical RhizAeon benchmarks
 into the publication-grade web application in rhizaeon_bench.
 """
 
@@ -153,6 +153,19 @@ SCALING_DATA = [
         "log_hist_ms": 4.78,
         "hist_method": "Multi-Segment ML Trees",
         "speedup": "Streaming Real-Time Triage"
+    },
+    {
+        "id": "11_bacterial_experimental_controls",
+        "name": "Mell & Engelmoer Paired Controls",
+        "category": "Experimental Evolution Controls",
+        "complexity_label": "7 taxa × 1,830,138 nt = 12,810,966 nt",
+        "log_complexity": 7.11,
+        "rhiz_time": "323.2 ms",
+        "log_rhiz_ms": 2.51,
+        "hist_time": "3,600 s (1 hr)",
+        "log_hist_ms": 6.56,
+        "hist_method": "Manual Pipeline / BWA",
+        "speedup": ">10,000x vs Sliding Windows"
     }
 ]
 
@@ -193,7 +206,7 @@ DOSSIER_TEMPLATE = """<!DOCTYPE html>
           </svg>
           RhizAeon
         </a>
-        <span class="brand-badge">Cohort __STUDY_NUM__ of 10</span>
+        <span class="brand-badge">Cohort __STUDY_NUM__ of 11</span>
       </div>
       <nav class="nav-links">
         <a href="__REL_HOME__">&larr; Master Compendium</a>
@@ -491,7 +504,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
       </a>
       <nav class="rams-nav">
         <a href="#method">Method</a>
-        <a href="#benchmarks">10 Cohort Compendium</a>
+        <a href="#benchmarks">11 Cohort Compendium</a>
         <a href="#surveillance">Planetary Surveillance</a>
         <a href="#reproducibility">Reproducibility</a>
         <a href="https://brc-analytics.org" target="_blank" rel="noopener" class="rams-nav-chip">BRC-Analytics &nearr;</a>
@@ -540,7 +553,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
               <span>&nearr;</span>
             </a>
             <p class="rams-access-sub">
-              Open source &bull; Complete replication scripts &bull; 10 curated empirical and simulated suites
+              Open source &bull; Complete replication scripts &bull; 11 curated empirical and simulated suites
             </p>
           </div>
         </div>
@@ -711,9 +724,9 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         <div class="rams-section-header">
           <div class="rams-section-num">02</div>
           <div>
-            <h2 class="rams-section-title">Systematic Benchmark Compendium (10 Cohorts)</h2>
+            <h2 class="rams-section-title">Systematic Benchmark Compendium (11 Cohorts)</h2>
             <p class="rams-section-desc">
-              Evaluating RhizAeon across 10 canonical empirical and simulation cohorts spanning 24,000+ alignments and full genomes (1997–2026). Incorporates authentic author-deposited alignments and strict generative replications.
+              Evaluating RhizAeon across 11 canonical empirical and simulation cohorts spanning 24,000+ alignments and full genomes (1997–2026). Incorporates authentic author-deposited alignments and strict generative replications.
             </p>
           </div>
         </div>
@@ -722,7 +735,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         <div class="rams-summary-strip">
           <div class="rams-summary-item">
             <div class="rams-summary-label">Benchmark Cohorts</div>
-            <div class="rams-summary-value">10 Suites</div>
+            <div class="rams-summary-value">11 Suites</div>
             <div class="rams-summary-sub">Empirical &amp; Simulated</div>
           </div>
           <div class="rams-summary-item">
@@ -753,7 +766,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
             <div>
               <h2 class="plot-title">Computational Acceleration: Alignment Complexity vs. Wall-Clock Latency</h2>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">
-                Execution time (log scale) as a function of sequence matrix complexity ($N \\times L$ nucleotides). Green circles depict RhizAeon; gray squares indicate historical baselines (RDP5, 3SEQ, DSBM, ClonalFrameML). Hover to inspect metrics; click to open the complete study dossier.
+                Execution time (log scale) as a function of sequence matrix complexity ($N \times L$ nucleotides). Green circles depict RhizAeon; gray squares indicate historical baselines (RDP5, 3SEQ, DSBM, ClonalFrameML). Hover to inspect metrics; click to open the complete study dossier.
               </p>
             </div>
           </div>
@@ -763,7 +776,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         <!-- Multi-Faceted Filter & Search Bar -->
         <div class="filter-bar" style="box-shadow: none; border: 1px solid #e5e5e5; margin-bottom: 1.5rem;">
           <div class="filter-pills">
-            <button class="filter-btn active" data-category="all">All Categories (10)</button>
+            <button class="filter-btn active" data-category="all">All Categories (11)</button>
             <button class="filter-btn" data-category="Classical Coalescent">Classical Coalescent (2)</button>
             <button class="filter-btn" data-category="Continuous-Time &amp; Phylodynamics">Continuous-Time (1)</button>
             <button class="filter-btn" data-category="Empirical Multi-Virus">Empirical Multi-Virus (1)</button>
@@ -772,14 +785,16 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
             <button class="filter-btn" data-category="Deep Phylogenomics &amp; Introgression">Ghost Introgression (1)</button>
             <button class="filter-btn" data-category="Codon Selection &amp; Architecture">Codon Selection (1)</button>
             <button class="filter-btn" data-category="Planetary Viral Surveillance">Surveillance (1)</button>
+            <button class="filter-btn" data-category="Experimental Evolution Controls">Paired Controls (1)</button>
           </div>
 
           <div class="filter-pills" style="margin-top: 0.5rem;">
-            <button class="filter-btn active" data-status="all">All Statuses (10)</button>
+            <button class="filter-btn active" data-status="all">All Statuses (11)</button>
             <button class="filter-btn" data-status="exact-0-nt-match">Exact 0-nt Match (1)</button>
             <button class="filter-btn" data-status="strict-error-control">Strict Error Control (2)</button>
             <button class="filter-btn" data-status="massive-acceleration">Massive Acceleration (3)</button>
             <button class="filter-btn" data-status="superior-sensitivity">Superior Sensitivity (4)</button>
+            <button class="filter-btn" data-status="perfect-ground-truth-concordance">Perfect Concordance (1)</button>
           </div>
 
           <div class="search-box">
@@ -788,7 +803,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
             <input type="text" id="study-search" placeholder="Search by study name, author, pathogen, or method...">
-            <span id="filter-count" style="font-size: 0.8rem; color: var(--text-muted); margin-left: auto;">10 of 10 cohorts shown</span>
+            <span id="filter-count" style="font-size: 0.8rem; color: var(--text-muted); margin-left: auto;">11 of 11 cohorts shown</span>
           </div>
         </div>
 
@@ -823,7 +838,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
           <div>
             <h3 style="font-size: 1.25rem; font-weight: 700; color: #1e293b;">Detailed Scenario Explorer</h3>
             <p style="font-size: 0.9rem; color: #64748b;">
-              Browse the 10 benchmark cohorts with key metrics, biological rationale, and links to full reproducible dossiers.
+              Browse the 11 benchmark cohorts with key metrics, biological rationale, and links to full reproducible dossiers.
             </p>
           </div>
         </div>
@@ -897,7 +912,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;">
           <p style="font-size: 0.95rem; color: #334155; line-height: 1.6; margin-bottom: 1rem;">
-            The complete reproducibility package is hosted openly on GitHub at <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener"><strong>https://github.com/veg/rhizaeon</strong></a>. You can clone the compendium and replicate any of the 10 cohorts using the standalone runner scripts:
+            The complete reproducibility package is hosted openly on GitHub at <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener"><strong>https://github.com/veg/rhizaeon</strong></a>. You can clone the compendium and replicate any of the 11 cohorts using the standalone runner scripts:
           </p>
 
           <div style="background: #0f172a; color: #f8fafc; padding: 1rem 1.25rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; position: relative;">
@@ -925,6 +940,7 @@ python3 run_rdp5_benchmark.py</code></pre>
             <a href="data/08_ghost_introgression_suite/08_ghost_introgression_suite_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">08 Ghost Suite (.tar.gz) &darr;</a>
             <a href="data/09_selection_vs_recombination/09_selection_vs_recombination_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">09 Codon Suite (.tar.gz) &darr;</a>
             <a href="data/10_conformal_h5n1_surveillance/10_conformal_h5n1_surveillance_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">10 H5N1 Conformal (.tar.gz) &darr;</a>
+            <a href="data/11_bacterial_experimental_controls/11_bacterial_experimental_controls_reproducibility.tar.gz" download class="rams-btn-subtle" style="font-size: 0.78rem; text-align: center;">11 Paired Controls (.tar.gz) &darr;</a>
           </div>
         </div>
       </div>
