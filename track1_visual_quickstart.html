@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track 1: Fast-Track Worked-Example (Show-First)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .track-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+      color: #ffffff;
+      padding: 3rem 0 2.5rem 0;
+      border-bottom: 1px solid #0284c7;
+    }
+    .track-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      margin-bottom: 0.5rem;
+    }
+    .track-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .track-sub {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      line-height: 1.55;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+    .track-nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .track-tab {
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      background: rgba(255,255,255,0.12);
+      color: #e0f2fe;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .track-tab:hover {
+      background: rgba(255,255,255,0.25);
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .track-tab.active {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+      font-weight: 700;
+    }
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+    @media (max-width: 992px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .doc-sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.85rem;
+    }
+    .doc-sidebar-title {
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+    .doc-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .doc-sidebar li {
+      margin-bottom: 0.5rem;
+    }
+    .doc-sidebar a {
+      color: #475569;
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0;
+      line-height: 1.35;
+      transition: color 0.15s ease;
+    }
+    .doc-sidebar a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+    .doc-content {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      line-height: 1.7;
+      color: #1e293b;
+      min-width: 0;
+    }
+    .doc-content h1, .doc-content h2, .doc-content h3, .doc-content h4 {
+      color: #0f172a;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .doc-content h1 { font-size: 1.85rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .doc-content h2 { font-size: 1.45rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; }
+    .doc-content h3 { font-size: 1.15rem; }
+    .doc-content pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1.1rem 1.3rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 1.25rem 0;
+    }
+    .doc-content code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 0.15em 0.35em;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .doc-content pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+    }
+    .doc-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .doc-content th, .doc-content td {
+      border: 1px solid #e2e8f0;
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+    }
+    .doc-content th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .doc-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin: 1.5rem 0;
+    }
+    .doc-content blockquote {
+      border-left: 4px solid #0284c7;
+      background: #f0f9ff;
+      margin: 1.4rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      color: #0369a1;
+    }
+    .doc-content blockquote p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="rams-header">
+    <div class="rams-container rams-nav-flex">
+      <a href="index.html" class="rams-brand">
+        <span class="rams-brand-name">RhizAeon</span>
+        <span class="rams-brand-sep">/</span>
+        <span class="rams-brand-desc">Multi-Tier Tutorial Suite</span>
+      </a>
+      <nav class="rams-nav">
+        <a href="index.html">&larr; Benchmark Compendium</a>
+        <a href="tutorials.html" class="rams-nav-chip" style="background: #38bdf8; color: #0f172a; font-weight: 700;">Tutorial Suite Index</a>
+        <a href="intuition.html">Monograph (26 pp)</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="track-hero">
+    <div class="rams-container">
+      <div class="track-eyebrow">TUTORIAL TRACK 1 • SHOW-FIRST QUICKSTART</div>
+      <h1 class="track-title">Track 1: Fast-Track Worked-Example (Show-First)</h1>
+      <p class="track-sub">Witness RhizAeon in flight on canonical HIV-1 KAL153 in under 2 minutes. Zero abstract derivations before the primary visual reveal.</p>
+      
+      <!-- Track Switcher -->
+      <div class="track-nav-tabs">
+        <a href="tutorials.html" class="track-tab ">Overview Index</a>
+        <a href="track1_visual_quickstart.html" class="track-tab active">Track 1: Quickstart</a>
+        <a href="track2_practitioner_guide.html" class="track-tab ">Track 2: Practitioner</a>
+        <a href="track3_algorithmic_derivation.html" class="track-tab ">Track 3: Mathematical</a>
+        <a href="track4_conceptual_monograph.html" class="track-tab ">Track 4: Monograph</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="rams-container doc-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="doc-sidebar">
+      <div class="doc-sidebar-title">Tutorial Navigation</div>
+      <ul>
+        <li><a href="tutorials.html" style="font-weight: 400; color: #475569;">&bull; Suite Overview</a></li>
+        <li><a href="track1_visual_quickstart.html" style="font-weight: 700; color: #0284c7;">&bull; Track 1: Quickstart</a></li>
+        <li><a href="track2_practitioner_guide.html" style="font-weight: 400; color: #475569;">&bull; Track 2: Practitioner</a></li>
+        <li><a href="track3_algorithmic_derivation.html" style="font-weight: 400; color: #475569;">&bull; Track 3: Mathematical</a></li>
+        <li><a href="track4_conceptual_monograph.html" style="font-weight: 400; color: #475569;">&bull; Track 4: Monograph</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+        <a href="intuition.html" style="font-weight: 600; color: #0284c7; display: block; margin-bottom: 0.4rem;">&rarr; 26-Page Monograph</a>
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="font-weight: 600; color: #0284c7; display: block;">&rarr; Publication PDF &nearr;</a>
+      </div>
+    </aside>
+
+    <!-- Document Content -->
+    <article class="doc-content">
+      <h1 id="rhizaeon-track-1-fast-track-worked-example">RhizAeon Track 1:
+Fast-Track Worked-Example</h1>
+<p><em>Show-First / Visual Quickstart</em></p>
+<hr />
+<h2 id="the-30-second-hook">1. The 30-Second Hook</h2>
+<p>Recombination shatters traditional evolutionary biology by splicing
+two distinct parental lineages into a single hybrid chromosome. For
+decades, detecting mosaic sequences required choosing between two
+computational dead-ends: checking billions of sequence triplets one by
+one (<span class="math inline">\(\mathcal{O}(N^3)\)</span> exhaustive
+scans), or reconstructing thousands of candidate phylogenetic trees
+(<span class="math inline">\(\mathcal{O}(L^K \cdot N^3)\)</span>
+topological change-point models).</p>
+<p><strong>RhizAeon bypasses tree-building entirely by projecting
+genetic distance matrices into a continuous four-dimensional coordinate
+space (<span class="math inline">\(\mathbb{R}^4\)</span>).</strong> In
+this metric space, clonal sequences remain stationary inside their
+parental clusters, while recombinant sequences <strong>physically take
+flight</strong>—migrating across open space from one parental clade to
+another. By tracking this sequence trajectory along the chromosome,
+RhizAeon detects breakpoints as sharp velocity peaks, simultaneously
+pinpointing the crossover boundary and identifying the recombinant
+genome in linear time (<span class="math inline">\(\mathcal{O}(N^2
+L)\)</span>).</p>
+<p>RhizAeon is organism-agnostic: it runs out-of-the-box on RNA viruses
+(HIV-1, SARS-CoV-2, Hepatitis C), DNA viruses, transformable bacterial
+pathogens (<em>Streptococcus pneumoniae</em>, <em>Neisseria</em>), and
+eukaryotic loci undergoing crossing-over or gene conversion
+(<em>Plasmodium falciparum</em>, fungal hybrids, plant organelles, and
+mammalian MHC/HLA).</p>
+<hr />
+<h2 id="the-turnkey-execution">2. The Turnkey Execution</h2>
+<p>Analyze the canonical HIV-1 KAL153 whole-genome alignment (9 taxa,
+9,953 nucleotides) using Recursive Partitioning Functional Data Analysis
+(RP-FDA) with single-base maximum-likelihood polishing:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run RP-FDA, polish breakpoints to single-base resolution, and export visual dashboard</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rhizaeon</span> rp-fda data/hiv1_kal153.fasta <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-len</span> 200 <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--polish-ml</span> <span class="dt">\</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--export-partitions</span> ./kal153_partitions/ <span class="dt">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--html</span> kal153_report.html</span></code></pre></div>
+<p>Execution completes in <strong>under 0.35 seconds</strong> on a
+standard laptop.</p>
+<hr />
+<h2 id="the-immediate-visual-reveal">3. The Immediate Visual Reveal</h2>
+<p>Below is the exact output generated by RhizAeon on the HIV-1 KAL153
+cohort:</p>
+<figure>
+<img src="assets/figures/fig1_global_embedding_vs_tree.png"
+alt="Figure 1: Global Metric Map vs. Classical Tree and Continuous Sequence Flight Path" />
+<figcaption aria-hidden="true">Figure 1: Global Metric Map vs. Classical
+Tree and Continuous Sequence Flight Path</figcaption>
+</figure>
+<pre><code>================================================================================
+PANEL A (Classical Tree Failure)      │ PANEL B (RhizAeon Metric Reality)
+--------------------------------------┼-----------------------------------------
+• KAL153 forced sister to Subtype B   │ • Subtypes B &amp; D form Blue Clade
+• Terminal branch stretched (0.070)   │ • Subtypes A &amp; G form Gold Clade
+• Single tree cannot represent mosaic │ • Mosaic KAL153 stranded between them!
+================================================================================</code></pre>
+<figure>
+<img src="assets/figures/fig2_dynamic_trajectories_and_kinetics.png"
+alt="Figure 2: Continuous Sequence Trajectories and Kinetic Peaks" />
+<figcaption aria-hidden="true">Figure 2: Continuous Sequence
+Trajectories and Kinetic Peaks</figcaption>
+</figure>
+<h3 id="how-to-read-the-diagnostic-plots">How to Read the Diagnostic
+Plots:</h3>
+<ul>
+<li><strong>The Flight Path (Panel B above):</strong> Non-recombinant
+reference subtypes (A, B, C, D, F, G, H, J) stay parked inside their
+home territories. Mosaic sequence <code>KAL153</code> (solid crimson
+trajectory) orbits inside Clade A across <em>gag</em> and 5’
+<em>pol</em>, launches across open metric space at <span
+class="math inline">\(s \approx 2{,}820\text{ nt}\)</span>, lands inside
+Clade B, and returns to Clade A at <span class="math inline">\(s \approx
+8{,}845\text{ nt}\)</span> in <em>nef</em>.</li>
+<li><strong>The Ancestry Shift Peaks (Panel C above):</strong>
+Non-recombinant genomes form a completely flat floor (<span
+class="math inline">\(Z &lt; 1.5\)</span>, faint gray lines). The
+recombinant sequence generates prominent, unmistakable spikes (<span
+class="math inline">\(Z = 4.4\)</span> and <span class="math inline">\(Z
+= 5.2\)</span>) rising far above the background noise directly at the
+crossover boundaries.</li>
+</ul>
+<hr />
+<h2 id="anatomy-of-the-three-vital-signs">4. Anatomy of the Three Vital
+Signs</h2>
+<p>Every candidate event identified in the terminal output and JSON
+report is characterized by three core vital signs:</p>
+<pre><code>================================================================================
+RHIZAEON RP-FDA + ML POLISHER INFERENCE REPORT (0.342 seconds)
+================================================================================
+[!] Detected 2 Recombination Breakpoint(s):
+  1. Breakpoint: 2824 nt (Coarse: 2820 nt)
+     ML Plateau: [2818, 2831] (Width Δ=13 nt) | LL Gain: +18.42
+     Flanking SNPs: 2817 -&gt; 2832
+     Recombinant: KAL153
+     Parental Transition: Subtype_A ---&gt; Subtype_B
+     Significance: Kinetic Z = 4.42 | L-PIR = 0.7140
+  2. Breakpoint: 8847 nt (Coarse: 8850 nt)
+     ML Plateau: [8841, 8852] (Width Δ=11 nt) | LL Gain: +14.15
+     Flanking SNPs: 8840 -&gt; 8853
+     Recombinant: KAL153
+     Parental Transition: Subtype_B ---&gt; Subtype_A
+     Significance: Kinetic Z = 3.86 | L-PIR = 0.6820
+================================================================================</code></pre>
+<h3 id="vital-sign-1-the-breakpoint-ml-plateau">Vital Sign 1: The
+Breakpoint &amp; ML Plateau</h3>
+<ul>
+<li><strong>What it means:</strong> The exact nucleotide coordinate
+where the template switch occurred.</li>
+<li><strong>The Plateau <span
+class="math inline">\([\text{CI}_{\text{left}},
+\text{CI}_{\text{right}}]\)</span>:</strong> The uninformative sequence
+interval between flanking informative mutations. Because parents A and B
+are identical across these 13 nucleotides, the physical template switch
+could have occurred anywhere within this window with equal
+likelihood.</li>
+</ul>
+<h3 id="vital-sign-2-recombinant-taxon-directional-parents">Vital Sign
+2: Recombinant Taxon &amp; Directional Parents</h3>
+<ul>
+<li><strong>What it means:</strong> RhizAeon directly names the mosaic
+sequence (<code>KAL153</code>) and establishes the directional donor
+lineages (<code>Subtype_A ---&gt; Subtype_B</code>).</li>
+<li>Unlike tree-based methods that detect topological incongruence
+without naming the mosaic, RhizAeon extracts sequence attribution
+directly from the trajectory endpoints.</li>
+</ul>
+<h3 id="vital-sign-3-l-pir-local-phylogenetic-incongruence-ratio">Vital
+Sign 3: L-PIR (Local Phylogenetic Incongruence Ratio)</h3>
+<ul>
+<li><strong>What it means:</strong> A normalized statistical metric
+(<span class="math inline">\(0.0 \le \text{L-PIR} \le 1.0\)</span>)
+testing whether the recombinant sequence swapped nearest-neighbor clades
+between the left and right flanks.</li>
+<li><strong>Interpretation Threshold:</strong>
+<ul>
+<li><span class="math inline">\(\text{L-PIR} \ge 0.50\)</span>: Robust,
+validated topological clade exchange.</li>
+<li><span class="math inline">\(\text{L-PIR} &lt; 0.20\)</span>: Local
+mutation rate fluctuation or intra-clade private drift (cleanly filtered
+out as a false positive).</li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="next-horizons">5. Next Horizons</h2>
+<p>Now that you have seen the core engine detect and polish
+recombination in seconds, choose your next track based on your
+analytical goals:</p>
+<ol type="1">
+<li><strong>Working with messy, dirty, or large-scale genomic
+data?</strong><br />
+<span class="math inline">\(\to\)</span> Go to <strong><a
+href="track2_practitioner_guide.html">Track 2: Diagnostic / Forensic
+Workflow</a></strong> for quality-control filters, parameter
+calibration, troubleshooting matrices, and automated alignment
+disassembly (<code>--export-partitions</code>).</li>
+<li><strong>Need formal proofs, complexity derivations, and mathematical
+guarantees?</strong><br />
+<span class="math inline">\(\to\)</span> Go to <strong><a
+href="track3_algorithmic_derivation.html">Track 3: Deductive /
+Algorithmic Derivation</a></strong> for axiomatic metric space
+embeddings, fixed projection operator derivations, and complexity
+comparisons.</li>
+<li><strong>Exploring deep evolutionary limits, dense mosaics, or frame
+collapse?</strong><br />
+<span class="math inline">\(\to\)</span> Go to <strong><a
+href="track4_conceptual_monograph.html">Track 4: Conceptual Monograph
+&amp; Phase Space</a></strong> to examine the 1,050 simulation envelope,
+graph Laplacian hand-offs, circulating recombinant forms (CRFs), and the
+Evolutionary Sieve.</li>
+</ol>
+
+    </article>
+
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="rams-footer" style="background: #0f172a; color: #94a3b8; padding: 3rem 0; margin-top: 4rem; border-top: 1px solid #1e293b;">
+    <div class="rams-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem;">RhizAeon Continuous Coordinate Recombination Framework</div>
+        <p style="font-size: 0.85rem; margin: 0; color: #64748b;">
+          Supported by the National Institute of Allergy and Infectious Diseases (NIAID) under BRC-Analytics.
+        </p>
+      </div>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
+        <a href="index.html" style="color: #cbd5e1;">Home</a>
+        <a href="tutorials.html" style="color: #cbd5e1;">Tutorial Suite</a>
+        <a href="intuition.html" style="color: #cbd5e1;">Monograph</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" style="color: #cbd5e1;">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

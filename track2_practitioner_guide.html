@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track 2: Diagnostic & Forensic Workflow (Practitioner How-To)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .track-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+      color: #ffffff;
+      padding: 3rem 0 2.5rem 0;
+      border-bottom: 1px solid #0284c7;
+    }
+    .track-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      margin-bottom: 0.5rem;
+    }
+    .track-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .track-sub {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      line-height: 1.55;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+    .track-nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .track-tab {
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      background: rgba(255,255,255,0.12);
+      color: #e0f2fe;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .track-tab:hover {
+      background: rgba(255,255,255,0.25);
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .track-tab.active {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+      font-weight: 700;
+    }
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+    @media (max-width: 992px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .doc-sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.85rem;
+    }
+    .doc-sidebar-title {
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+    .doc-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .doc-sidebar li {
+      margin-bottom: 0.5rem;
+    }
+    .doc-sidebar a {
+      color: #475569;
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0;
+      line-height: 1.35;
+      transition: color 0.15s ease;
+    }
+    .doc-sidebar a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+    .doc-content {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      line-height: 1.7;
+      color: #1e293b;
+      min-width: 0;
+    }
+    .doc-content h1, .doc-content h2, .doc-content h3, .doc-content h4 {
+      color: #0f172a;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .doc-content h1 { font-size: 1.85rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .doc-content h2 { font-size: 1.45rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; }
+    .doc-content h3 { font-size: 1.15rem; }
+    .doc-content pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1.1rem 1.3rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 1.25rem 0;
+    }
+    .doc-content code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 0.15em 0.35em;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .doc-content pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+    }
+    .doc-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .doc-content th, .doc-content td {
+      border: 1px solid #e2e8f0;
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+    }
+    .doc-content th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .doc-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin: 1.5rem 0;
+    }
+    .doc-content blockquote {
+      border-left: 4px solid #0284c7;
+      background: #f0f9ff;
+      margin: 1.4rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      color: #0369a1;
+    }
+    .doc-content blockquote p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="rams-header">
+    <div class="rams-container rams-nav-flex">
+      <a href="index.html" class="rams-brand">
+        <span class="rams-brand-name">RhizAeon</span>
+        <span class="rams-brand-sep">/</span>
+        <span class="rams-brand-desc">Multi-Tier Tutorial Suite</span>
+      </a>
+      <nav class="rams-nav">
+        <a href="index.html">&larr; Benchmark Compendium</a>
+        <a href="tutorials.html" class="rams-nav-chip" style="background: #38bdf8; color: #0f172a; font-weight: 700;">Tutorial Suite Index</a>
+        <a href="intuition.html">Monograph (26 pp)</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="track-hero">
+    <div class="rams-container">
+      <div class="track-eyebrow">TUTORIAL TRACK 2 • PRACTITIONER HOW-TO</div>
+      <h1 class="track-title">Track 2: Diagnostic & Forensic Workflow (Practitioner How-To)</h1>
+      <p class="track-sub">A clinical diagnostic guide for real-world genomic data: QC gates, parameter trade-off matrices, troubleshooting triage, and alignment disassembly.</p>
+      
+      <!-- Track Switcher -->
+      <div class="track-nav-tabs">
+        <a href="tutorials.html" class="track-tab ">Overview Index</a>
+        <a href="track1_visual_quickstart.html" class="track-tab ">Track 1: Quickstart</a>
+        <a href="track2_practitioner_guide.html" class="track-tab active">Track 2: Practitioner</a>
+        <a href="track3_algorithmic_derivation.html" class="track-tab ">Track 3: Mathematical</a>
+        <a href="track4_conceptual_monograph.html" class="track-tab ">Track 4: Monograph</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="rams-container doc-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="doc-sidebar">
+      <div class="doc-sidebar-title">Tutorial Navigation</div>
+      <ul>
+        <li><a href="tutorials.html" style="font-weight: 400; color: #475569;">&bull; Suite Overview</a></li>
+        <li><a href="track1_visual_quickstart.html" style="font-weight: 400; color: #475569;">&bull; Track 1: Quickstart</a></li>
+        <li><a href="track2_practitioner_guide.html" style="font-weight: 700; color: #0284c7;">&bull; Track 2: Practitioner</a></li>
+        <li><a href="track3_algorithmic_derivation.html" style="font-weight: 400; color: #475569;">&bull; Track 3: Mathematical</a></li>
+        <li><a href="track4_conceptual_monograph.html" style="font-weight: 400; color: #475569;">&bull; Track 4: Monograph</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+        <a href="intuition.html" style="font-weight: 600; color: #0284c7; display: block; margin-bottom: 0.4rem;">&rarr; 26-Page Monograph</a>
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="font-weight: 600; color: #0284c7; display: block;">&rarr; Publication PDF &nearr;</a>
+      </div>
+    </aside>
+
+    <!-- Document Content -->
+    <article class="doc-content">
+      <h1 id="rhizaeon-track-2-diagnostic-forensic-workflow">RhizAeon Track 2:
+Diagnostic / Forensic Workflow</h1>
+<p><em>Practitioner How-To &amp; Case Study</em></p>
+<hr />
+<h2 id="scenario-input-specification">1. Scenario &amp; Input
+Specification</h2>
+<p>RhizAeon analyzes aligned genetic sequence cohorts to locate
+recombination breakpoints, identify mosaic taxa, and trace parental
+lineages. It accepts a standard Multiple Sequence Alignment (MSA) in
+FASTA format: <span class="math display">\[X \in \{A, C, G, T, -\}^{N
+\times L}\]</span></p>
+<h3 id="input-data-regimes-biological-scope">Input Data Regimes &amp;
+Biological Scope</h3>
+<p>RhizAeon operates across a wide spectrum of biological systems,
+provided sequences can be aligned into homologous blocks:</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">System</th>
+<th style="text-align: left;">Example Datasets</th>
+<th style="text-align: left;">Mean Divergence (<span
+class="math inline">\(\bar{d}\)</span>)</th>
+<th style="text-align: left;">Typical Window (<span
+class="math inline">\(W\)</span>)</th>
+<th style="text-align: left;">Expected Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>RNA Viruses</strong></td>
+<td style="text-align: left;">HIV-1, Coronaviruses, HCV</td>
+<td style="text-align: left;"><span
+class="math inline">\(5\%\text{--}15\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(200\text{--}300\text{ bp}\)</span></td>
+<td style="text-align: left;">Macro-recombinant cassettes (<span
+class="math inline">\(1\text{--}5\text{ kb}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bacteria (Core)</strong></td>
+<td style="text-align: left;"><em>S. pneumoniae</em>, <em>N.
+meningitidis</em></td>
+<td style="text-align: left;"><span
+class="math inline">\(0.5\%\text{--}2.0\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(30\text{--}50\text{ SNPs}\)</span></td>
+<td style="text-align: left;">Micro-conversions (<span
+class="math inline">\(200\text{--}1{,}500\text{ bp}\)</span>)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Eukaryotic Parasites</strong></td>
+<td style="text-align: left;"><em>Plasmodium falciparum</em>
+(<em>pfcrt</em>)</td>
+<td style="text-align: left;"><span
+class="math inline">\(1.0\%\text{--}4.0\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(150\text{--}300\text{ bp}\)</span></td>
+<td style="text-align: left;">Meiotic crossovers &amp; gene
+conversion</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fungi &amp; Yeasts</strong></td>
+<td style="text-align: left;"><em>Saccharomyces</em> hybrids</td>
+<td style="text-align: left;"><span
+class="math inline">\(2.0\%\text{--}8.0\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(200\text{--}500\text{ bp}\)</span></td>
+<td style="text-align: left;">Chromosomal arm exchanges &amp;
+chimeras</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Multi-Gene Arrays</strong></td>
+<td style="text-align: left;">Human MHC / HLA, opsin genes</td>
+<td style="text-align: left;"><span
+class="math inline">\(3.0\%\text{--}10.0\%\)</span></td>
+<td style="text-align: left;"><span
+class="math inline">\(100\text{--}200\text{ bp}\)</span></td>
+<td style="text-align: left;">Non-allelic interlocus gene
+conversion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pre-flight-quality-control-checklist">Pre-Flight Quality Control
+Checklist</h3>
+<p>Before initiating RhizAeon, ensure your alignment satisfies these
+quality gates: 1. <strong>Collinear Homology:</strong> Sequences must
+share homologous, collinear coordinates. Alignments containing large
+unaligned structural inversions or non-homologous insertions must be
+pre-trimmed into collinear syntenic blocks. 2. <strong>Gap
+Thresholding:</strong> Sites where <span
+class="math inline">\(&gt;50\%\)</span> of taxa contain gap characters
+(<code>-</code>) or ambiguous characters (<code>N</code>) should be
+stripped if alignment quality is suspect. RhizAeon treats gaps as
+informative mismatch states or projects over segregating positions. 3.
+<strong>Cohort Size:</strong> Works from <span class="math inline">\(N =
+4\)</span> taxa up to <span class="math inline">\(N = 30{,}000+\)</span>
+taxa. For cohorts with <span class="math inline">\(N &gt; 300\)</span>,
+enable <code>--engine randomized</code> or RP-FDA.</p>
+<hr />
+<h2 id="parameter-selection-trade-off-matrix">2. Parameter Selection
+&amp; Trade-Off Matrix</h2>
+<p>Configuring RhizAeon involves matching window resolutions and
+statistical filters to the evolutionary rate of your organism:</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Recommended Default</th>
+<th style="text-align: left;">High-Divergence Regime (<span
+class="math inline">\(\bar{d} &gt; 5\%\)</span>)</th>
+<th style="text-align: left;">Low-Divergence Regime (<span
+class="math inline">\(\bar{d} &lt; 1\%\)</span>)</th>
+<th style="text-align: left;">Operational Trade-Off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: left;"><strong><code>--min-len</code></strong></td>
+<td style="text-align: left;"><code>200</code> (nt)</td>
+<td style="text-align: left;"><code>100</code></td>
+<td style="text-align: left;"><code>400</code></td>
+<td style="text-align: left;">Shorter lengths catch micro-conversions
+but increase sensitivity to stochastic noise.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>--min-z</code></strong></td>
+<td style="text-align: left;"><code>2.5</code></td>
+<td style="text-align: left;"><code>3.0</code></td>
+<td style="text-align: left;"><code>2.0</code></td>
+<td style="text-align: left;">Peak prominence threshold. Higher values
+eliminate false positives; lower values recover subtle events.</td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><strong><code>--min-pir</code></strong></td>
+<td style="text-align: left;"><code>0.35</code></td>
+<td style="text-align: left;"><code>0.40</code></td>
+<td style="text-align: left;"><code>0.30</code></td>
+<td style="text-align: left;">Topological exchange ratio. Filters out
+single-lineage rate acceleration spikes.</td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><strong><code>--window</code></strong></td>
+<td style="text-align: left;"><code>25</code> (units)</td>
+<td style="text-align: left;"><code>15</code></td>
+<td style="text-align: left;"><code>50</code></td>
+<td style="text-align: left;">Sliding window width <span
+class="math inline">\(W\)</span>. Broad windows give stable distances;
+narrow windows give sharper boundaries.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>--codon</code></strong></td>
+<td style="text-align: left;">Flag (<code>False</code>)</td>
+<td style="text-align: left;">Optional</td>
+<td style="text-align: left;">Optional</td>
+<td style="text-align: left;">Enforces triplet coordinate framing for
+protein-coding genes (<em>pol</em>, <em>spike</em>,
+<em>pbp2x</em>).</td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><strong><code>--polish-ml</code></strong></td>
+<td style="text-align: left;">Flag (<code>True</code>)</td>
+<td style="text-align: left;">Always Enable</td>
+<td style="text-align: left;">Always Enable</td>
+<td style="text-align: left;">Refines coarse window changepoints to
+single-base profile likelihood plateaus.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="step-by-step-diagnostic-pipeline">3. Step-by-Step Diagnostic
+Pipeline</h2>
+<h3 id="phase-a-screening-fast-triage">Phase A: Screening &amp; Fast
+Triage</h3>
+<p>For initial cohort surveillance, run the ultra-fast linear manifold
+scan to establish whether any mosaic sequences exist:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rhizaeon</span> scan alignment.fasta <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--window</span> 25 <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-tract</span> 20 <span class="dt">\</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--export-hyphy-json</span> initial_screen.json</span></code></pre></div>
+<p><strong>Diagnostic Gate:</strong> * If the report returns
+<code>Alignment is CLONAL / NON-RECOMBINANT (0 breakpoints detected)</code>,
+stop here. The alignment can be safely modeled with a single bifurcating
+phylogenetic tree. * If candidate breakpoints are flagged, proceed
+immediately to Phase B.</p>
+<hr />
+<h3 id="phase-b-execution-checkpoint-validation-rp-fda">Phase B:
+Execution &amp; Checkpoint Validation (RP-FDA)</h3>
+<p>Run Recursive Partitioning Functional Data Analysis (RP-FDA) with
+single-base maximum likelihood polishing and automated alignment
+disassembly:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rhizaeon</span> rp-fda alignment.fasta <span class="dt">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-len</span> 200 <span class="dt">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-z</span> 2.5 <span class="dt">\</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-pir</span> 0.35 <span class="dt">\</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--polish-ml</span> <span class="dt">\</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--export-partitions</span> ./nonrecombinant_partitions/ <span class="dt">\</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--export-nexus</span> partitioned_alignment.nex <span class="dt">\</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--export-hyphy-json</span> hyphy_partitions.json <span class="dt">\</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--html</span> report.html</span></code></pre></div>
+<h4 id="monitoring-output-diagnostics">Monitoring Output
+Diagnostics:</h4>
+<ol type="1">
+<li><strong>Runtime:</strong> Should scale linearly with alignment
+length (<span class="math inline">\(&lt;1\text{ s}\)</span> for viral
+genomes; <span class="math inline">\(&lt;15\text{ s}\)</span> for
+bacterial core genomes).</li>
+<li><strong>Log-Likelihood Gain:</strong> For each polished breakpoint,
+verify that <code>LL Gain &gt; +5.0</code>. Gains below <span
+class="math inline">\(+2.0\)</span> indicate uninformative regions where
+parentage cannot be distinguished.</li>
+<li><strong>Plateau Width (<span
+class="math inline">\(\Delta\)</span>):</strong> Note the interval
+between flanking informative mutations. A wide plateau (<span
+class="math inline">\(\Delta &gt; 100\text{ bp}\)</span>) reflects
+regional sequence identity between parents, not algorithmic
+uncertainty.</li>
+</ol>
+<hr />
+<h3 id="phase-c-progressive-dataset-disassembly-tree-verification">Phase
+C: Progressive Dataset Disassembly &amp; Tree Verification</h3>
+<p>RhizAeon does not require you to write custom slicing scripts. The
+<code>--export-partitions</code> flag automatically disassembles the
+alignment into independent non-recombinant FASTA files: *
+<code>./nonrecombinant_partitions/partition_1.fasta</code> (e.g., nt
+1–2824) * <code>./nonrecombinant_partitions/partition_2.fasta</code>
+(e.g., nt 2825–8847) *
+<code>./nonrecombinant_partitions/partition_3.fasta</code> (e.g., nt
+8848–9953)</p>
+<p>You can now dispatch independent maximum-likelihood tree estimation
+on each non-recombinant partition to verify topological discordance:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Infer independent trees on each partition using IQ-TREE or FastTree</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> nonrecombinant_partitions/partition_1.fasta <span class="at">-m</span> GTR+G <span class="at">-B</span> 1000 <span class="at">--prefix</span> tree_part1</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">iqtree2</span> <span class="at">-s</span> nonrecombinant_partitions/partition_2.fasta <span class="at">-m</span> GTR+G <span class="at">-B</span> 1000 <span class="at">--prefix</span> tree_part2</span></code></pre></div>
+<p>Verify that the recombinant taxon switches topological positions
+between <code>tree_part1</code> and <code>tree_part2</code>.</p>
+<hr />
+<h2 id="the-forensic-decision-matrix-troubleshooting-triage">4. The
+Forensic Decision Matrix (Troubleshooting Triage)</h2>
+<p>When analyzing empirical data from clinical outbreaks or diverse
+global cohorts, use this triage matrix to diagnose ambiguous
+signatures:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Symptom / Visual Signature</th>
+<th style="text-align: left;">Underlying Numerical / Physical Cause</th>
+<th style="text-align: left;">Corrective Diagnostic Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>High kinetic peak (<span
+class="math inline">\(Z &gt; 5.0\)</span>) but L-PIR collapses (<span
+class="math inline">\(\text{L-PIR} &lt; 0.15\)</span>)</strong></td>
+<td style="text-align: left;"><strong>Spatial Rate Heterogeneity / Gene
+Boundary:</strong> A hypervariable domain (e.g., HIV-1 <em>env</em> V3
+loop or bacterial surface antigen) causes a sudden surge in distance
+without changing phylogenetic tree topology.</td>
+<td style="text-align: left;"><strong>Trust L-PIR filter:</strong> The
+event is automatically discarded as a non-recombinant rate artifact. No
+parameter adjustments needed.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Erratic Brownian jitter across
+entire chromosome (many low-<span class="math inline">\(Z\)</span>
+peaks)</strong></td>
+<td style="text-align: left;"><strong>Window Starvation (Too Few
+SNPs):</strong> Window width <span class="math inline">\(W\)</span> is
+too small for the local mutation density, collapsing the metric
+projection into random Poisson noise.</td>
+<td style="text-align: left;"><strong>Increase window width:</strong>
+Double <code>--min-len</code> or switch to SNP-compressed units (ensure
+<span class="math inline">\(\ge 15\text{--}20\)</span> polymorphic sites
+per window).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Breakpoint detected, but
+Recombinant shows equal distance to all clades</strong></td>
+<td style="text-align: left;"><strong>Unsampled Ghost Lineage:</strong>
+The true parental lineage is missing from the dataset; the recombinant
+was donated by an unsampled outgroup (<span
+class="math inline">\(Z_{\text{ghost}} &gt; 3.0\)</span>).</td>
+<td style="text-align: left;"><strong>Inspect Ghost Z-score:</strong>
+Check <code>ghost_z</code> in the JSON output. If elevated, classify the
+event as a horizontal import from an unrepresented clade.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Known micro-conversion (<span
+class="math inline">\(&lt;200\text{ bp}\)</span>) is missed in
+output</strong></td>
+<td style="text-align: left;"><strong>Window Oversmoothing:</strong> A
+broad window (<span class="math inline">\(W = 500\text{ bp}\)</span>)
+diluted the short recombinant signal with <span
+class="math inline">\(80\%\)</span> clonal flanking sequence.</td>
+<td style="text-align: left;"><strong>Lower <code>--min-len</code> to
+50–100 bp:</strong> Re-run with RP-FDA, which dynamically shrinks
+interval half-widths down to <span class="math inline">\(\delta =
+20\text{ bp}\)</span>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Recombinant taxon alternates
+repeatedly between two parents (<span
+class="math inline">\(A-B-A-B\)</span>)</strong></td>
+<td style="text-align: left;"><strong>Complex Mosaicism / Gene
+Conversion:</strong> Sequence underwent multiple consecutive template
+switches or secondary recombination.</td>
+<td style="text-align: left;"><strong>Inspect Partition
+Disassembly:</strong> Check the partitioned FASTA outputs. Verify that
+each independent block produces consistent parental clustering.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="reporting-sanity-checklist">5. Reporting &amp; Sanity
+Checklist</h2>
+<p>Before publishing or archiving recombination events inferred by
+RhizAeon, confirm that all five non-negotiable verification gates are
+satisfied:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" /><strong>1. Single-Base Likelihood
+Gain:</strong> Every reported breakpoint exhibits an ML log-likelihood
+gain <span class="math inline">\(\Delta \ln L \ge +5.0\)</span> over a
+single-partition model.</label></li>
+<li><label><input type="checkbox" /><strong>2. Flanking Informative
+Mutations:</strong> The reported ML plateau <span
+class="math inline">\([\text{CI}_{\text{left}},
+\text{CI}_{\text{right}}]\)</span> is strictly bounded by at least one
+informative SNP distinguishing Parent 1 from Parent 2 on each
+flank.</label></li>
+<li><label><input type="checkbox" /><strong>3. L-PIR
+Validation:</strong> All reported events have an <span
+class="math inline">\(\text{L-PIR} \ge 0.35\)</span>, confirming that
+the recombinant taxon switches nearest-neighbor phylogenetic clades
+across the junction.</label></li>
+<li><label><input type="checkbox" /><strong>4. Clonal Flank
+Stability:</strong> Outside the breakpoint transition zone, the
+recombinant taxon maintains a flat, stable trajectory within its
+parental cluster (<span class="math inline">\(Z &lt;
+2.0\)</span>).</label></li>
+<li><label><input type="checkbox" /><strong>5. Independent Tree
+Verification:</strong> Reconstructing independent ML trees from the
+<code>--export-partitions</code> FASTA files confirms statistically
+significant topological incongruence for the recombinant
+lineage.</label></li>
+</ul>
+
+    </article>
+
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="rams-footer" style="background: #0f172a; color: #94a3b8; padding: 3rem 0; margin-top: 4rem; border-top: 1px solid #1e293b;">
+    <div class="rams-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem;">RhizAeon Continuous Coordinate Recombination Framework</div>
+        <p style="font-size: 0.85rem; margin: 0; color: #64748b;">
+          Supported by the National Institute of Allergy and Infectious Diseases (NIAID) under BRC-Analytics.
+        </p>
+      </div>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
+        <a href="index.html" style="color: #cbd5e1;">Home</a>
+        <a href="tutorials.html" style="color: #cbd5e1;">Tutorial Suite</a>
+        <a href="intuition.html" style="color: #cbd5e1;">Monograph</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" style="color: #cbd5e1;">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

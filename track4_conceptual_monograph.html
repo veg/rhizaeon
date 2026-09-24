@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track 4: Conceptual Monograph & Operational Boundaries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .track-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+      color: #ffffff;
+      padding: 3rem 0 2.5rem 0;
+      border-bottom: 1px solid #0284c7;
+    }
+    .track-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      margin-bottom: 0.5rem;
+    }
+    .track-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .track-sub {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      line-height: 1.55;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+    .track-nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .track-tab {
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      background: rgba(255,255,255,0.12);
+      color: #e0f2fe;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .track-tab:hover {
+      background: rgba(255,255,255,0.25);
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .track-tab.active {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+      font-weight: 700;
+    }
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+    @media (max-width: 992px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .doc-sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.85rem;
+    }
+    .doc-sidebar-title {
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+    .doc-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .doc-sidebar li {
+      margin-bottom: 0.5rem;
+    }
+    .doc-sidebar a {
+      color: #475569;
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0;
+      line-height: 1.35;
+      transition: color 0.15s ease;
+    }
+    .doc-sidebar a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+    .doc-content {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      line-height: 1.7;
+      color: #1e293b;
+      min-width: 0;
+    }
+    .doc-content h1, .doc-content h2, .doc-content h3, .doc-content h4 {
+      color: #0f172a;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .doc-content h1 { font-size: 1.85rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .doc-content h2 { font-size: 1.45rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; }
+    .doc-content h3 { font-size: 1.15rem; }
+    .doc-content pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1.1rem 1.3rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 1.25rem 0;
+    }
+    .doc-content code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 0.15em 0.35em;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .doc-content pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+    }
+    .doc-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .doc-content th, .doc-content td {
+      border: 1px solid #e2e8f0;
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+    }
+    .doc-content th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .doc-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin: 1.5rem 0;
+    }
+    .doc-content blockquote {
+      border-left: 4px solid #0284c7;
+      background: #f0f9ff;
+      margin: 1.4rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      color: #0369a1;
+    }
+    .doc-content blockquote p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="rams-header">
+    <div class="rams-container rams-nav-flex">
+      <a href="index.html" class="rams-brand">
+        <span class="rams-brand-name">RhizAeon</span>
+        <span class="rams-brand-sep">/</span>
+        <span class="rams-brand-desc">Multi-Tier Tutorial Suite</span>
+      </a>
+      <nav class="rams-nav">
+        <a href="index.html">&larr; Benchmark Compendium</a>
+        <a href="tutorials.html" class="rams-nav-chip" style="background: #38bdf8; color: #0f172a; font-weight: 700;">Tutorial Suite Index</a>
+        <a href="intuition.html">Monograph (26 pp)</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="track-hero">
+    <div class="rams-container">
+      <div class="track-eyebrow">TUTORIAL TRACK 4 • ARCHITECTURAL DEEP-DIVE</div>
+      <h1 class="track-title">Track 4: Conceptual Monograph & Operational Boundaries</h1>
+      <p class="track-sub">The 1,050 simulation envelope, Frame Rigidity collapse, Graph Laplacian hand-off, circulating recombinant forms (CRFs), and the Evolutionary Sieve.</p>
+      
+      <!-- Track Switcher -->
+      <div class="track-nav-tabs">
+        <a href="tutorials.html" class="track-tab ">Overview Index</a>
+        <a href="track1_visual_quickstart.html" class="track-tab ">Track 1: Quickstart</a>
+        <a href="track2_practitioner_guide.html" class="track-tab ">Track 2: Practitioner</a>
+        <a href="track3_algorithmic_derivation.html" class="track-tab ">Track 3: Mathematical</a>
+        <a href="track4_conceptual_monograph.html" class="track-tab active">Track 4: Monograph</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="rams-container doc-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="doc-sidebar">
+      <div class="doc-sidebar-title">Tutorial Navigation</div>
+      <ul>
+        <li><a href="tutorials.html" style="font-weight: 400; color: #475569;">&bull; Suite Overview</a></li>
+        <li><a href="track1_visual_quickstart.html" style="font-weight: 400; color: #475569;">&bull; Track 1: Quickstart</a></li>
+        <li><a href="track2_practitioner_guide.html" style="font-weight: 400; color: #475569;">&bull; Track 2: Practitioner</a></li>
+        <li><a href="track3_algorithmic_derivation.html" style="font-weight: 400; color: #475569;">&bull; Track 3: Mathematical</a></li>
+        <li><a href="track4_conceptual_monograph.html" style="font-weight: 700; color: #0284c7;">&bull; Track 4: Monograph</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+        <a href="intuition.html" style="font-weight: 600; color: #0284c7; display: block; margin-bottom: 0.4rem;">&rarr; 26-Page Monograph</a>
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="font-weight: 600; color: #0284c7; display: block;">&rarr; Publication PDF &nearr;</a>
+      </div>
+    </aside>
+
+    <!-- Document Content -->
+    <article class="doc-content">
+      <h1
+id="rhizaeon-track-4-conceptual-deep-dive-boundary-monograph">RhizAeon
+Track 4: Conceptual Deep-Dive &amp; Boundary Monograph</h1>
+<p><em>Explanatory Architecture, Phase Space, &amp; The Biological
+Horizon</em></p>
+<hr />
+<h2 id="executive-framing-the-phylogenetic-gps">1. Executive Framing:
+The Phylogenetic GPS</h2>
+<p>Phylogenetics has long operated under a foundational assumption: that
+evolution can be described by a bifurcating tree. But throughout the
+microbial, viral, and eukaryotic worlds, horizontal gene transfer,
+homologous recombination, and meiotic crossing-over systematically
+violate tree-like branching. Recombination shatters the single ancestral
+tree, producing mosaic chromosomes where different genomic segments
+trace back to distinct, conflicting genealogies.</p>
+<p>For decades, computational biology has responded by either forcing
+the data onto an artificial tree—stretching terminal branches to absorb
+conflicting signals—or testing billions of sequence triplets in
+isolation.</p>
+<p><strong>RhizAeon replaces the rigid bifurcating tree with a
+continuous metric space embedding: the “Phylogenetic GPS.”</strong></p>
+<pre><code>================================================================================
+                      THE PHYLOGENETIC GPS IN ACTION
+================================================================================
+      Dim 2 ▲
+            │        Clade P1
+            │        (●●●) ◀────── y_C(s) for s &lt; Breakpoint (5&#39; end)
+            │         \
+            │          \  FLIGHT PATH (Physical migration across space
+            │           \ as window traverses the breakpoint!)
+            │            ▼
+            │           (▲▲▲) ◀──── y_C(s) for s &gt; Breakpoint (3&#39; end)
+            │        Clade P2
+      ──────┼──────────────────────────────────► Dim 1
+            │
+================================================================================</code></pre>
+<h3
+id="the-biologists-bottom-line-do-i-have-recombination-or-dont-i">The
+Biologist’s Bottom Line: “Do I Have Recombination or Don’t I?”</h3>
+<p>Before delving into differential geometry, the biological diagnostic
+rule is simple: 1. <strong>The Clonal Genome (Parked at Home):</strong>
+A non-recombinant organism inherits all of its genes from the same
+ancestral lineage. As we scan from the 5’ end to the 3’ end of the
+chromosome, its position in metric space never leaves its home clade.
+Its trajectory remains parked inside its parental cluster, exhibiting
+only negligible Brownian jitter from local Poisson mutations. 2.
+<strong>The Recombinant Genome (In Flight):</strong> A mosaic organism
+inherits its 5’ flank from Parent 1 and its 3’ flank from Parent 2. When
+mapped continuously along the chromosome, this sequence
+<strong>physically takes flight</strong>: its coordinates depart Cluster
+1, cruise across open Euclidean space, and touch down inside Cluster 2.
+3. <strong>The Diagnostic Verdict:</strong> * If all genome trajectories
+stay parked inside their clusters <span
+class="math inline">\(\to\)</span> <strong>The cohort is clonal (no
+recombination).</strong> * If any trajectory executes an unmistakable
+cross-manifold leap <span class="math inline">\(\to\)</span>
+<strong>Recombination is confirmed.</strong> The start of the leap
+identifies the breakpoint, the traveling sequence is the recombinant,
+and the arrival/departure clusters identify the parental donors.</p>
+<h3 id="biological-scope-of-the-engine">Biological Scope of the
+Engine</h3>
+<p>RhizAeon is organism-agnostic. The mathematical framework applies to
+any homologous sequence alignment experiencing reticulate evolution: *
+<strong>Viruses:</strong> RNA viruses (HIV-1, SARS-CoV-2, Hepatitis C),
+segmented viruses (Influenza chimeras), and large DNA viruses
+(Herpesviruses, Geminiviruses). * <strong>Bacteria &amp;
+Archaea:</strong> Naturally transformable pathogens (<em>Streptococcus
+pneumoniae</em>, <em>Neisseria</em>), ICE conjugative elements, and
+homologous micro-conversions. * <strong>Eukaryotic Parasites &amp;
+Fungi:</strong> Apicomplexans (<em>Plasmodium falciparum</em>
+drug-resistance cassettes), pathogenic fungal chimeras
+(<em>Candida</em>, <em>Cryptococcus</em>), and <em>Saccharomyces</em>
+inter-species hybrids. * <strong>Organellar Genomes:</strong> Plant
+chloroplasts and fungal mitochondrial genomes. * <strong>Targeted
+Eukaryotic Loci:</strong> Highly reticulate host gene arrays undergoing
+meiotic crossing-over or non-allelic gene conversion (Major
+Histocompatibility Complex [MHC / HLA], opsin arrays, immunoglobulin
+clusters).</p>
+<hr />
+<h2 id="the-naive-trap-pathologies-of-simpler-models">2. The “Naive
+Trap” &amp; Pathologies of Simpler Models</h2>
+<p>Why did it take decades to arrive at the Phylogenetic GPS? Why can’t
+we simply slide a window along the genome and run standard Principal
+Component Analysis (PCA) or Multidimensional Scaling (MDS) on each
+window?</p>
+<h3 id="the-rotating-camera-trap">The Rotating Camera Trap</h3>
+<p>Independent dimensionality reduction on local windows fails
+completely due to <strong>eigenspace rotational ambiguity</strong>: * An
+independent eigensolver on window <span
+class="math inline">\(s=1{,}000\)</span> chooses its coordinate axes
+arbitrarily (<span class="math inline">\(R \in \mathcal{O}(k)\)</span>)
+and assigns eigenvector signs with equal probability (<span
+class="math inline">\(\pm \mathbf{v}\)</span>). * It is like taking a
+sequence of photographs of a room, but rotating the camera to a random
+angle for every shot. You cannot tell whether a chair moved across the
+room, or whether the photographer simply turned the camera. * At
+position 1,000, “Dimension 1” might point toward Clade A. At position
+1,050, the solver flips the sign, pointing toward Clade B. Sequences
+appear to jump wildly across the plot simply because the coordinate
+frame rotated, not because the biology changed.</p>
+<h3 id="the-fixed-projection-lens-bolting-the-camera-to-the-ceiling">The
+Fixed Projection Lens: Bolting the Camera to the Ceiling</h3>
+<p>To measure true biological migration, we must lock the reference
+frame. We achieve this by using the global embedding <span
+class="math inline">\(Z_{\text{glob}}\)</span> to construct a permanent
+linear projection lens: <span class="math display">\[W_{\text{proj}} = H
+Z_{\text{glob}} (Z_{\text{glob}}^T Z_{\text{glob}})^{-1} \in
+\mathbb{R}^{N \times k}\]</span> The operator <span
+class="math inline">\(W_{\text{proj}}\)</span> acts as a camera
+permanently bolted to the ceiling, looking down at the evolutionary
+landscape from a fixed perspective. Local distance matrices are shone
+through this permanent lens, guaranteeing that “North” always points
+toward Clade A and “East” always points toward Clade B throughout the
+entire chromosome.</p>
+<hr />
+<h2 id="core-architectural-engine-the-macro-lens-and-the-microscope">3.
+Core Architectural Engine: The Macro-Lens and the Microscope</h2>
+<h3 id="the-low-pass-tree-k-4">3.1 The Low-Pass Tree (<span
+class="math inline">\(k = 4\)</span>)</h3>
+<p>In RhizAeon, the embedding dimension <span
+class="math inline">\(k\)</span> denotes the number of spatial
+coordinate axes in <span class="math inline">\(\mathbb{R}^k\)</span>. *
+<strong>The Lower Bound (<span class="math inline">\(k \ge
+3\)</span>):</strong> Resolving unrooted quartet conflicts without
+geometric distortion requires the symmetry of a regular tetrahedron,
+which exists strictly in <span
+class="math inline">\(\mathbb{R}^3\)</span>. * <strong>The Upper Bound
+(<span class="math inline">\(k \le 4\)</span>):</strong> Because tree
+metrics are additive, the eigenvalue spectrum decays exponentially
+(<span class="math inline">\(\lambda_1 \gg \lambda_2 \ge \lambda_3 \ge
+\lambda_4 \gg \lambda_5 \dots\)</span>). Restricting the embedding to
+<span class="math inline">\(k=4\)</span> captures <span
+class="math inline">\(75\%\text{--}85\%\)</span> of the total distance
+variance—isolating the macro-phylogenetic backbone while filtering out
+private tip mutations and stochastic sequencing noise.</p>
+<h3 id="decoupling-detection-from-precision">3.2 Decoupling Detection
+from Precision</h3>
+<p>In traditional sliding-window algorithms, window size creates an
+inescapable penalty: a 300 bp window can only localize a breakpoint to
+within <span class="math inline">\(\pm 150\text{ bp}\)</span>.</p>
+<p>RhizAeon completely eliminates this trade-off by <strong>decoupling
+coarse detection from fine-scale precision</strong>: 1. <strong>The
+Sliding Window as a Macro-Lens (Detection):</strong> Broad windows
+(<span class="math inline">\(W = 200\text{--}300\text{ bp}\)</span>)
+maintain high statistical power, ensuring that <span
+class="math inline">\(15\text{--}40\)</span> informative mutations are
+captured per window to generate crisp, unmistakable velocity peaks. 2.
+<strong>The Profile Likelihood as a Microscope (Single-Base
+Precision):</strong> Once a kinetic peak flags the general neighborhood
+of a breakpoint, RhizAeon hands the candidate region to the
+<strong>Single-Base Maximum Likelihood Polisher</strong>. The polisher
+evaluates every individual nucleotide against candidate parental
+alleles, calculating exact likelihood profiles at 1-bp increments and
+reporting the flat uninformative plateau <span
+class="math inline">\([\text{CI}_{\text{left}},
+\text{CI}_{\text{right}}]\)</span>.</p>
+<hr />
+<h2 id="architectural-firewalls-surgical-event-triage">4. Architectural
+Firewalls &amp; Surgical Event Triage</h2>
+<h3 id="the-spatial-rate-variation-firewall-l-pir">4.1 The Spatial Rate
+Variation Firewall (L-PIR)</h3>
+<p>When a sequence passes through a hypervariable domain (e.g., the
+HIV-1 <em>env</em> V3 loop or a bacterial surface antigen), its mutation
+rate accelerates, causing a sharp jump in pairwise distance. * This
+acceleration generates a local velocity spike that could deceive a naive
+peak detector. * RhizAeon protects against this via the <strong>Local
+Phylogenetic Incongruence Ratio (L-PIR)</strong>. If a sequence
+accelerates its mutation rate while remaining in the same clade, <span
+class="math inline">\(\text{L-PIR} \to 0.0\)</span>, and the peak is
+automatically discarded.</p>
+<h3 id="surgical-event-by-event-triage-why-tier-2-is-not-wholesale">4.2
+Surgical Event-by-Event Triage (Why Tier 2 is Not Wholesale)</h3>
+<p>A critical architectural design in RhizAeon is <strong>surgical
+event-level triage</strong>: * <strong>The Misconception:</strong> If a
+single complex or borderline event triggers Tier 2 (neural manifold /
+transformer refinement), does the entire alignment get shunted into Tier
+2? * <strong>The Reality:</strong> <strong>No.</strong> Tier 2 triggers
+operate strictly on an <strong>individual candidate event
+basis</strong>. * When RP-FDA scans a cohort, <span
+class="math inline">\(95\%\)</span> of detected macro-recombination
+events are clean, high-divergence crossovers resolved definitively in
+Tier 1. * Only the specific candidate event triggering an edge
+condition—such as a micro-tract (<span
+class="math inline">\(L_{\text{tract}} &lt; 100\text{ bp}\)</span>) or
+parentage near the mutational noise floor (<span
+class="math inline">\(\Delta d &lt; 0.005\)</span>)—is dispatched to
+Tier 2 for localized neural polishing. The remainder of the alignment
+remains finalized under Tier 1.</p>
+<hr />
+<h2
+id="phase-space-operational-boundaries-the-1050-simulation-envelope">5.
+Phase Space &amp; Operational Boundaries (The 1,050 Simulation
+Envelope)</h2>
+<p>To establish the empirical boundaries where signal dissolves into
+noise, we executed an exhaustive simulation benchmark across
+<strong>1,050 synthetic alignments</strong> (<span
+class="math inline">\(L = 3{,}000\text{ nt}\)</span>, continuous-time
+Markov substitution with <span class="math inline">\(\Gamma\)</span>
+rate variation <span class="math inline">\(\alpha = 0.50\)</span>):</p>
+<figure>
+<img src="assets/figures/fig_operational_boundaries_phase_diagram.png"
+alt="Figure: Operational Boundaries and Phase Space Diagram" />
+<figcaption aria-hidden="true">Figure: Operational Boundaries and Phase
+Space Diagram</figcaption>
+</figure>
+<h3 id="the-four-dimensionless-control-parameters">The Four
+Dimensionless Control Parameters</h3>
+<ol type="1">
+<li><strong>Mutational Payload (<span
+class="math inline">\(\mathcal{I}_{\text{mut}} = L_{\text{tract}} \cdot
+\Delta d\)</span>):</strong> The total number of informative mutations
+carried by a recombinant tract.</li>
+<li><strong>Recombination Extensiveness (<span
+class="math inline">\(\rho / \theta\)</span>):</strong> The ratio of
+population recombination rate to mutation rate.</li>
+<li><strong>Parental Divergence (<span class="math inline">\(\Delta
+d(P_1, P_2)\)</span>):</strong> The evolutionary distance separating
+donor clades.</li>
+<li><strong>Clade Reassortment Torque (<span
+class="math inline">\(f_{\text{recomb}}\)</span>):</strong> The fraction
+of the population sharing a recombinant history.</li>
+</ol>
+<h3 id="the-four-operational-zones-of-reticulation">The Four Operational
+Zones of Reticulation</h3>
+<pre><code>================================================================================
+                    THE FOUR OPERATIONAL REGIMES
+================================================================================
+Recombination
+Extensiveness
+    ▲
+10.0│  ZONE IV: EXTINCTION / PANMICTIC FOG
+    │  (Frame Rigidity collapses: F_frame &lt; 0.25. High FPR. Hand-off to LD).
+    │
+ 2.5┼───────────────────────────────────────────────────────────────────────────
+    │  ZONE II: CLADE TORQUE / LAPLACIAN HAND-OFF
+    │  (Frame rotates under macro-swaps; Fiedler phase shift resolves clades).
+    │
+ 0.5┼───────────────────────────────────────────────────────────────────────────
+    │  ZONE I: LAMINAR TIER 1              │ ZONE III: CONFORMAL UNCERTAINTY
+    │  (Crisp Procrustes peaks;             │ (Tracts &lt; 3.8 SNPs; Conformal sets
+    │   Dual-BP Power &gt; 95%; MAE &lt; 2 nt)   │  include Clonal Null; Tier 2 active)
+ 0.0┴──────────────────────────────────────┼────────────────────────────────────►
+   10^2 bp          10^3 bp                10^1 bp          Mutational Payload
+ (I_mut &gt; 15 SNPs)                        (I_mut &lt; 3.8 SNPs)
+================================================================================</code></pre>
+<h3 id="the-hard-physical-boundaries">The Hard Physical Boundaries:</h3>
+<ol type="1">
+<li><strong>The Mutational Information Floor (<span
+class="math inline">\(m \approx 3.8\)</span> SNPs):</strong> When the
+mutational payload <span class="math inline">\(\mathcal{I}_{\text{mut}}
+&lt; 3.8\)</span> SNPs, detection power drops below <span
+class="math inline">\(50\%\)</span> regardless of algorithm. Below this
+threshold, statistical inference is impossible: there simply are not
+enough physical mutations separating the parent from the child to
+establish a template switch.</li>
+<li><strong>The Panmictic Frame Collapse (<span
+class="math inline">\(\rho / \theta &gt; 2.5\)</span>):</strong> When
+recombination becomes extremely dense (<span class="math inline">\(\rho
+/ \theta &gt; 2.5\)</span>), the <strong>Frame Rigidity Index</strong>:
+<span class="math display">\[\mathcal{F}_{\text{frame}} =
+\frac{\lambda_1 + \lambda_2 + \lambda_3}{\sum_{i=1}^N
+\lambda_i}\]</span> collapses from <span
+class="math inline">\(\mathcal{F}_{\text{frame}} \approx 0.85\)</span>
+down below <span class="math inline">\(0.25\)</span>. Under panmixia, no
+genome possesses a stable majority parentage; the chromosome is a
+chaotic patchwork of fragments. RhizAeon flags this condition and hands
+the dataset off to population linkage-disequilibrium (LD)
+estimators.</li>
+<li><strong>The Laplacian Hand-Off for Clade Torque:</strong> When an
+entire clade reassorts (<span class="math inline">\(f_{\text{recomb}}
+\ge 0.25\)</span>), the global coordinate frame experiences structural
+torque. RhizAeon activates the <strong>Normalized Graph Laplacian
+Fiedler Vector</strong> (<span
+class="math inline">\(\mathbf{v}_2(s)\)</span>), tracking directional
+phase shifts <span class="math inline">\(d_{\text{Fiedler}}(s)\)</span>
+to maintain robust clade separation even when Procrustes strain
+saturates.</li>
+</ol>
+<hr />
+<h2
+id="the-biological-horizon-complex-mosaics-convergent-reticulation-and-the-evolutionary-sieve">6.
+The Biological Horizon: Complex Mosaics, Convergent Reticulation, and
+the Evolutionary Sieve</h2>
+<h3
+id="formation-flights-and-bundled-streamlines-recombinant-clades-crfs">6.1
+Formation Flights and Bundled Streamlines (Recombinant Clades /
+CRFs)</h3>
+<p>In real-world epidemics, an ancestral recombinant frequently
+establishes sustained transmission, generating hundreds or thousands of
+progeny (e.g., HIV-1 CRF01_AE, CRF02_AG, or SARS-CoV-2 XBB). * All
+progeny inherit the identical breakpoint junction <span
+class="math inline">\(s^*\)</span>. * In metric space, these genomes
+travel as a <strong>tight, coordinated “formation flight”</strong> (or
+streamline bundle) around the clade consensus trajectory. * Rather than
+confusing the algorithm, population expansion dramatically
+<em>increases</em> detection power: the Poisson substitution noise of
+individual sequences cancels out (<span
+class="math inline">\(\mathcal{O}(1/\sqrt{M})\)</span>), producing a
+razor-sharp consensus kinetic peak.</p>
+<h3
+id="multi-stop-journeys-complex-mosaics-recombinants-of-recombinants">6.2
+Multi-Stop Journeys &amp; Complex Mosaics (Recombinants of
+Recombinants)</h3>
+<p>When a recombinant lineage subsequently recombines with a third
+lineage (e.g., an HIV-1 Unique Recombinant Form formed between CRF01_AE
+and Subtype B), it does not hover in an intermediate fog. Because
+biological recombination is a discrete copy-choice template switch, the
+trajectory executes <strong>piecewise linear leaps</strong>: tracking
+Parent 1 across interval 1, leaping to Parent 2 across interval 2, and
+leaping to Parent 3 across interval 3.</p>
+<h3 id="convergent-recombination-vs.-shared-common-ancestry">6.3
+Convergent Recombination vs. Shared Common Ancestry</h3>
+<p>When two distinct isolates share an identical mosaic block (e.g.,
+<span class="math inline">\(A-B-A\)</span>), did they inherit it from a
+single ancestral crossover event, or did they recombine independently at
+the same hotspot? RhizAeon resolves this by examining
+<strong>intra-tract polymorphic divergence</strong>: * <strong>Shared
+Common Ancestry:</strong> The recombinant segments share identical
+private mutations accumulated since the founding event (<span
+class="math inline">\(\pi_{\text{shared}} \approx 0\)</span>). *
+<strong>Convergent Independent Crossovers:</strong> The recombinant
+segments match the broader population diversity of the donor clade
+(<span class="math inline">\(\pi_{\text{tract}} \gg 0\)</span>),
+demonstrating independent template switches at a common physical
+hotspot.</p>
+<h3 id="the-evolutionary-sieve-bridging-reticulation-and-selection">6.4
+The Evolutionary Sieve: Bridging Reticulation and Selection</h3>
+<p>In bacterial pathogens (<em>S. pneumoniae</em>, <em>N.
+meningitidis</em>), observed recombination patterns are governed by two
+opposing evolutionary forces: <span
+class="math display">\[\mathcal{S}_{\text{sel}}(s) =
+\frac{\lambda_{\text{obs}}(s)}{\lambda_{\text{mech}}(s)}\]</span> 1.
+<strong>The Mechanistic Baseline (<span
+class="math inline">\(\lambda_{\text{mech}}(s)\)</span>):</strong> The
+biophysical frequency of DNA strand exchange, dictated by sequence
+identity, replication origin distance (<span
+class="math inline">\(d_{\text{ori}}\)</span>), and species-specific
+recombination motifs (e.g., Chi octamers <code>5'-GAGAATGA-3'</code>).
+2. <strong>The Observed Recombination Intensity (<span
+class="math inline">\(\lambda_{\text{obs}}(s)\)</span>):</strong> The
+rate inferred by RhizAeon along the chromosome. 3. <strong>The Selective
+Sieve (<span
+class="math inline">\(\mathcal{S}_{\text{sel}}\)</span>):</strong> *
+<strong>Purifying Deserts (<span class="math inline">\(\log_2
+\mathcal{S}_{\text{sel}} &lt; -1.5\)</span>):</strong> Loci with high
+mechanistic crossover rates but zero observed recombinants. These mark
+essential, highly conserved macromolecular complexes (e.g., ribosomal
+operons, <em>recA</em>, RNA polymerase) where foreign DNA imports cause
+lethal epistatic disruption. * <strong>Adaptive Spikes (<span
+class="math inline">\(\log_2 \mathcal{S}_{\text{sel}} &gt;
++2.0\)</span>):</strong> Loci where observed recombination vastly
+exceeds the biophysical baseline. These pinpoint positive diversifying
+selection driving antigenic diversity and clinical antimicrobial
+resistance (e.g., <em>pbp2x</em>, <em>pbp1a</em>, <em>cps</em> capsule
+loci in <em>S. pneumoniae</em>).</p>
+<p>By coupling RhizAeon’s linear-time reticulation engine with HyPhy’s
+codon-level selection analyses (<span
+class="math inline">\(dN/dS\)</span>, MEME), researchers can
+systematically separate physical template switching from positive
+evolutionary selection across entire bacterial pangenomes.</p>
+
+    </article>
+
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="rams-footer" style="background: #0f172a; color: #94a3b8; padding: 3rem 0; margin-top: 4rem; border-top: 1px solid #1e293b;">
+    <div class="rams-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem;">RhizAeon Continuous Coordinate Recombination Framework</div>
+        <p style="font-size: 0.85rem; margin: 0; color: #64748b;">
+          Supported by the National Institute of Allergy and Infectious Diseases (NIAID) under BRC-Analytics.
+        </p>
+      </div>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
+        <a href="index.html" style="color: #cbd5e1;">Home</a>
+        <a href="tutorials.html" style="color: #cbd5e1;">Tutorial Suite</a>
+        <a href="intuition.html" style="color: #cbd5e1;">Monograph</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" style="color: #cbd5e1;">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

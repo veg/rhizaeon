@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track 3: Deductive / Algorithmic Derivation (Mathematical Foundations)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .track-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #0369a1 100%);
+      color: #ffffff;
+      padding: 3rem 0 2.5rem 0;
+      border-bottom: 1px solid #0284c7;
+    }
+    .track-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #7dd3fc;
+      margin-bottom: 0.5rem;
+    }
+    .track-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .track-sub {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      line-height: 1.55;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+    .track-nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .track-tab {
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+      background: rgba(255,255,255,0.12);
+      color: #e0f2fe;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .track-tab:hover {
+      background: rgba(255,255,255,0.25);
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .track-tab.active {
+      background: #38bdf8;
+      color: #0f172a;
+      border-color: #38bdf8;
+      font-weight: 700;
+    }
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+    @media (max-width: 992px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .doc-sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.85rem;
+    }
+    .doc-sidebar-title {
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+    .doc-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .doc-sidebar li {
+      margin-bottom: 0.5rem;
+    }
+    .doc-sidebar a {
+      color: #475569;
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0;
+      line-height: 1.35;
+      transition: color 0.15s ease;
+    }
+    .doc-sidebar a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+    .doc-content {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      line-height: 1.7;
+      color: #1e293b;
+      min-width: 0;
+    }
+    .doc-content h1, .doc-content h2, .doc-content h3, .doc-content h4 {
+      color: #0f172a;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.015em;
+    }
+    .doc-content h1 { font-size: 1.85rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+    .doc-content h2 { font-size: 1.45rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; }
+    .doc-content h3 { font-size: 1.15rem; }
+    .doc-content pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1.1rem 1.3rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin: 1.25rem 0;
+    }
+    .doc-content code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 0.15em 0.35em;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .doc-content pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+    }
+    .doc-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.88rem;
+    }
+    .doc-content th, .doc-content td {
+      border: 1px solid #e2e8f0;
+      padding: 0.65rem 0.9rem;
+      text-align: left;
+    }
+    .doc-content th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .doc-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin: 1.5rem 0;
+    }
+    .doc-content blockquote {
+      border-left: 4px solid #0284c7;
+      background: #f0f9ff;
+      margin: 1.4rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      color: #0369a1;
+    }
+    .doc-content blockquote p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="rams-header">
+    <div class="rams-container rams-nav-flex">
+      <a href="index.html" class="rams-brand">
+        <span class="rams-brand-name">RhizAeon</span>
+        <span class="rams-brand-sep">/</span>
+        <span class="rams-brand-desc">Multi-Tier Tutorial Suite</span>
+      </a>
+      <nav class="rams-nav">
+        <a href="index.html">&larr; Benchmark Compendium</a>
+        <a href="tutorials.html" class="rams-nav-chip" style="background: #38bdf8; color: #0f172a; font-weight: 700;">Tutorial Suite Index</a>
+        <a href="intuition.html">Monograph (26 pp)</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="track-hero">
+    <div class="rams-container">
+      <div class="track-eyebrow">TUTORIAL TRACK 3 • MATHEMATICAL DERIVATION</div>
+      <h1 class="track-title">Track 3: Deductive / Algorithmic Derivation (Mathematical Foundations)</h1>
+      <p class="track-sub">Rigorous axiomatic problem formulation, Gram matrix eigendecomposition, fixed projection operator proofs, and O(N² L) complexity bounds.</p>
+      
+      <!-- Track Switcher -->
+      <div class="track-nav-tabs">
+        <a href="tutorials.html" class="track-tab ">Overview Index</a>
+        <a href="track1_visual_quickstart.html" class="track-tab ">Track 1: Quickstart</a>
+        <a href="track2_practitioner_guide.html" class="track-tab ">Track 2: Practitioner</a>
+        <a href="track3_algorithmic_derivation.html" class="track-tab active">Track 3: Mathematical</a>
+        <a href="track4_conceptual_monograph.html" class="track-tab ">Track 4: Monograph</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="rams-container doc-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="doc-sidebar">
+      <div class="doc-sidebar-title">Tutorial Navigation</div>
+      <ul>
+        <li><a href="tutorials.html" style="font-weight: 400; color: #475569;">&bull; Suite Overview</a></li>
+        <li><a href="track1_visual_quickstart.html" style="font-weight: 400; color: #475569;">&bull; Track 1: Quickstart</a></li>
+        <li><a href="track2_practitioner_guide.html" style="font-weight: 400; color: #475569;">&bull; Track 2: Practitioner</a></li>
+        <li><a href="track3_algorithmic_derivation.html" style="font-weight: 700; color: #0284c7;">&bull; Track 3: Mathematical</a></li>
+        <li><a href="track4_conceptual_monograph.html" style="font-weight: 400; color: #475569;">&bull; Track 4: Monograph</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #e2e8f0;">
+        <a href="intuition.html" style="font-weight: 600; color: #0284c7; display: block; margin-bottom: 0.4rem;">&rarr; 26-Page Monograph</a>
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="font-weight: 600; color: #0284c7; display: block;">&rarr; Publication PDF &nearr;</a>
+      </div>
+    </aside>
+
+    <!-- Document Content -->
+    <article class="doc-content">
+      <h1 id="rhizaeon-track-3-deductive-linear-build-up">RhizAeon Track 3:
+Deductive / Linear Build-Up</h1>
+<p><em>Axiomatic &amp; Algorithmic Derivation</em></p>
+<hr />
+<h2 id="formal-problem-formulation">1. Formal Problem Formulation</h2>
+<p>Let an alignment of <span class="math inline">\(N\)</span> homologous
+molecular sequences of length <span class="math inline">\(L\)</span>
+over the alphabet <span class="math inline">\(\Sigma = \{A, C, G, T,
+-\}\)</span> be represented by a matrix: <span class="math display">\[X
+\in \Sigma^{N \times L}\]</span></p>
+<h3 id="additive-tree-metrics-and-reticulation">1.1 Additive Tree
+Metrics and Reticulation</h3>
+<p>In the absence of recombination, the evolutionary history of <span
+class="math inline">\(X\)</span> is governed by a single bifurcating
+phylogenetic tree <span class="math inline">\(T = (V, E,
+\mathbf{w})\)</span> with leaf set <span class="math inline">\([N] =
+\{1, \dots, N\}\)</span> and non-negative branch lengths <span
+class="math inline">\(\mathbf{w}: E \to \mathbb{R}_{\ge 0}\)</span>.</p>
+<p>Under continuous-time Markov models of nucleotide substitution (e.g.,
+Jukes-Cantor, TN93, GTR), the expected pairwise genetic distance <span
+class="math inline">\(d(i, j)\)</span> between taxa <span
+class="math inline">\(i\)</span> and <span
+class="math inline">\(j\)</span> equals the path metric along tree <span
+class="math inline">\(T\)</span>: <span class="math display">\[d_T(i, j)
+= \sum_{e \in \text{path}_T(i, j)} w_e\]</span></p>
+<p>Any tree metric <span class="math inline">\(d_T\)</span> satisfies
+the <strong>Buneman Four-Point Condition</strong>: for any quartet of
+taxa <span class="math inline">\(\{i, j, k, l\}\)</span>, the two
+largest sums among: <span class="math display">\[d_T(i, j) + d_T(k, l),
+\quad d_T(i, k) + d_T(j, l), \quad d_T(i, l) + d_T(j, k)\]</span> are
+strictly equal.</p>
+<h3 id="the-reticulate-breakpoint-problem">1.2 The Reticulate Breakpoint
+Problem</h3>
+<p>Under recombination, the chromosome is a mosaic composed of <span
+class="math inline">\(K\)</span> discrete breakpoints <span
+class="math inline">\(0 &lt; s_1 &lt; s_2 &lt; \dots &lt; s_K &lt;
+L\)</span>. Each non-recombinant partition interval: <span
+class="math display">\[\mathcal{I}_m = [s_{m-1} + 1, \, s_m], \quad m
+\in \{1, \dots, K + 1\}\]</span> is generated by a distinct,
+conditionally independent gene tree <span
+class="math inline">\(T_m\)</span>.</p>
+<p>The computational challenge is twofold: 1. <strong>Change-Point
+Identification:</strong> Find the partition set <span
+class="math inline">\(\{s_1, \dots, s_K\}\)</span>. 2. <strong>Lineage
+Attribution:</strong> For each partition transition, identify the
+recombinant taxon <span class="math inline">\(C \in [N]\)</span> and its
+flanking parental donors <span class="math inline">\(P_1, P_2 \in
+[N]\)</span>.</p>
+<hr />
+<h2 id="axiomatic-foundations-metric-manifold-embedding">2. Axiomatic
+Foundations: Metric Manifold Embedding</h2>
+<h3
+id="classical-multidimensional-scaling-torgerson-gower-embedding">2.1
+Classical Multidimensional Scaling (Torgerson-Gower Embedding)</h3>
+<p>Let <span class="math inline">\(D \in \mathbb{R}_{\ge 0}^{N \times
+N}\)</span> be the pairwise distance matrix across an alignment.
+Classical MDS constructs an isometric embedding <span
+class="math inline">\(Z = [\mathbf{z}_1, \dots, \mathbf{z}_N]^T \in
+\mathbb{R}^{N \times k}\)</span> minimizing the strain objective: <span
+class="math display">\[\min_{Z \in \mathbb{R}^{N \times k}} \left\|
+-\frac{1}{2} H (D^{\circ 2}) H - Z Z^T \right\|_F^2\]</span> where <span
+class="math inline">\(H = I_N - \frac{1}{N}
+\mathbf{1}\mathbf{1}^T\)</span> is the orthogonal centering matrix
+(<span class="math inline">\(H = H^T = H^2\)</span>), <span
+class="math inline">\(D^{\circ 2}\)</span> denotes the elementwise
+Hadamard square (<span class="math inline">\(D_{ij}^{\circ 2} =
+D_{ij}^2\)</span>), and <span class="math inline">\(\|\cdot\|_F\)</span>
+is the Frobenius matrix norm.</p>
+<p>The centered inner-product (Gram) matrix is defined as: <span
+class="math display">\[B = -\frac{1}{2} H (D^{\circ 2}) H \in
+\mathbb{R}^{N \times N}\]</span></p>
+<p>By the Spectral Theorem, <span class="math inline">\(B\)</span>
+admits an eigendecomposition: <span class="math display">\[B = V \Lambda
+V^T = \sum_{j=1}^N \lambda_j \mathbf{v}_j \mathbf{v}_j^T\]</span> with
+sorted eigenvalues <span class="math inline">\(\lambda_1 \ge \lambda_2
+\ge \dots \ge \lambda_N\)</span>. The optimal rank-<span
+class="math inline">\(k\)</span> Euclidean configuration in <span
+class="math inline">\(\mathbb{R}^k\)</span> is: <span
+class="math display">\[Z = V_k \Lambda_k^{1/2} \in \mathbb{R}^{N \times
+k}\]</span> where <span class="math inline">\(V_k \in \mathbb{R}^{N
+\times k}\)</span> contains the <span class="math inline">\(k\)</span>
+leading orthonormal eigenvectors and <span
+class="math inline">\(\Lambda_k = \operatorname{diag}(\lambda_1, \dots,
+\lambda_k)\)</span>.</p>
+<hr />
+<h3 id="clarifying-the-embedding-dimension-k-the-low-pass-tree">2.2
+Clarifying the Embedding Dimension <span
+class="math inline">\(k\)</span>: The Low-Pass Tree</h3>
+<p>Here, <strong><span class="math inline">\(k\)</span> denotes the
+number of spatial coordinate dimensions (axes) in Euclidean space <span
+class="math inline">\(\mathbb{R}^k\)</span></strong>. It is
+mathematically distinct from the number of breakpoints (<span
+class="math inline">\(K\)</span>) or <span
+class="math inline">\(k\)</span>-mer lengths.</p>
+<p>The choice of <span class="math inline">\(k\)</span> is bounded by
+two fundamental geometric and statistical invariants:</p>
+<h4 id="lemma-1-quartet-tetrahedral-bound-k-ge-3">Lemma 1 (Quartet
+Tetrahedral Bound: <span class="math inline">\(k \ge 3\)</span>)</h4>
+<p><em>Proof:</em> The minimal unit of phylogenetic conflict is an
+unrooted four-taxon quartet: <span class="math display">\[Q_1 = ((A, B),
+(C, D)) \quad \text{versus} \quad Q_2 = ((A, C), (B, D))\]</span> In
+<span class="math inline">\(k=2\)</span> dimensions, four equidistant
+points cannot be embedded isometrically; any 2D projection forces two
+opposing clades across the origin, creating artifactual collinearity.
+Preserving the pairwise equidistant symmetry of four clades requires the
+vertices of a regular 3-simplex (tetrahedron), which exists strictly in
+<span class="math inline">\(\mathbb{R}^3\)</span>. Hence, <span
+class="math inline">\(k \ge 3\)</span> is mandatory to prevent
+topological projection artifacts. <span
+class="math inline">\(\blacksquare\)</span></p>
+<h4 id="proposition-1-the-low-pass-filter-k-le-4">Proposition 1 (The
+Low-Pass Filter: <span class="math inline">\(k \le 4\)</span>)</h4>
+<p>Because tree metrics are additive, the eigenvalue spectrum of <span
+class="math inline">\(B\)</span> decays exponentially: <span
+class="math display">\[\lambda_1 \gg \lambda_2 \ge \lambda_3 \ge
+\lambda_4 \gg \lambda_5 \dots \approx 0\]</span> The leading <span
+class="math inline">\(k=4\)</span> eigenvectors capture <span
+class="math inline">\(75\%\text{--}85\%\)</span> of the total distance
+variance corresponding to the deep macroscopic backbone of the
+phylogeny. The trailing <span class="math inline">\((N-k)\)</span>
+dimensions correspond to high-frequency private tip mutations and
+stochastic Poisson substitution noise. Truncating at <span
+class="math inline">\(k=4\)</span> acts as a <strong>phylogenetic
+low-pass filter</strong>, discarding stochastic tip noise while
+preserving macro-clade geometry.</p>
+<hr />
+<h2 id="algorithmic-pipeline-formal-derivations">3. Algorithmic Pipeline
+&amp; Formal Derivations</h2>
+<h3 id="stage-1-vectorized-prefix-distance-engine">Stage 1: Vectorized
+Prefix Distance Engine</h3>
+<p>To achieve <span class="math inline">\(\mathcal{O}(1)\)</span> lookup
+of local distance matrices for arbitrary genomic intervals <span
+class="math inline">\([s_{\text{left}}, s_{\text{right}}]\)</span>,
+RhizAeon encodes the MSA into binary indicator tensors.</p>
+<p>For an alphabet of size <span class="math inline">\(|\Sigma| =
+4\)</span>: <span class="math display">\[T_{c, i, s} = \mathbb{I}(X_{is}
+= c), \quad c \in \{A, C, G, T\}, \, i \in [N], \, s \in [L]\]</span>
+The prefix match tensor <span class="math inline">\(P \in
+\mathbb{Z}_{\ge 0}^{4 \times N \times L}\)</span> accumulates character
+counts along the sequence: <span class="math display">\[P_{c, i, s} =
+\sum_{u=1}^s \mathbb{I}(X_{iu} = c)\]</span> For any window <span
+class="math inline">\(\mathcal{W} = [s_1, s_2]\)</span> of width <span
+class="math inline">\(W = s_2 - s_1 + 1\)</span>: <span
+class="math display">\[C_{c, i}(\mathcal{W}) = P_{c, i, s_2} - P_{c, i,
+s_1 - 1}\]</span> The local Hamming distance matrix <span
+class="math inline">\(D(\mathcal{W})\)</span> is computed directly via
+BLAS matrix multiplication: <span class="math display">\[M(\mathcal{W})
+= \sum_{c \in \Sigma} C_c(\mathcal{W}) C_c(\mathcal{W})^T \in
+\mathbb{R}^{N \times N}\]</span> <span
+class="math display">\[D_{ij}(\mathcal{W}) = 1 -
+\frac{M_{ij}(\mathcal{W})}{W}\]</span> <strong>Complexity:</strong>
+Construction takes <span class="math inline">\(\mathcal{O}(N L)\)</span>
+time and space. Local window extraction takes <span
+class="math inline">\(\mathcal{O}(N^2)\)</span> BLAS operations,
+independent of window length <span class="math inline">\(W\)</span>.</p>
+<hr />
+<h3
+id="stage-2-the-fixed-projection-operator-rotational-invariance">Stage
+2: The Fixed Projection Operator (Rotational Invariance)</h3>
+<p>A critical flaw of running independent MDS on local windows is the
+<strong>eigenspace rotation ambiguity</strong>: each window’s
+eigenvectors possess arbitrary signs (<span class="math inline">\(\pm
+\mathbf{v}\)</span>) and rotational freedom (<span
+class="math inline">\(\mathcal{O}(k)\)</span>), destroying
+continuity.</p>
+<h4 id="theorem-1-fixed-projection-invariance">Theorem 1 (Fixed
+Projection Invariance)</h4>
+<p>Let <span class="math inline">\(Z_{\text{glob}} \in \mathbb{R}^{N
+\times k}\)</span> be the global embedding of the full alignment. The
+Moore-Penrose pseudoinverse defines a permanent linear projection lens:
+<span class="math display">\[W_{\text{proj}} = H Z_{\text{glob}}
+(Z_{\text{glob}}^T Z_{\text{glob}})^{-1} \in \mathbb{R}^{N \times
+k}\]</span> For any local centered Gram matrix <span
+class="math inline">\(B(s) = -\frac{1}{2} H (D(s)^{\circ 2}) H\)</span>,
+the instantaneous local coordinate configuration is: <span
+class="math display">\[Y(s) = B(s) W_{\text{proj}} \in \mathbb{R}^{N
+\times k}\]</span> <em>Proof:</em> Because <span
+class="math inline">\(W_{\text{proj}}\)</span> is fixed globally, the
+basis axes of <span class="math inline">\(\mathbb{R}^k\)</span> remain
+identical across all sequence positions <span class="math inline">\(s
+\in [1, L]\)</span>. Any observed coordinate displacement <span
+class="math inline">\(\Delta \mathbf{y}_i(s) = \mathbf{y}_i(s + \Delta)
+- \mathbf{y}_i(s)\)</span> reflects genuine evolutionary divergence
+between windows, with zero numerical eigenspace rotation. <span
+class="math inline">\(\blacksquare\)</span></p>
+<hr />
+<h3 id="stage-3-manifold-dislocation-ancestry-shift-velocity">Stage 3:
+Manifold Dislocation &amp; Ancestry Shift Velocity</h3>
+<p>The instantaneous trajectory of sequence <span
+class="math inline">\(i\)</span> along the chromosome is given by the
+continuous vector curve: <span class="math display">\[s \mapsto
+\mathbf{y}_i(s) \in \mathbb{R}^k\]</span></p>
+<h4
+id="definition-1-ancestry-shift-velocity-kinetic-dislocation">Definition
+1 (Ancestry Shift Velocity &amp; Kinetic Dislocation)</h4>
+<p>The coordinate velocity vector measuring the rate of ancestry
+transition per nucleotide is: <span
+class="math display">\[\mathbf{v}_i(s) = \frac{\mathbf{y}_i(s + \Delta)
+- \mathbf{y}_i(s - \Delta)}{2\Delta} \in \mathbb{R}^k\]</span> The
+kinetic dislocation energy is the squared norm: <span
+class="math display">\[\mathcal{K}_i(s) = \|\mathbf{v}_i(s)\|_2^2 =
+\sum_{j=1}^k \left( v_{i,j}(s) \right)^2\]</span> To standardize across
+alignments with varying baseline diversity, we compute the standardized
+<span class="math inline">\(Z\)</span>-score: <span
+class="math display">\[Z_i(s) = \frac{\mathcal{K}_i(s) -
+\mu_i}{\sigma_i}\]</span> where <span
+class="math inline">\(\mu_i\)</span> and <span
+class="math inline">\(\sigma_i\)</span> are the robust median and median
+absolute deviation (MAD) of sequence <span
+class="math inline">\(i\)</span>’s kinetic profile across the
+chromosome.</p>
+<hr />
+<h3 id="stage-4-local-phylogenetic-incongruence-ratio-l-pir">Stage 4:
+Local Phylogenetic Incongruence Ratio (L-PIR)</h3>
+<p>To prevent mutation rate acceleration (e.g., hypervariable loops)
+from triggering false-positive recombination calls, RhizAeon evaluates
+topological exchange via L-PIR.</p>
+<p>Let <span class="math inline">\(s^*\)</span> be a candidate
+breakpoint flagged by a peak in <span
+class="math inline">\(Z_i(s)\)</span>. Let <span
+class="math inline">\(\mathcal{W}_L = [s^* - W, s^*]\)</span> and <span
+class="math inline">\(\mathcal{W}_R = [s^*, s^* + W]\)</span> be the
+flanking windows. Let <span class="math inline">\(P_1, P_2 \in [N]
+\setminus \{i\}\)</span> be the nearest neighbors of taxon <span
+class="math inline">\(i\)</span> in <span
+class="math inline">\(\mathcal{W}_L\)</span> and <span
+class="math inline">\(\mathcal{W}_R\)</span>, respectively.</p>
+<p>The Local Phylogenetic Incongruence Ratio is: <span
+class="math display">\[\operatorname{L-PIR}(i, s^*) = 1 - \frac{d(i, P_1
+\mid \mathcal{W}_L) + d(i, P_2 \mid \mathcal{W}_R)}{d(i, P_2 \mid
+\mathcal{W}_L) + d(i, P_1 \mid \mathcal{W}_R)}\]</span> * <strong>Under
+Recombination:</strong> Sequence <span class="math inline">\(i\)</span>
+is close to <span class="math inline">\(P_1\)</span> on the left and
+<span class="math inline">\(P_2\)</span> on the right, but distant from
+<span class="math inline">\(P_2\)</span> on the left and <span
+class="math inline">\(P_1\)</span> on the right. Thus, the numerator is
+small, the denominator is large, and <span
+class="math inline">\(\operatorname{L-PIR} \to 1.0\)</span>. *
+<strong>Under Rate Acceleration (Non-Recombinant):</strong> Sequence
+<span class="math inline">\(i\)</span> remains closer to <span
+class="math inline">\(P_1\)</span> on both flanks. The ratio equals 1,
+and <span class="math inline">\(\operatorname{L-PIR} \to
+0.0\)</span>.</p>
+<hr />
+<h3 id="stage-5-recursive-partitioning-fda-ml-profile-polisher">Stage 5:
+Recursive Partitioning FDA &amp; ML Profile Polisher</h3>
+<p>Candidate breakpoints are discovered and recursively refined via
+RP-FDA:</p>
+<pre><code>Algorithm 1: Recursive Partitioning FDA with Single-Base ML Polishing
+Input : Alignment X, min_len, min_z, min_pir, polish_ml
+Output: Set of validated breakpoints B
+
+Function RP_FDA_Segment(interval [s_start, s_end]):
+    if (s_end - s_start) &lt; 2 * min_len then return ∅
+    
+    // Dynamic flank width adaptation
+    δ = max(20, min(150, (s_end - s_start) // 4))
+    
+    // Compute bilateral dislocation across interval
+    for s = (s_start + δ) to (s_end - δ) step Δ do
+        D_left  = ExtractLocalDistance(s - δ, s)
+        D_right = ExtractLocalDistance(s, s + δ)
+        Z_max(s), Taxon(s) = BilateralProcrustesStrain(D_left, D_right)
+    end
+    
+    s_coarse = argmax_s Z_max(s)
+    if Z_max(s_coarse) &lt; min_z then return ∅
+    
+    // Verify topological exchange
+    pir = ComputeLPIR(Taxon(s_coarse), s_coarse, δ)
+    if pir &lt; min_pir then return ∅
+    
+    // Stage 6: Single-Base ML Profile Likelihood Polisher
+    if polish_ml then
+        [s_polished, CI_left, CI_right, ΔLL] = ProfileLikelihoodPolish(
+            X, Taxon(s_coarse), s_coarse, search_flank=δ
+        )
+    else
+        s_polished = s_coarse
+    end
+    
+    b = Breakpoint(s_polished, CI_left, CI_right, Taxon(s_coarse), pir, ΔLL)
+    
+    // Recurse on left and right non-recombinant partitions
+    return {b} ∪ RP_FDA_Segment([s_start, s_polished]) 
+               ∪ RP_FDA_Segment([s_polished, s_end])</code></pre>
+<hr />
+<h2 id="theoretical-invariants-complexity-analysis">4. Theoretical
+Invariants &amp; Complexity Analysis</h2>
+<h3 id="computational-complexity-comparison">4.1 Computational
+Complexity Comparison</h3>
+<p>Let <span class="math inline">\(N\)</span> be the number of taxa,
+<span class="math inline">\(L\)</span> the alignment length, and <span
+class="math inline">\(K\)</span> the number of true breakpoints.</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Method</th>
+<th style="text-align: left;">Paradigm</th>
+<th style="text-align: left;">Algorithmic Complexity</th>
+<th style="text-align: left;">Time on <span
+class="math inline">\(N=1{,}000, L=10\text{ kb}\)</span></th>
+<th style="text-align: left;">Sequence Attribution?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>3Seq</code></strong></td>
+<td style="text-align: left;">Exhaustive Triplet Scan</td>
+<td style="text-align: left;"><span
+class="math inline">\(\mathcal{O}\left(\binom{N}{3} \cdot L\right) \sim
+\mathcal{O}(N^3 L)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\approx
+48\text{ hours}\)</span></td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>GARD</code></strong></td>
+<td style="text-align: left;">Genetic Tree Change-Point</td>
+<td style="text-align: left;"><span
+class="math inline">\(\mathcal{O}(L^K \cdot N^3)\)</span></td>
+<td style="text-align: left;">Intractable (<span
+class="math inline">\(&gt;10\text{ days}\)</span>)</td>
+<td style="text-align: left;">No (post-hoc only)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>Gubbins</code></strong></td>
+<td style="text-align: left;">Iterative Tree Snapping</td>
+<td style="text-align: left;"><span class="math inline">\(\mathcal{O}(I
+\cdot (N^3 + L N^2))\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\approx
+3.5\text{ hours}\)</span></td>
+<td style="text-align: left;">Clade-level only</td>
+</tr>
+<tr>
+<td
+style="text-align: left;"><strong><code>RhizAeon</code></strong></td>
+<td style="text-align: left;"><strong>Metric Manifold
+RP-FDA</strong></td>
+<td style="text-align: left;"><span
+class="math inline">\(\mathbf{\mathcal{O}(k N^2 + N^2 L)}\)</span></td>
+<td style="text-align: left;"><strong><span
+class="math inline">\(\mathbf{&lt; 12\text{
+seconds}}\)</span></strong></td>
+<td style="text-align: left;"><strong>Yes (Direct)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="false-positive-rate-calibration-under-clonal-null">4.2
+False-Positive Rate Calibration Under Clonal Null</h3>
+<p>Under a purely clonal GTR+<span class="math inline">\(\Gamma\)</span>
+substitution process with spatial rate heterogeneity (<span
+class="math inline">\(\alpha = 0.50\)</span>): * Bilateral Procrustes
+dislocation <span class="math inline">\(Z(s)\)</span> follows an extreme
+value distribution bounded by <span
+class="math inline">\(Z_{\text{crit}} \approx 2.5\)</span>. * Coupling
+the kinetic threshold (<span class="math inline">\(Z \ge 2.5\)</span>)
+with the topological filter (<span class="math inline">\(\text{L-PIR}
+\ge 0.35\)</span>) enforces an empirical False Positive Rate: <span
+class="math display">\[\text{FPR} &lt; 0.008 \quad (\le 0.8\%)\]</span>
+guaranteeing rigorous type-I error control across non-recombinant
+genomes.</p>
+
+    </article>
+
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="rams-footer" style="background: #0f172a; color: #94a3b8; padding: 3rem 0; margin-top: 4rem; border-top: 1px solid #1e293b;">
+    <div class="rams-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem;">RhizAeon Continuous Coordinate Recombination Framework</div>
+        <p style="font-size: 0.85rem; margin: 0; color: #64748b;">
+          Supported by the National Institute of Allergy and Infectious Diseases (NIAID) under BRC-Analytics.
+        </p>
+      </div>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
+        <a href="index.html" style="color: #cbd5e1;">Home</a>
+        <a href="tutorials.html" style="color: #cbd5e1;">Tutorial Suite</a>
+        <a href="intuition.html" style="color: #cbd5e1;">Monograph</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" style="color: #cbd5e1;">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
