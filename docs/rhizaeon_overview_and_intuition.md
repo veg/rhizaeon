@@ -419,6 +419,21 @@ $$\delta(L_{\text{seg}}) = \max\left( \delta_{\min}, \, \min\left(\delta_{\max},
 - At Level 0 (macro-scale, $L = 9{,}953\text{ bp}$), $\delta = \delta_{\max} = 200\text{ bp}$. Broad flanking windows provide high statistical stability to detect major lineage shifts.
 - As the recursion dives deeper into compact sub-intervals (micro-scale, $L_{\text{seg}} < 200\text{ bp}$), $\delta$ automatically contracts down to $\delta_{\min} = 30\text{ bp}$, allowing RhizAeon to isolate small, nested gene conversion events without signal dilution.
 
+### 7.2 Progressive Dataset Disassembly: Splintering Alignments into Independent Clonal Partitions
+
+Darren Martin emphasized an essential methodological principle for handling reticulate datasets:
+
+> *"Leaning more aggressively into the partitioning part: i.e. to progressively disassemble the dataset into its 'non-recombinant' components... basically iteratively find the sources of all even vaguely plausible recombination signals and remove these before reassembling everything into a plausible recombination hypothesis (by remove I don't mean toss the sequences - just treat the different partitions as though they are no longer part of the same sequence)."*
+
+This progressive disassembly is the operational core of RhizAeon's pipeline:
+
+1. **Iterative Signal Cleavage:**  
+   Rather than attempting to force a mosaic genome onto a single compromised phylogenetic tree, RP-FDA treats validated breakpoints as **physical cleavage planes**. When a changepoint $b$ is certified, the sequence alignment is sliced: the left segment $[1, b]$ and right segment $[b+1, L]$ are decoupled.
+2. **Partition Splintering (Not Sequence Discarding):**  
+   Sequences are never thrown away. Instead, each sequence is splintered across the partitions. In partition 1, recombinant $R$ behaves as a purely clonal member of Clade $A$; in partition 2, $R$ behaves as a purely clonal member of Clade $B$. Within each partition, evolutionary history is strictly treelike.
+3. **Emitting the Disassembled Mosaic:**  
+   Once recursive partitioning terminates, RhizAeon exports the disjoint non-recombinant blocks via `--export-nexus` (multi-partition NEXUS with per-block character sets), `--export-hyphy-json` (partition coordinate maps), and `--export-hyphy-bf` (HyPhy batch scripts). Downstream evolutionary models (e.g., selection tests via BUSTED/MEME, molecular clock dating via ChronAeon) can then be fitted independently to each partition without cross-tract reticulate interference.
+
 ---
 
 ## 8. Parent Attribution, Validation, and Single-Base Polishing
@@ -658,6 +673,24 @@ However, low-pass metric embeddings and scalar distance derivatives rest on foun
 4. Pairwise sequence divergence reflects **neutral evolutionary time** rather than strong positive diversifying selection.
 
 When any of these assumptions are violated, Tier 1 exhibits distinct, mathematically predictable breakdown patterns. Rather than attempting ad-hoc heuristics, RhizAeon monitors five quantitative "vital signs". When any vital sign exceeds its critical threshold, RhizAeon hands the genomic interval off to the **Tier 2 PhyloAxialTransformer**.
+
+### 10.0 Surgical Event-by-Event Triage: Why Tier 2 is an Ambulatory Specialist, Not an All-or-Nothing Evacuation
+
+A crucial operational question naturally arises: **Are Tier 2 triggers evaluated globally across the entire alignment, or surgical and localized to individual candidate events?**
+
+Darren Martin posed this exact question:
+> *"Are Tier 2 triggers assessed on an individual detected recombination event to detected recombination event basis or are they assessed only at the scale of the entire analysis? Obviously some individual detected recombination events might trigger a Tier 2 condition but the vast majority won't. It seems like it should make sense to trigger Tier 2 on an individual event by individual event basis rather than any single event shunting everything into Tier 2."*
+
+Darren's intuition is exactly how RhizAeon is engineered: **Tier 2 is strictly a localized, event-by-event specialist.**
+
+1. **Independent Event Triage:**  
+   During Tier 1 sliding-window screening and RP-FDA recursion, each kinetic strain peak nominates a localized candidate crossover interval $[s_{\text{left}}, s_{\text{right}}]$. The five diagnostic vital signs are evaluated **specifically on that candidate interval**.
+2. **Routine Events Stay in Tier 1:**  
+   If an event has sampled parents, a crisp likelihood peak, and neutral $dN/dS$ support, it is validated, attributed, and polished entirely within Tier 1 in under a millisecond.
+3. **Surgical Escalation:**  
+   If—and only if—that specific event breaches one of the five vital signs (e.g., an uninformative sequence void spanning 200 nt, an unsampled ghost donor where L-PIR $= 0$, or an RBM-like positive selection spike), RhizAeon dispatches **only that specific interval and its flanking context** to the Tier 2 PhyloAxialTransformer.
+4. **No Wholesale Evacuation:**  
+   In a 30 kb viral genome with six recombination events, five might be routine Tier 1 crossovers resolved deterministically on CPU in 10 milliseconds, while one complex ghost insertion is dispatched to Tier 2 for neural cross-attention resolution. The entire alignment is never held hostage to the most complex event in the dataset.
 
 ```
                            RHIZAEON TWO-TIER DETECTION ARCHITECTURE
@@ -933,6 +966,125 @@ To provide investigators with an unambiguous practical guide for when to trust s
 | **Panmictic Mosaicism** ($\rho / \theta \ge 2.5$) | Global tree construction fails completely; ancestral recombination graph intractable | Frame Rigidity collapses ($\mathcal{F}_{\text{frame}} < 0.75$) | **Local Bilateral Window Superposition**: Recursive RP-FDA on sliding spans ($W = 150\text{--}300$ nt) | Preserves local treelikeness; recovers boundaries without global frame |
 | **Deep Divergence Saturation** ($\Delta d \ge 0.45$) | Multiple hits saturate Hamming distances; parsimony methods fail | Elevated distance eigenvalues; metric curvature correction | **LogDet / Markov Metric Tensor**: Logarithmic branch linearization | Linear distance additivity; $100\%$ power for $L \ge 1{,}000$ nt |
 | **Unsampled Ghost Donors** ($D(R, P_2) > 1.25 D(P_1, P_2)$) | Parent inversion trap: falsely accuses sampled sister clades | L-PIR collapses to $0.000$; Crossover gate rejects Tier 1 | **Tier 2 Transformer Handoff**: Cross-attention shifts to $[\text{ROOT}]$ token ($84\times$ residual surge) | Outgroup bounding firewall prevents false parentage attribution |
+
+---
+
+## 13. The "Tier 3" Biological Horizon: Deconstructing Complex Mosaics, Convergent Reticulations, and the Selective Sieve
+
+Beyond the core detection of physical changepoints (Tier 1) and neural resolution of structural edge cases (Tier 2), Darren Martin outlined three profound biological questions that define the next frontier of reticulate evolutionary genomics:
+
+> *"You could maybe have a final (tier 3) step where, when you have complex recombinants, say AAAABBAAAABBBAABBB — you test the A bits and the B bits to determine whether they might plausibly have each been derived from the same parent (i.e. determine whether the entire complex recombinant came into existence in one step or multiple steps)..."*
+>
+> *"Also, it might be good to determine whether all the supposed descendants of some ancestral recombinant could have plausibly been derived by superficially convergent recombination events — e.g. whether AABBBAA and AAABBAA are descended from the same ancestral recombinant or whether each is the product of independent recombination events... Next level (since you already have the dN/dS model hard-wired) would be to infer whether apparently convergent recombination signals could potentially have been adaptive. Conversely, also in light of the dN/dS hardwiring and the HyphAeon backend you might be able to plausibly invoke adaptive / epistasis-driven purifying selection reasons for recombination breakpoint hot- and cold-spots."*
+
+These three concepts form what we term the **"Tier 3" Evolutionary Synthesis**: moving from *detecting* reticulate events to *interpreting their historical tempo, convergence, and selective drivers*.
+
+---
+
+### 13.1 Complex Mosaics ($A-B-A-B-A-B$): Single-Step Template Switches vs. Multi-Step Generation Cascades
+
+In highly reticulate retroviruses (HIV-1 circulating recombinant forms) and circular DNA viruses (begomoviruses), genomes rarely exhibit a simple single crossover. Instead, they present as multi-fragment quilts:
+$$R = A_1 - B_1 - A_2 - B_2 - A_3 - B_3$$
+
+A foundational biological question is: **Did this complex recombinant originate in a single catastrophic replication event, or did it accumulate incrementally across multiple rounds of transmission and distinct donor encounters?**
+
+In retroviruses, reverse transcriptase (RT) naturally switches between co-packaged dimeric RNA templates multiple times per replication cycle ("copy-choice" recombination). A single co-infected cell can thus generate a multi-switch recombinant in a single generation. Conversely, in bacteria or double-stranded DNA viruses, multiple $B$ tracts often represent independent horizontal gene transfer (HGT) events separated by decades.
+
+#### The Manifold Test: Donor Coordinate Invariance
+RhizAeon resolves this using **Donor Coordinate Invariance**:
+
+1. **Segment Projection:**  
+   Extract the sub-matrices corresponding to each disjoint $B$ segment: $B_1$, $B_2$, $B_3$.
+2. **Latent Embedding Evaluation:**  
+   Project each segment $B_m$ into the donor reference manifold $\mathcal{M}_B$:
+   $$\mathbf{z}_m(R) = \mathbf{V}_B \boldsymbol{\Lambda}_B^{1/2} \, \mathbf{D}_{B_m}(R, \text{Clade } B)$$
+3. **The Single-Step Invariance Hypothesis:**  
+   - **Single-Step Event (Template Switching):** If all $B$ segments originated from the *exact same donor virus* during a single round of reverse transcription, the relative branch lengths and projected coordinates $\mathbf{z}_1(R), \mathbf{z}_2(R), \mathbf{z}_3(R)$ will be statistically indistinguishable within Clade $B$:
+     $$\|\mathbf{z}_i(R) - \mathbf{z}_j(R)\|_2 \le \epsilon_{\text{Poisson}}$$
+     Furthermore, private derived mutations in the donor backbone will be identically shared across all $B$ tracts.
+   - **Multi-Step Generation Cascade:** If $B_1$ was acquired from an ancestral Subtype B lineage in 1985, while $B_2$ was acquired from a contemporary Subtype B variant in 2005, their manifold projections will land on distinct sub-clades or branch depths along the Subtype B tree. The genetic distance $D(R_{B_1}, R_{B_2})$ relative to the Clade B consensus reflects decades of intervening divergence, decisively refuting a single-step origin.
+
+---
+
+### 13.2 Disentangling Convergent Recombination from Common Ancestral Descent
+
+A frequent trap in recombination epidemiology is confounding **convergent recombination hotspots** with **shared phylogenetic ancestry**.
+
+Consider two patient isolates with superficially similar mosaic profiles:
+$$\text{Taxon 1: } A_1 - \mathbf{B}_{[300, 600]} - A_2$$
+$$\text{Taxon 2: } A_1 - \mathbf{B}_{[400, 600]} - A_2$$
+
+Did Taxon 1 and Taxon 2 descend from a **single ancestral recombinant** (with subsequent neutral drift or a secondary micro-recombination trimming the 100 bp difference)? Or did two completely unrelated lineages undergo **independent convergent recombination** at a mechanistic breakpoint hotspot (e.g., an RNA hairpin loop or polymerase pausing site)?
+
+RhizAeon disentangles this through a dual geometric and genealogical test:
+
+#### 1. Manifold Streamlines ("Formation Flights")
+In Section 6.5, we established that co-descended recombinant clades travel as a **formation flight**: their trajectory vectors across the chromosome are tightly bundled in metric space:
+$$\cos \theta(R_1, R_2; s) = \frac{\langle \Delta \mathbf{Z}_1(s), \, \Delta \mathbf{Z}_2(s) \rangle}{\|\Delta \mathbf{Z}_1(s)\| \|\Delta \mathbf{Z}_2(s)\|} \approx 1.0 \quad \forall s$$
+If Taxon 1 and Taxon 2 share a common recombinant ancestor, their entire genomic flight path—not just the recombinant tract, but the clonal backbone $A$ as well—will share a common trajectory displacement. If they are independent convergent events, their backbone trajectories will inhabit distinct regions of Clade $A$, demonstrating separate lineages of origin.
+
+#### 2. Recombinant Synapomorphy Test
+Inside the shared recombinant window ($[400, 600]$ nt):
+- If the crossover occurred once in an ancestral recombinant, subsequent transmission will accumulate **synapomorphic (private derived) mutations** inside the $B$ tract that are present in both Taxon 1 and Taxon 2, but absent in all known parental donor sequences in Clade $B$.
+- If the events were independent convergent imports from the circulating Clade $B$ pool, the two taxa will carry distinct, uncorrelated alleles within the tract, matching independent draws from Clade $B$'s diversity.
+
+---
+
+### 13.3 The Evolutionary Sieve: Uniting RhizAeon with HyphAeon Selection and Epistatic Sectors
+
+The ultimate convergence in the Aeon architecture is uniting **RhizAeon** (which detects physical reticulation) with **HyphAeon** (which models codon-level selection $dN/dS$ and epistatic sectors):
+
+```
+                        THE EVOLUTIONARY RECOMBINATION SIEVE
+                        
+           MECHANISTIC DNA / RNA ARCHITECTURE         OBSERVED CHROMOSOMAL MOSAICS
+         (Chi motifs, GC skew, hairpins, pol pause)   (RhizAeon Breakpoint Density)
+                           │                                        │
+                           └───────────────────┬────────────────────┘
+                                               │
+                                               ▼
+                              SELECTIVE SIEVE ENRICHMENT RATIO
+                              S_sel(s) = λ_obs(s) / λ_mech(s)
+                                               │
+                        ┌──────────────────────┴──────────────────────┐
+                        ▼                                             ▼
+             PURIFYING DESERT (S_sel << 1)               ADAPTIVE HOTSPOT (S_sel >> 1)
+         Mechanistically permitted, but              Mechanistically rare or neutral, but
+         purged by negative selection                strongly amplified by positive selection
+                        │                                             │
+                        ▼                                             ▼
+               HYPHAEON ESSM ENGINE                        HYPHAEON MEME TRANSFORMER
+           Disrupts dense epistatic protein             Recurrent non-synonymous clustering
+           sectors; lethal network crash                (dN/dS >> 1); antigenic escape / AMR
+```
+
+#### 1. Defining the Selective Sieve Ratio
+Recombination frequency across a chromosome is not uniform. However, a high observed crossover density at locus $s$ can arise from two radically different processes:
+1. **Mechanistic Hyper-recombination:** The biophysical DNA/RNA substrate predisposes the region to strand breakage and crossing-over (e.g., Chi octamers `5'-GAGAATGA-3'` in bacteria, retroviral stem-loop dimerization hairpins, high GC skew, replication fork arrest sites).
+2. **Adaptive Fixation:** The crossover rate is ordinary, but mosaics that acquire foreign alleles at locus $s$ experience strong positive selection, allowing them to rapidly fix in the population.
+
+We decouple these forces using the **Selective Sieve Ratio**:
+$$\mathcal{S}_{\text{sel}}(s) = \frac{\lambda_{\text{obs}}(s)}{\lambda_{\text{mech}}(s)}$$
+where $\lambda_{\text{mech}}(s)$ is the baseline mechanistic recombination rate predicted from biophysical substrate sequence features alone, and $\lambda_{\text{obs}}(s)$ is the empirical changepoint density inferred by RhizAeon.
+
+#### 2. Adaptive Hotspots ($\log_2 \mathcal{S}_{\text{sel}} > +2.0$): Tracking Positive Selection Across Imports
+When an apparent recombination hotspot exhibits $\mathcal{S}_{\text{sel}} \gg 1$, foreign alleles are being actively retained.
+
+Here, HyphAeon's neural $dN/dS$ engine (the MEME transformer) inspects the imported codons:
+- **Synonymous vs. Non-Synonymous Support:** If the imported tract carries dense clusters of non-synonymous mutations ($k_n \ge 4$) with high $dN/dS$ ($\omega > 1$) and elevated directional attention drift $\|\Delta \mathbf{S}_i\|$, the introgression is **adaptively driven**.
+- **Real-World Examples:**
+  - *Streptococcus pneumoniae* penicillin-binding protein *pbp2x* and capsule polysaccharide locus *cps*: recurrent mosaic imports that confer $\beta$-lactam resistance and vaccine escape.
+  - SARS-CoV-2 Spike Receptor Binding Domain (RBD): recurrent recombinant cassette swaps between sublineages (e.g. XBB) that combine convergent antibody-evading mutations.
+
+#### 3. Purifying Deserts ($\log_2 \mathcal{S}_{\text{sel}} < -1.5$): Epistatic Incompatibility and Network Collapse
+Conversely, what explains "recombination coldspots" where DNA sequence identity is high ($>98\%$), Chi motifs are abundant, yet **zero crossovers are ever observed** in nature?
+
+Classical phylogenetic tools interpret these coldspots as mechanistic blanks. However, HyphAeon's **Epistatic Sector Mining (ESSM)** reveals the true cause: **epistatic protein-protein incompatibility**.
+- Core macromolecular machines (the bacterial ribosome, the viral replication complex, RNA polymerase) consist of tightly co-adapted networks of interacting residues.
+- If a recombination event imports a foreign fragment of RNA polymerase into a host backbone, the chimeric protein suffers steric clashes or electrostatic repulsion at internal residue interfaces.
+- The recombinant virus or bacterium is non-viable and gets ruthlessly purged by purifying selection before it can ever be sampled in a clinical cohort.
+
+By connecting RhizAeon's manifold changepoints with HyphAeon's epistatic sector maps, the investigator can distinguish between regions where recombination **cannot physically happen** and regions where recombination **happens constantly, but is instantly fatal**.
 
 ---
 The mathematical formulations and formal proofs for each of these components are documented in [docs/rhizaeon_methods_mathematical_details.md](file:///Users/sergei/Projects/TOGA_MEME/recombination/docs/rhizaeon_methods_mathematical_details.md).
