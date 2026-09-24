@@ -545,6 +545,60 @@ Instead, **Trigger 3 (Ghost Introgression)** fires automatically. The query sequ
 **(E) RhizAeon Tier 1 Multi-Channel Velocity Screening.** Velocity to $P_1$ surges to 0.13 while velocity to $P_2$ remains elevated (0.12). Simultaneously, private mutation flux increases by $+0.11$ subst/nt, triggering an automated unsampled ghost donor diagnostic flag.  
 **(F) RhizAeon Tier 2 Latent Attention Routing.** Attention to $P_1$ collapses to zero, and 98% of attention routes to the unassigned $[\text{ROOT}]$ token while the Ghost Node residual score spikes to $+4.8\sigma$ ($Z \ge 2.75$). Spectral displacement cleanly inserts an ancestral ghost node into the reconstructed recombination graph without requiring the physical donor in the alignment.
 
+#### 7. Ghost Introgression Across Evolutionary Scales: From Inter-Subtype Jumps to Intra-Subtype Transmission Ghosts
+
+An acute insight into real-world molecular epidemiology is that **ghost lineages are not merely ancient, deeply divergent ancestors**:
+> *"The ghost lineage problem crops up at all scales of the analysis—e.g. at the intra-subtype level too and not just the inter-subtype level. In an ongoing outbreak, the true parental donor is frequently an unsequenced patient or unsampled farm flock separated by only 1% or 2% divergence. How well does the High Kinetic Strain ($Z \ge 3.0$) + Collapsed L-PIR ($\text{L-PIR} < 0.25$) discriminator work across these different levels?"*
+
+To understand how the discriminator operates across scales, we must recognize a fundamental physical asymmetry between its two components: **L-PIR is naturally scale-invariant (dimensionless), whereas Kinetic Strain $Z$ depends on the total mutational payload.**
+
+```
+                        THE THREE GHOST REGIMES
+                        
+  MACRO-SCALE (Inter-Subtype)       MESO-SCALE (Intra-Subtype)        MICRO-SCALE (Ultra-Low)
+  Divergence: d >= 10-25%          Divergence: d ~ 1-5%             Divergence: d < 0.5%
+  e.g. SIV/HIV, Subtype A x B      e.g. Subtype B local clusters    e.g. Intra-Omicron BA.5
+  Payload: m ~ 30-75 SNPs          Payload: m ~ 5-15 SNPs           Payload: m ~ 0-2 SNPs
+  ───────────────────────────────  ───────────────────────────────  ───────────────────────────────
+  • Z = 6.0 to 15.0+               • Z = 4.0 to 8.0                 • Z < 2.0 (Noise floor)
+  • L-PIR = 0.000                  • L-PIR = 0.000                  • Tier 1 derivative blinds
+  • Trigger 3 fires instantly      • Trigger 3 fires cleanly        • HANDS OFF TO TIER 2
+                                                                      (Latent Attention to [ROOT])
+```
+
+##### 1. Why L-PIR is Naturally Scale-Invariant
+Recall the L-PIR formulation:
+$$\text{L-PIR} = \frac{D_L(R, P_2) - D_L(R, P_1)}{D_L(P_1, P_2)} \times \frac{D_R(R, P_1) - D_R(R, P_2)}{D_R(P_1, P_2)}$$
+- Notice that **both the numerator (the distance difference) and the denominator (inter-parental divergence) are measured in units of sequence divergence ($d$)**.
+- If we zoom in from an inter-subtype cohort ($d \approx 0.20$) down to an intra-subtype cohort ($d \approx 0.02$), **both the numerator and the denominator contract by the exact same tenfold factor**.
+- If the authentic donor is an unsampled ghost (whether at 20% divergence or 2% divergence), the recombinant $R$ carries private ghost mutations. On the right flank, $R$ acts as an outgroup to the local sampled cluster ($P_1, P_2$), making it roughly equidistant from all of them:
+  $$D_R(R, P_1) \approx D_R(R, P_2) \implies D_R(R, P_1) - D_R(R, P_2) \approx 0.000$$
+- Therefore, the directional contrast numerator **collapses to zero at every scale**. L-PIR is intrinsically dimensionless; it measures the *fraction of parental divergence traversed*, ensuring that `Collapsed L-PIR` holds universally across all phylogenetic depths.
+
+##### 2. Why Kinetic Strain ($Z$) Stays Robust Down to ~1% Divergence
+Kinetic strain $Z = \frac{\mathcal{K} - \mu_{\mathcal{K}}}{\sigma_{\mathcal{K}}}$ measures whether coordinate displacement $\Delta \mathbf{y}$ rises above the background Poisson noise floor. Its signal-to-noise ratio is governed by the **mutational payload** ($m = W \cdot \Delta d$), where $\Delta d$ is the genetic divergence between the ghost donor and the sampled parent across window $W$:
+- In an inter-subtype jump ($W = 300\text{ nt}, \Delta d = 15\%$), the payload is $m \approx 45$ SNPs, yielding massive Procrustes strain ($Z = 6.0\text{--}15.0+$). For example, documented Group M/O recombinant `KY359381` produces $Z = 13.64$.
+- In an intra-subtype jump ($W = 300\text{ nt}, \Delta d = 1\%\text{--}3\%$), the payload is $m \approx 4\text{--}10$ SNPs. 
+- Why doesn't $Z$ drop below threshold here? **Because in an intra-subtype cohort, the background clonal noise floor ($\mu_{\mathcal{K}}, \sigma_{\mathcal{K}}$) also contracts by an order of magnitude!** Because the non-recombinant reference taxa are closely related, the coordinate system is quiet. A localized cluster of even 4–5 private substitutions represents a statistically undeniable excursion from the local Procrustes plane.
+- **Empirical Validation (from our 370-alignment Ghost Benchmark Suite):**
+  - At $\Delta d = 5\%$ ghost drift: **Max Kinetic $Z = 8.01$, Detection Power = 95.0%**
+  - At $\Delta d = 3\%$ ghost drift: **Max Kinetic $Z = 5.67$, Detection Power = 100.0%**
+  - At $\Delta d = 1\%$ ghost drift: **Max Kinetic $Z = 5.03$, Detection Power = 95.0%**
+- Even with only 1% donor divergence, the standardized kinetic strain remains above $Z \ge 5.0$, far surpassing the $Z \ge 3.0$ trigger threshold.
+
+##### 3. The Physical Resolution Floor and the Tier 2 Neural Hand-off ($d < 0.5\%$)
+When donor divergence drops into the ultra-low regime ($\Delta d < 0.5\%$, e.g., transmission pairs within an identical outbreak or bacterial micro-evolution) or tracts are extremely short ($W < 100\text{ bp}$), the mutational payload drops to $m \le 1\text{--}2$ SNPs.
+
+Here, we reach the **fundamental physical limit of distance-based geometry**:
+- A single isolated nucleotide substitution is statistically indistinguishable from a standard de novo Poisson mutation along a terminal branch.
+- In this regime, Tier 1's kinetic strain drops to $Z < 2.0$.
+- Rather than hallucinating a false crossover (the failure mode of 3Seq and heuristic sliding windows), Tier 1 remains silent.
+- Instead, **Trigger 2 (Low Divergence / Mutation Void, $k < 4$ SNPs)** catches the region and hands it off to the **PhyloAxialTransformer (Tier 2)**:
+  1. Multi-head cross-attention evaluates contextual mutation covariance across alignment columns without requiring Euclidean displacement.
+  2. The unassigned private alleles divert cross-attention to the **$[\text{ROOT}]$ token** ($A_{i0} \ge 0.35$).
+  3. The latent hidden state leaves an orthogonal projection residual ($\mathbf{r}_{\text{ghost}}(s) = \mathbf{h}(s) - \mathbf{P}_{\text{sampled}}\mathbf{h}(s)$), spiking the **Ghost Node Leverage score** ($Z_{\text{ghost}} \ge 3.0$).
+  4. If the data is so sparse that no method can separate recombination from homoplasy, the **Conformal Prediction engine** widens the prediction set to include the clonal null, preserving rigorous error control.
+
 ---
 
 ### 8.2 The Crossover Validation Gate: Filtering Rate Variation
