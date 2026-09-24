@@ -318,6 +318,81 @@ While Figure 1 showed the static global snapshot, Figure 2 demonstrates the dyna
 
 ---
 
+### 6.5 Air Traffic Control on Sequence Manifolds: Formation Flights (Recombinant Clades) and Multi-Stop Journeys (Recombinants of Recombinants)
+
+A natural and critical question arises when contemplating Figure 2:
+> *"In real-world epidemics, we rarely analyze a single isolated recombinant like KAL153. What happens when an entire circulating recombinant form (CRF) leaves hundreds or thousands of progeny (e.g., HIV-1 CRF01_AE with 2,500 genomes, or SARS-CoV-2 XBB with hundreds of thousands)? Do their flight paths turn metric space into an indecipherable swarm of buzzing mosquitoes? And what happens when a recombinant recombines again with another lineage—a 'recombinant of recombinants' (e.g., CRF01_AE $\times$ Subtype B)? Does the geometry descend into chaotic turbulence?"*
+
+The short answer is: **No. Rather than descending into chaos, sequence manifold geometry actually becomes cleaner, more structured, and statistically more powerful.** 
+
+Here is the exact physical and mathematical intuition for both phenomena:
+
+```
+A. FORMATION FLIGHT (Recombinant Clades / CRFs)
+   All progeny share the founding crossover junction s*.
+   Trajectories form a coherent bundle (streamlines) with co-phased velocity spikes:
+
+   Clade A Orbit ──────────┐
+                           │ (Synchronized Velocity Spike v(s*) at Breakpoint)
+                           ▼
+   Clade B Orbit           ═══════════════════════════════════════════════════►
+                           [ Cohort SNR improves by sqrt(M); Variance collapses ]
+
+B. MULTI-STOP JOURNEYS (Recombinants of Recombinants / Complex URFs)
+   Trajectories do not hover in intermediate fog; they execute piecewise linear leaps:
+
+   y(s) 
+    ▲
+    │         [Leg 1: Orbit Clade A]   [Leg 2: Orbit Clade B]   [Leg 3: Orbit Clade C]
+    │        ────────────────────────┐                        ┌───────────────────────►
+    │                                │                        │
+    │                                └────────────────────────┘
+    └─────────────────────────────────────────────────────────────────────────────────► s
+                                     s1 (Junction 1)          s2 (Junction 2)
+```
+
+#### 1. Formation Flights and Bundled Streamlines (Co-Descended Recombinant Clades)
+When an ancestral recombinant $R_{\text{ancestor}}$ successfully establishes transmission (founding a Circulating Recombinant Form like HIV-1 CRF01_AE, CRF02_AG, or SARS-CoV-2 XBB), it generates $M$ co-descended progeny. 
+
+Crucially, **all progeny inherit the identical breakpoint junctions**. Subsequent evolution consists strictly of neutral intra-clade drift and lineage diversification:
+1. **Bounded Intra-Clade Dispersion:**  
+   In metric space, the genetic diameter within a clade is small ($\sigma^2_{\text{clade}} \approx 0.01\text{--}0.03$), whereas the metric distance separating major parental clades is an order of magnitude larger ($D(A, B) \approx 0.15\text{--}0.25$). Consequently, individual genomes do not scatter randomly across the space; they travel as a **tight, coordinated "formation flight"** (or streamline bundle) around the clade consensus trajectory:
+   $$\mathbf{y}_m(s) = \mathbf{y}_{\text{consensus}}(s) + \boldsymbol{\epsilon}_m(s), \quad \text{where } \|\boldsymbol{\epsilon}_m(s)\| \ll \|\Delta \mathbf{y}_{\text{crossover}}\|$$
+2. **Co-Phased Velocity Spikes:**  
+   When the sliding window crosses the breakpoint junction $s^*$, all $M$ trajectories execute the step transition simultaneously. Their coordinate velocity vectors $\mathbf{v}_m(s) = \frac{d\mathbf{y}_m}{ds}$ spike in the **exact same direction at the exact same genomic coordinate**:
+   $$\mathbf{v}_m(s^*) \approx \mathbf{v}_{\text{consensus}}(s^*) \gg \mathbf{0}$$
+3. **The Sieve Effect (Noise Cancellation):**  
+   Far from confusing the algorithm, population-level expansion dramatically *strengthens* detection. By applying Functional Principal Component Analysis (FPCA) or centroid pooling across the cohort, the Poisson substitution noise of individual sequences cancels out ($\mathcal{O}(1/\sqrt{M})$), while the coherent crossover displacement remains constant. A recombinant clade with 500 sequences produces a kinetic signal that is vastly sharper and more undeniable than any single isolate.
+
+![Figure 2.5: Alluvial Genome River of HIV-1 CRF01_AE Across 14 Structural Domain Cassettes](../paper/figures/river_hiv1_crf01_ae_clean.png)
+
+**Figure 2.5. Alluvial Genome River of HIV-1 CRF01_AE Across 14 Structural Domain Cassettes.**  
+Empirical demonstration of formation flight across 2,494 patient genomes belonging to HIV-1 CRF01_AE (accounting for 7.69% of the global HIV-1 cohort). Rather than a chaotic cloud, genomes flow in synchronized, laminar streams across structural domain boundaries. Notice how the entire population coherently tracks Subtype A in the Protease cassette (`SDC04_POL_PR`) before transitioning back into surrounding structural cassettes, demonstrating that population-wide recombination on sequence manifolds is fundamentally laminar, not turbulent.
+
+---
+
+#### 2. Multi-Stop Journeys and Piecewise Geodesics (Recombinants of Recombinants)
+What happens when a recombinant lineage subsequently recombines with a third lineage, or with another recombinant (e.g., an HIV-1 Unique Recombinant Form [URF] formed between CRF01_AE and Subtype B)?
+
+1. **No Intermediate "Fog":**  
+   A common intuition is that second-order recombinants might wander into an ambiguous center of mass, hovering in a phylogenetic limbo. But biological recombination is a copy-choice template switch: at any given nucleotide, the polymerase is copying *one specific physical parent*. Therefore, in metric space, the offspring $R^*$ does not drift into no-man's-land; it is bound to the manifold of whichever parent donated that specific block:
+   - For nucleotide interval $[0, s_1]$, $R^*$ tracks the CRF01_AE streamline.
+   - At junction $s_1$, it undergoes an instantaneous coordinate displacement $\Delta \mathbf{y} = \mathbf{y}_B - \mathbf{y}_{\text{01\_AE}}$ and settles directly into the Subtype B orbit.
+   - At junction $s_2$, if it acquires a fragment from Subtype C, its trajectory executes another sharp step transition into Clade C.
+2. **Piecewise Geodesic Flight Paths:**  
+   The resulting trajectory $\mathbf{y}_{R^*}(s)$ is a **piecewise linear itinerary** connecting discrete attractor basins:
+   $$\mathbf{y}_{R^*}(s) = \sum_{k=1}^K \mathbf{y}_{\text{parent}(k)}(s) \cdot \mathbb{I}(s \in [b_{k-1}, b_k])$$
+3. **Decoupled Resolution via RP-FDA (Section 7):**  
+   Because RhizAeon's Recursive Partitioning (RP-FDA) solves breakpoints hierarchically rather than simultaneously:
+   - The primary search (Level 0) detects the most energetic dislocation step (e.g., the crossing from CRF01_AE to Subtype B).
+   - Bisecting the chromosome isolates the sub-segments into independent coordinate domains.
+   - Level 1 recursion searches within the isolated sub-segments, detecting the secondary junctions (e.g., the internal CRF01_AE breakpoints) without mathematical interference from the distal crossover.
+   - Total Variation regularized filtering (Condat $\mathcal{O}(L)$) strips away Poisson chatter, yielding an unambiguous sequence of discrete parental plates.
+
+In summary: **Recombinant clades fly in tight formation (streamlines), while second-generation recombinants take multi-stop connecting flights.** The metric manifold acts as an air traffic control radar, resolving every flight path into discrete, identifiable corridors.
+
+---
+
 ## 7. Recursive Binary Partitioning (RP-FDA): Dividing and Conquering the Chromosome
 
 With continuous trajectories and dislocation screening established, how do we segment an entire chromosome that may contain multiple nested recombinant tracts?
@@ -395,6 +470,82 @@ What occurs when recombination involves an **unsampled ("ghost") lineage** not p
 - **The Diagnostic Signature:**
   $$\text{High Kinetic Strain } (Z \ge 3.0) \quad \text{AND} \quad \text{Collapsed L-PIR } (\text{L-PIR} < 0.25)$$
 - This specific discordance proves that a true topological migration occurred, but the donor parent is missing from the cohort. Rather than discarding the event, RhizAeon flags the locus as an **Introgression from an Unsampled Ghost Lineage** and routes the interval directly to the **Tier 2 Attention Transformer** (Section 10).
+
+#### 6. The Asymmetric Parent Trap: Why Missing Clades Never Invert Parentage to Accuse Clonal Reference Taxa
+
+A sophisticated challenge in recombination detection concerns **asymmetric sampling density** when one parental lineage is missing:
+> *"Suppose parent clade B is completely unobserved (an unsampled ghost), while parent clade A is richly sampled with closely related members $A_1, A_2, \dots$ Recombinant $R$ inherits its left flank from $A_1$, but its right flank from missing clade B. On the left flank, $R$ is close to $A_1$. On the right flank, because B is an outgroup to all of Clade A, $R$ is distant from both $A_1$ and $A_2$, whereas $A_1$ and $A_2$ remain closely related sisters. In a bilateral tug-of-war, $A_1$ is close to $R$ on the left, but closer to $A_2$ on the right. Wouldn't the method invert parentage and falsely accuse $A_1$ of being a recombinant child between $A_2$ and $R$?"*
+
+In classical triplet scanning heuristics (such as 3Seq), this scenario is a notorious failure mode. Because triplet methods test all permutations of $\{A_1, A_2, R\}$ symmetrically without directional orientation, they can easily confuse which sequence is the recombinant and which is the parent, falsely flagging $A_1$ as a recombinant child.
+
+**In RhizAeon, this inversion is mathematically and architecturally impossible.** Four independent firewalls prevent the "Asymmetric Parent Trap" from ever accusing clonal reference taxa:
+
+```
+               LEFT FLANK (s <= s*)                      RIGHT FLANK (s > s*)
+         (R derived from Clade A / A1)              (R derived from Ghost Clade B)
+     
+        A1 ───(0.02)─── R                         A1 ─────────(0.05)───────── A2
+        │               │                          │                           │
+      (0.05)          (0.05)                     (0.20)                      (0.20)
+        │               │                          │                           │
+        └────── A2 ─────┘                          └──────────── R ────────────┘
+     
+     D_L(R, A1) = 0.02, D_L(R, A2) = 0.05       D_R(R, A1) = 0.20, D_R(R, A2) = 0.20
+     D_L(A1, A2) = 0.05                         D_R(A1, A2) = 0.05
+```
+
+##### Firewall 1: Kinetic Screening Nomination Precedes Parentage Evaluation
+In RhizAeon, parent identification via L-PIR is **never executed across arbitrary triplets**. A sequence is only tested as a potential recombinant if its *own individual trajectory* exhibits statistically significant bilateral manifold dislocation:
+$$\mathcal{K}_i(s) = \|\Delta \mathbf{y}_i(s)\|^2, \quad Z_i(s) = \frac{\mathcal{K}_i(s) - \mu_{\mathcal{K}}}{\sigma_{\mathcal{K}}} \ge 3.0$$
+
+- **The Trajectory of Clonal Sister $A_1$:**  
+  Across the entire chromosome, $A_1$ resides comfortably inside Clade A. On the left flank, it is in Clade A; on the right flank, it is in Clade A. Its bilateral coordinate displacement is near zero ($\Delta \mathbf{y}_{A_1} \approx \mathbf{0}$), producing a baseline noise score: $Z_{A_1}(s) \le 1.2 \ll 3.0$. **$A_1$ is never nominated as a candidate recombinant.** It is completely ignored by the parentage engine.
+- **The Trajectory of Recombinant $R$:**  
+  On the left flank, $R$ orbits Clade A; on the right flank, its trajectory launches toward the distant ghost region. Its coordinate displacement is massive, yielding $Z_R(s) = 5.2 \ge 3.0$. **Only $R$ is nominated.**
+
+##### Firewall 2: Mathematical Collapse of the L-PIR Contrast Numerator ($\text{term}_2 \to 0$)
+Suppose an adversary deliberately bypasses kinetic screening and forces RhizAeon to test whether $R$ is a recombinant formed between parents $P_1 = A_1$ and $P_2 = A_2$. 
+
+Let us compute L-PIR explicitly using the observed distances:
+$$\text{term}_1 = \frac{D_L(R, A_2) - D_L(R, A_1)}{D_L(A_1, A_2)} = \frac{0.05 - 0.02}{0.05} = +0.60 > 0$$
+Now examine the right-flank contrast term:
+$$\text{term}_2 = \frac{D_R(R, A_1) - D_R(R, A_2)}{D_R(A_1, A_2)}$$
+Because $R$'s right flank was donated by missing Clade B, $R$ is an **outgroup to the entire Clade A**. By the fundamental triangle inequality of additive phylogenetic tree metrics, the distance from an outgroup lineage to any member of an ingroup clade is identical (the distance through the common ancestral node):
+$$D_R(R, A_1) \approx D_R(R, A_2) \approx D(\text{Clade A}, \text{Clade B}) = 0.20$$
+Therefore, the directional contrast numerator **vanishes completely**:
+$$D_R(R, A_1) - D_R(R, A_2) \approx 0.20 - 0.20 = 0.000$$
+$$\text{term}_2 \approx \frac{0.000}{0.05} = 0.000 \implies \text{L-PIR} = \text{term}_1 \times \text{term}_2 = 0.60 \times 0.000 = \mathbf{0.000}$$
+Because $\text{L-PIR} = 0.000 \ll 0.25$, the candidate pair $(A_1, A_2)$ is instantly rejected. An outgroup lineage can *never* produce an affinity inversion between two sister taxa!
+
+##### Firewall 3: Geometric Outgroup Bounding ($\beta = 1.25$)
+RhizAeon's geometric outgroup bound mandates that candidate parent $P_2$ must reside in the immediate phylogenetic neighborhood of query $R$:
+$$D_R(R, P_2) \le \beta \cdot D_R(P_1, P_2)$$
+Here, $P_1 = A_1$ and $P_2 = A_2$:
+- $D_R(R, A_2) = 0.20$ (inter-clade distance to missing donor)
+- $D_R(A_1, A_2) = 0.05$ (intra-clade sister divergence)
+- The ratio is:
+  $$\frac{D_R(R, A_2)}{D_R(A_1, A_2)} = \frac{0.20}{0.05} = \mathbf{4.00} \gg 1.25$$
+$R$ is **400% farther from $A_2$ than $A_1$ is from $A_2$**. The geometric bound condition fails catastrophically, disqualifying $A_2$ before any parentage call can be considered.
+
+##### Firewall 4: Trigger 3 Automated Handoff to Tier 2 (Ghost Node Resolution)
+Because $R$ exhibits undeniable kinetic strain ($Z_R \ge 3.0$) but no sampled sequence in the alignment satisfies L-PIR ($\text{L-PIR} < 0.25$ across all sampled pairs), RhizAeon does not guess or force a false attribution.
+
+Instead, **Trigger 3 (Ghost Introgression)** fires automatically. The query sequence is handed off to the Tier 2 neural attention transformer:
+- As shown in Figure 3.5, rather than assigning the right flank to Clade A, Tier 2 directs 98% of its attention to the **unassigned $[\text{ROOT}]$ token** ($A_{i0} \ge 0.35$).
+- The latent residual score surges to $+4.8\sigma$ ($Z \ge 2.75$).
+- Tier 2's spectral displacement operator creates a de novo **ancestral ghost node** on the reticulate network, perfectly resolving the introgression without corrupting the clonal integrity of $A_1$ or $A_2$.
+
+![Figure 3.5: Breakdown of Classical Heuristics vs. RhizAeon Resolution Under Ghost Introgression](../paper/figures/fig_ghost_triplet_walkthrough.png)
+
+**Figure 3.5. Breakdown of Classical Recombination Detection Heuristics vs. RhizAeon Resolution Under an Unsampled Ghost Parent Introgression (3,000 nt Benchmark).**  
+**(A) True Mosaic Architecture.** Sampled donor $P_1$ (nt 1--1,800), unsampled ghost donor $G$ (nt 1,800--3,000), distant sampled reference $P_2$, and recombinant query $R$. Informative sites matching $P_1$ (107 sites) dominate the 5' segment, but downstream matches to $P_2$ fail to appear; instead, 109 private mutations erupt across $R$.  
+**(B) 3Seq Random Walk Failure.** Because 3Seq discards private mutations in $R$ and $P_2$ is not the true donor, the random walk climbs to $+84$ at nt 1,800 and flatlines horizontally without descending ($p = 0.42$, non-significant).  
+**(C) Classical Heuristic Degradation.** MaxChi $\chi^2$ collapses to baseline noise ($\chi^2 = 9.9$, non-significant). BootScan exhibits a double-dip collapse where identity to all sampled taxa drops below 88%; no crossover emerges.  
+**(D) Phylogenetic Profile Likelihood on Unrooted Trees.** On three leaves, only one unrooted tree topology exists; GARD cannot switch branching order, so the likelihood gain ($\Delta \ln L \approx 80$) merely reflects pendant branch elongation driven by private mutations. Kishino-Hasegawa topological tests fail, and tree tools dismiss the event as site-to-site rate variation.  
+**(E) RhizAeon Tier 1 Multi-Channel Velocity Screening.** Velocity to $P_1$ surges to 0.13 while velocity to $P_2$ remains elevated (0.12). Simultaneously, private mutation flux increases by $+0.11$ subst/nt, triggering an automated unsampled ghost donor diagnostic flag.  
+**(F) RhizAeon Tier 2 Latent Attention Routing.** Attention to $P_1$ collapses to zero, and 98% of attention routes to the unassigned $[\text{ROOT}]$ token while the Ghost Node residual score spikes to $+4.8\sigma$ ($Z \ge 2.75$). Spectral displacement cleanly inserts an ancestral ghost node into the reconstructed recombination graph without requiring the physical donor in the alignment.
+
+---
 
 ### 8.2 The Crossover Validation Gate: Filtering Rate Variation
 Not every distance shift is recombination. A lineage might undergo a localized acceleration in evolutionary rate (e.g. an intra-host selective sweep), causing its distance to increase relative to all clades.
