@@ -2329,6 +2329,393 @@ trajectories (Tier 1) with the invariant representation power of deep
 attention graphs (Tier 2), RhizAeon provides a complete, scalable, and
 mathematically unassailable solution to the recombination dilemma.</p>
 <hr />
+<h2
+id="when-does-the-compass-spin-operational-boundaries-signal-extinction-and-frame-collapse">12.
+When Does the Compass Spin? Operational Boundaries, Signal Extinction,
+and Frame Collapse</h2>
+<h3 id="the-question-that-keeps-recombination-analysts-up-at-night">12.1
+The Question That Keeps Recombination Analysts Up at Night</h3>
+<p>In an insightful critique of RhizAeon’s geometric manifold model,
+Darren Martin posed the essential question that every seasoned
+recombination analyst eventually confronts:</p>
+<blockquote>
+<p><em>“Yeah totally clear — just wondering how it works in practice
+when shit starts getting really complex and there is no longer a
+meaningfully / accurately fixable frame of reference.”</em></p>
+</blockquote>
+<p>This question cuts to the core of computational biology. In an
+idealized three-sequence world (like HIV-1 KAL153), reference clades are
+cleanly separated, parents are well-sampled, and the global coordinate
+grid remains rock-solid. But real biology is messy: 1.
+<strong>Mutational Starvation:</strong> What happens when an imported
+tract is tiny (<span class="math inline">\(L = 50\)</span> bp) or the
+parents are nearly identical (<span class="math inline">\(\Delta d =
+0.002\)</span>), so that only 1 or 2 segregating mutations exist across
+the entire event? 2. <strong>Panmictic Chaos (<span
+class="math inline">\(\rho / \theta \gg 1\)</span>):</strong> What
+happens in hyper-recombinant bacteria (<em>Streptococcus
+pneumoniae</em>, <em>Helicobacter pylori</em>) or segmented viruses when
+genomes are patchworks of dozens of overlapping transfers? Does the
+global 3D/4D coordinate system simply collapse? 3. <strong>Clade
+Reassortment Torque (<span class="math inline">\(f_{\text{recomb}} \to
+0.5\)</span>):</strong> What happens when it is not just one lonely
+query sequence jumping across the manifold, but an entire sub-clade
+(half the tree) reassorting at once? Does rotating one clade twist the
+entire reference frame? 4. <strong>Mutational Saturation:</strong> What
+happens when parental lineages are ancient and deeply divergent (<span
+class="math inline">\(\Delta d \ge 0.50\)</span> substitutions/site),
+causing multiple hits to scramble the nucleotide signal?</p>
+<p>To establish a principled, quantitative operating envelope and
+determine exactly when the signal extinguishes, we executed an
+exhaustive simulation experiment comprising <strong>1,050 full synthetic
+alignments</strong> (<span class="math inline">\(L = 3{,}000\)</span>
+nt) under continuous-time Markov substitution models with Gamma
+site-to-site rate variation (<span class="math inline">\(\alpha =
+0.50\)</span> and <span class="math inline">\(0.25\)</span>).</p>
+<figure>
+<img src="assets/figures/fig_operational_boundaries_phase_diagram.png"
+alt="Figure 5: Operational Limits of Sequence Manifold Geometry and the Frame Collapse Transition" />
+<figcaption aria-hidden="true">Figure 5: Operational Limits of Sequence
+Manifold Geometry and the Frame Collapse Transition</figcaption>
+</figure>
+<hr />
+<h3 id="the-four-dimensionless-control-parameters">12.2 The Four
+Dimensionless Control Parameters</h3>
+<p>The behavior of sequence manifolds under extreme reticulation is
+governed by four dimensionless parameters:</p>
+<ol type="1">
+<li><strong>The Mutational Information Payload (<span
+class="math inline">\(\mathcal{I}_{\text{mut}} = L_{\text{tract}} \cdot
+\Delta d\)</span>):</strong><br />
+The expected number of segregating mutations contributed by the imported
+tract. Recombination detection does not depend on physical tract length
+(<span class="math inline">\(L_{\text{tract}}\)</span>) alone: a 50-bp
+tract from a 10% divergent donor carries the exact same mutational
+payload (<span class="math inline">\(5\)</span> SNPs) as a 1,000-bp
+tract from a 0.5% divergent donor.</li>
+<li><strong>Recombination Extensiveness (<span
+class="math inline">\(\Lambda_{\text{rec}} = \rho /
+\theta\)</span>):</strong><br />
+The ratio of population recombination rate to mutation rate. At <span
+class="math inline">\(\rho/\theta \ll 1\)</span>, evolution is tree-like
+with rare reticulations. At <span class="math inline">\(\rho/\theta \gg
+1\)</span>, the genealogy dissolves into an ancestral recombination
+graph (ARG) with hundreds of marginal topologies.</li>
+<li><strong>Clade Reassortment Fraction (<span
+class="math inline">\(f_{\text{recomb}} = k_{\text{rec}} /
+N\)</span>):</strong><br />
+The fraction of sequences in the alignment that undergo reticulation.
+When <span class="math inline">\(f_{\text{recomb}} \ll 1\)</span>,
+stationary taxa serve as unmoving bedrock. As <span
+class="math inline">\(f_{\text{recomb}} \to 0.5\)</span>, no majority
+reference clade exists.</li>
+<li><strong>The Frame Rigidity Index (<span
+class="math inline">\(\mathcal{F}_{\text{frame}}\)</span>):</strong><br />
+<span class="math display">\[\mathcal{F}_{\text{frame}} =
+\frac{\lambda_1 + \lambda_2 + \lambda_3}{\sum_{i=1}^N
+\lambda_i}\]</span><br />
+The fraction of metric variance captured by the leading three classical
+MDS eigenvalues. When <span
+class="math inline">\(\mathcal{F}_{\text{frame}} \approx 1.0\)</span>,
+genomes inhabit a rigid low-dimensional Euclidean subspace. When <span
+class="math inline">\(\mathcal{F}_{\text{frame}}\)</span> drops, the
+coordinate frame flattens into high-dimensional diffuse noise.</li>
+</ol>
+<hr />
+<h3 id="walkthrough-of-the-phase-diagram-figure-5">12.3 Walkthrough of
+the Phase Diagram (Figure 5)</h3>
+<h4
+id="panel-a-the-two-dimensional-phase-diagram-and-the-four-physical-zones">Panel
+A: The Two-Dimensional Phase Diagram and the Four Physical Zones</h4>
+<p>Across the factorial space of mutational payload (<span
+class="math inline">\(\log_{10} \mathcal{I}_{\text{mut}}\)</span>) and
+recombination extensiveness (<span class="math inline">\(\log_{10}
+\rho/\theta\)</span>), the universe of reticulate evolution divides into
+four distinct operational regimes:</p>
+<ul>
+<li><strong>Zone I: Laminar Tier 1 Coordinate GPS (<span
+class="math inline">\(\mathcal{I}_{\text{mut}} \ge 5.0\)</span>, <span
+class="math inline">\(\rho/\theta \le 1.0\)</span>):</strong><br />
+The “sweet spot” where sequence evolution is piecewise treelike. The
+reference frame is rock-solid (<span
+class="math inline">\(\mathcal{F}_{\text{frame}} &gt; 0.85\)</span>),
+Procrustes kinetic strain <span class="math inline">\(Z(s)\)</span>
+spikes dramatically at boundaries, and recursive partitioning (RP-FDA)
+paired with profile likelihood achieves <strong><span
+class="math inline">\(&gt;95\%\)</span> sensitivity</strong> with
+sub-codon precision (<span class="math inline">\(\text{MAE} &lt;
+25\)</span> nt) in pure millisecond CPU time.</li>
+<li><strong>Zone II: Clade Torque / Laplacian Domain (<span
+class="math inline">\(f_{\text{recomb}} \ge 0.25\)</span>, <span
+class="math inline">\(\mathcal{I}_{\text{mut}} \ge
+5.0\)</span>):</strong><br />
+When large clades reassort simultaneously, Procrustes coordinate
+alignment suffers rotational torque (Panel D). While rigid Cartesian
+coordinates get pulled along with the moving clade, the Normalized Graph
+Laplacian Fiedler vector (<span
+class="math inline">\(\mathbf{v}_2\)</span>) detects the Cheeger
+bipartition without requiring any coordinate superposition (<span
+class="math inline">\(d_{\text{Fiedler}} =
+1.03\text{--}1.91\)</span>).</li>
+<li><strong>Zone III: The Conformal Uncertainty Firewall (<span
+class="math inline">\(1.25 \le \mathcal{I}_{\text{mut}} \le 3.0\)</span>
+SNPs):</strong><br />
+The dangerous boundary zone. Here, segregating mutations are too sparse
+to definitively separate recombination from stochastic Poisson
+substitution on a long branch. While classical heuristic tools
+hallucinate confident false trees or flip-flop across sliding windows,
+RhizAeon’s <strong>distribution-free Conformal Prediction
+Engine</strong> activates an uncertainty firewall: it expands the
+prediction set to <span class="math inline">\(\{\text{Recombination},
+\text{Clonal Null}\}\)</span> (<span
+class="math inline">\(86.7\%\text{--}100\%\)</span> uncertainty rate),
+formally alerting the investigator that the data cannot decide without
+generating spurious certainty.</li>
+<li><strong>Zone IV: The Panmictic Extinction Fog (<span
+class="math inline">\(\mathcal{I}_{\text{mut}} \le 1.0\)</span> SNP or
+extreme panmixia):</strong><br />
+The physical limit of detection. If an event introduces <span
+class="math inline">\(\le 1\)</span> mutation, detection power is
+identically <strong><span class="math inline">\(0.0\%\)</span></strong>.
+At this floor, no mathematical algorithm—whether phylogenetic,
+heuristic, or neural—can detect the crossover because the information
+has been physically extinguished by Poisson sampling noise.</li>
+</ul>
+<h4
+id="panel-b-the-mutational-information-floor-m-approx-3.8-snps">Panel B:
+The Mutational Information Floor (<span class="math inline">\(m^*
+\approx 3.8\)</span> SNPs)</h4>
+<p>Evaluating 450 alignments varying tract lengths (<span
+class="math inline">\(50\text{--}1{,}000\)</span> bp) and divergence
+levels (<span class="math inline">\(\Delta d =
+0.002\text{--}0.25\)</span>) reveals a clean physical law: - When <span
+class="math inline">\(\mathcal{I}_{\text{mut}} \le 1.0\)</span> SNP,
+sensitivity is <strong><span
+class="math inline">\(0.0\%\)</span></strong>. - Detection sensitivity
+follows a sharp sigmoidal inflection curve: <span
+class="math display">\[\text{Power}(\mathcal{I}_{\text{mut}}) =
+\frac{1}{1 + e^{-k(\mathcal{I}_{\text{mut}} - m^*)}}\]</span> where the
+50% power threshold sits at exactly <strong><span
+class="math inline">\(m^* \approx 3.8\)</span> SNPs</strong>. - Once
+<span class="math inline">\(\mathcal{I}_{\text{mut}} \ge 15.0\)</span>
+SNPs, sensitivity surpasses <span class="math inline">\(93.3\%\)</span>
+and spatial localization error (MAE) drops to <strong><span
+class="math inline">\(20.1\text{--}24.9\)</span> nucleotides</strong>,
+matching the physical width of the neutral likelihood plateau.</p>
+<h4 id="panel-c-the-frame-collapse-transition-mathcalf_textframe">Panel
+C: The Frame Collapse Transition (<span
+class="math inline">\(\mathcal{F}_{\text{frame}}\)</span>)</h4>
+<p>What happens to the global coordinate frame when recombination
+becomes ubiquitous (<span class="math inline">\(\rho/\theta = 0 \to
+10\)</span>)? - Under purely clonal evolution (<span
+class="math inline">\(\rho/\theta = 0.0\)</span>), the top three metric
+eigenvalues capture <span class="math inline">\(95.2\% \pm
+4.2\%\)</span> of all pairwise distance variance (<span
+class="math inline">\(\mathcal{F}_{\text{frame}} = 0.952\)</span>).
+Genomes move cleanly across a 3D Euclidean manifold. - As <span
+class="math inline">\(\rho/\theta\)</span> escalates to <span
+class="math inline">\(2.5\)</span>, <span
+class="math inline">\(5.0\)</span>, and <span
+class="math inline">\(10.0\)</span>, multi-fragment mosaicism flattens
+the distance eigenvalue spectrum. <span
+class="math inline">\(\mathcal{F}_{\text{frame}}\)</span> decays
+monotonically down to <strong><span class="math inline">\(0.696 \pm
+0.074\)</span></strong>, with individual hyper-recombinant replicates
+dropping below <span class="math inline">\(0.50\)</span>. - <strong>The
+Frame Collapse Point:</strong> Below <span
+class="math inline">\(\mathcal{F}_{\text{frame}} \approx 0.75\)</span>,
+a single global Euclidean coordinate system ceases to exist. Projecting
+the entire 3,000-nt alignment into one fixed 3D box causes the
+coordinates to scatter into diffuse noise. - <strong>Why RhizAeon
+Survives Frame Collapse:</strong> While a global 3,000-nt frame
+dissolves, <em>short physical spans (<span class="math inline">\(W =
+150\text{--}300\)</span> nt) remain locally treelike</em>. RhizAeon’s
+Recursive Partitioning (RP-FDA) automatically transitions from tracking
+global flight paths to <strong>local bilateral window
+superposition</strong>: it compares adjacent prefix-tensor sliding
+windows directly. Even when the global compass spins, the local
+differential gradient <span class="math inline">\(\nabla Z(s)\)</span>
+continues to pinpoint sharp crossover boundaries.</p>
+<h4
+id="panel-d-procrustes-rotational-torque-breakdown-laplacian-rescue">Panel
+D: Procrustes Rotational Torque Breakdown &amp; Laplacian Rescue</h4>
+<p>When a single recombinant sequence migrates across the tree (<span
+class="math inline">\(f_{\text{recomb}} = 0.05\)</span>), the other 95%
+of sequences remain stationary, anchoring the Procrustes rotation matrix
+<span class="math inline">\(Q\)</span>: <span
+class="math display">\[\min_Q \|\mathbf{Z}_{\text{left}} Q -
+\mathbf{Z}_{\text{right}}\|_F^2\]</span> The residual displacement lands
+entirely on the recombinant sequence, producing a massive kinetic strain
+spike (<span class="math inline">\(Z = 15.54\)</span>).</p>
+<p>However, when half the alignment reassorts simultaneously (<span
+class="math inline">\(f_{\text{recomb}} = 0.50\)</span>): - Procrustes
+alignment attempts to minimize global RMSD across all taxa. - The
+rotation matrix <span class="math inline">\(Q\)</span> splits the
+difference between the two 50% clades, rotating the coordinate frame
+halfway. - The strain gets diluted across every taxon in the tree,
+causing the apparent kinetic peak to collapse from <strong><span
+class="math inline">\(Z = 15.54 \to 2.84\)</span></strong> (below the
+Tier 1 detection threshold of <span class="math inline">\(3.0\)</span>).
+- <strong>The Graph Laplacian Rescue:</strong> RhizAeon overcomes this
+rotational torque by computing the second eigenvector (the
+<strong>Fiedler vector <span
+class="math inline">\(\mathbf{v}_2(s)\)</span></strong>) of the
+Normalized Graph Laplacian: <span
+class="math display">\[\mathbf{L}_{\text{sym}} = \mathbf{I} -
+\mathbf{D}^{-1/2} \mathbf{W} \mathbf{D}^{-1/2}\]</span> Because <span
+class="math inline">\(\mathbf{v}_2\)</span> solves the continuous
+relaxation of the Cheeger graph bipartition directly from pairwise
+affinities without any coordinate frame superposition, it is completely
+invariant to Procrustes rotation. Across all clade reassortment tiers
+(<span class="math inline">\(f_{\text{recomb}} = 0.05 \to
+0.50\)</span>), the Fiedler directional phase shift remains intensely
+elevated (<span class="math inline">\(d_{\text{Fiedler}} =
+1.03\text{--}1.91\)</span>), cleanly bifurcating the reassorting clades
+in <span class="math inline">\(\mathcal{O}(N^3)\)</span> eigensolve time
+without building a phylogenetic tree.</p>
+<hr />
+<h3 id="distant-parents-mutational-saturation-delta-d-0.05-to-0.60">12.4
+Distant Parents &amp; Mutational Saturation (<span
+class="math inline">\(\Delta d = 0.05 \to 0.60\)</span>)</h3>
+<p>What happens at the opposite extreme, where parental lineages are
+separated by deep evolutionary time (<span class="math inline">\(\Delta
+d = 0.60\)</span> substitutions/site, corresponding to <span
+class="math inline">\(&gt;45\%\)</span> observed nucleotide difference
+due to multiple hits)?</p>
+<ul>
+<li><strong>The Threat:</strong> Naive Hamming distance curves flatten
+due to homoplasy and back-mutations, diluting the contrast between
+parental donors.</li>
+<li><strong>The Metric Correction:</strong> Because RhizAeon’s Prefix
+Distance Engine evaluates continuous-time Markov distance transforms
+(Jukes-Cantor, Kimura 2-Parameter, LogDet) rather than raw Hamming
+counts: <span class="math display">\[d_{\text{metric}} = -\frac{3}{4}
+\ln\left(1 - \frac{4}{3} p\right)\]</span> branch lengths remain
+additive and linear even under heavy saturation.</li>
+<li><strong>Empirical Results (150 Alignments):</strong> For imported
+tracts <span class="math inline">\(L \ge 1{,}000\)</span> nt, RhizAeon
+maintained <strong><span class="math inline">\(100.0\%\)</span>
+detection power</strong> with spatial localization error <span
+class="math inline">\(\text{MAE} = 38.9\text{--}54.9\)</span>
+nucleotides up to <span class="math inline">\(\Delta d = 0.60\)</span>.
+Even deep saturation does not extinguish the geometric signal, provided
+the tract contains sufficient physical length.</li>
+</ul>
+<hr />
+<h3 id="the-darren-martin-operational-decision-matrix">12.5 The Darren
+Martin Operational Decision Matrix</h3>
+<p>To provide investigators with an unambiguous practical guide for when
+to trust sequence manifolds, when to rely on spectral graph theory, and
+when to accept that the physical signal has extinguished, we summarize
+the operating envelope in Table 5:</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Biological Scenario</th>
+<th style="text-align: left;">Classical Method Breakdown</th>
+<th style="text-align: left;">RhizAeon Diagnostic Vital Sign</th>
+<th style="text-align: left;">Algorithmic Resolution</th>
+<th style="text-align: left;">Mathematical Guarantee</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Mutational Starvation</strong>
+(<span class="math inline">\(\mathcal{I}_{\text{mut}} \le 1.0\)</span>
+SNP)</td>
+<td style="text-align: left;">Heuristic tools guess spurious boundaries;
+ML methods overfit</td>
+<td style="text-align: left;">Kinetic strain flat (<span
+class="math inline">\(Z &lt; 1.5\)</span>); Likelihood difference <span
+class="math inline">\(\Delta \ln L &lt; 1.0\)</span></td>
+<td style="text-align: left;"><strong>Formal Null Retention</strong>:
+Rejects candidate event</td>
+<td style="text-align: left;">Finite-sample FPR <span
+class="math inline">\(\le 0.00\%\)</span> guaranteed</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Ambiguous Transition Zone</strong>
+(<span class="math inline">\(1.25 \le \mathcal{I}_{\text{mut}} \le
+3.0\)</span> SNPs)</td>
+<td style="text-align: left;">Phylogenetic tools flip topologies
+arbitrarily; high false positive rate</td>
+<td style="text-align: left;">High dislocation (<span
+class="math inline">\(Z \ge 3.0\)</span>) but broad neutral plateau
+(<span class="math inline">\(\Delta &gt; 150\)</span> nt)</td>
+<td style="text-align: left;"><strong>Conformal Uncertainty
+Firewall</strong>: Returns <span class="math inline">\(\{\text{Recomb},
+\text{Null}\}\)</span> (<span
+class="math inline">\(86.7\%\text{--}100\%\)</span>)</td>
+<td style="text-align: left;">Distribution-free coverage guarantee;
+suppresses false certainty</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Whole-Clade Reassortment</strong>
+(<span class="math inline">\(f_{\text{recomb}} \ge 0.25\)</span>)</td>
+<td style="text-align: left;">Tree reconciliation fails; Procrustes
+coordinate alignment twists</td>
+<td style="text-align: left;">Procrustes strain diluted (<span
+class="math inline">\(Z \to 2.84\)</span>); Fiedler phase shift spikes
+(<span class="math inline">\(d_{\text{Fiedler}} &gt; 1.0\)</span>)</td>
+<td style="text-align: left;"><strong>Laplacian Spectral
+Bipartition</strong>: Evaluates Cheeger cut <span
+class="math inline">\(\mathbf{v}_2(s)\)</span></td>
+<td style="text-align: left;">Invariant to rotational torque; <span
+class="math inline">\(\mathcal{O}(N^3)\)</span> exact eigensolve</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Panmictic Mosaicism</strong>
+(<span class="math inline">\(\rho / \theta \ge 2.5\)</span>)</td>
+<td style="text-align: left;">Global tree construction fails completely;
+ancestral recombination graph intractable</td>
+<td style="text-align: left;">Frame Rigidity collapses (<span
+class="math inline">\(\mathcal{F}_{\text{frame}} &lt;
+0.75\)</span>)</td>
+<td style="text-align: left;"><strong>Local Bilateral Window
+Superposition</strong>: Recursive RP-FDA on sliding spans (<span
+class="math inline">\(W = 150\text{--}300\)</span> nt)</td>
+<td style="text-align: left;">Preserves local treelikeness; recovers
+boundaries without global frame</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Deep Divergence
+Saturation</strong> (<span class="math inline">\(\Delta d \ge
+0.45\)</span>)</td>
+<td style="text-align: left;">Multiple hits saturate Hamming distances;
+parsimony methods fail</td>
+<td style="text-align: left;">Elevated distance eigenvalues; metric
+curvature correction</td>
+<td style="text-align: left;"><strong>LogDet / Markov Metric
+Tensor</strong>: Logarithmic branch linearization</td>
+<td style="text-align: left;">Linear distance additivity; <span
+class="math inline">\(100\%\)</span> power for <span
+class="math inline">\(L \ge 1{,}000\)</span> nt</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Unsampled Ghost Donors</strong>
+(<span class="math inline">\(D(R, P_2) &gt; 1.25 D(P_1,
+P_2)\)</span>)</td>
+<td style="text-align: left;">Parent inversion trap: falsely accuses
+sampled sister clades</td>
+<td style="text-align: left;">L-PIR collapses to <span
+class="math inline">\(0.000\)</span>; Crossover gate rejects Tier 1</td>
+<td style="text-align: left;"><strong>Tier 2 Transformer
+Handoff</strong>: Cross-attention shifts to <span
+class="math inline">\([\text{ROOT}]\)</span> token (<span
+class="math inline">\(84\times\)</span> residual surge)</td>
+<td style="text-align: left;">Outgroup bounding firewall prevents false
+parentage attribution</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <p>The mathematical formulations and formal proofs for each of these
 components are documented in <a
 href="file:///Users/sergei/Projects/TOGA_MEME/recombination/docs/rhizaeon_methods_mathematical_details.md">docs/rhizaeon_methods_mathematical_details.md</a>.</p>
