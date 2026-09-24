@@ -322,9 +322,9 @@ def render_html_page(track_info):
         <span class="rams-brand-desc">Multi-Tier Tutorial Suite</span>
       </a>
       <nav class="rams-nav">
-        <a href="index.html">&larr; Benchmark Compendium</a>
-        <a href="tutorials.html" class="rams-nav-chip" style="background: #38bdf8; color: #0f172a; font-weight: 700;">Tutorial Suite Index</a>
-        <a href="intuition.html">Monograph (26 pp)</a>
+        <a href="index.html">&larr; Home</a>
+        <a href="tutorials.html" class="rams-nav-chip" style="background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-weight: 700;">Tutorials &rarr;</a>
+        <a href="intuition.html">Monograph</a>
         <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
       </nav>
     </div>

@@ -30,18 +30,14 @@
       <a href="index.html" class="rams-brand">
         <span class="rams-brand-name">RhizAeon</span>
         <span class="rams-brand-sep">/</span>
-        <span class="rams-brand-desc">Continuous Coordinate Recombination Discovery</span>
+        <span class="rams-brand-desc">Recombination Discovery</span>
       </a>
       <nav class="rams-nav">
-        <a href="tutorials.html" class="rams-nav-chip" style="background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-weight: 700;">Tutorial Suite (4 Tracks) &rarr;</a>
-        <a href="intuition.html" class="rams-nav-chip" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; font-weight: 600;">Monograph (26 pp) &rarr;</a>
-        <a href="#method">Method</a>
-        <a href="#empirical-suite">Empirical Literature Suite</a>
-        <a href="#benchmarks">Simulation Compendium</a>
-        <a href="#surveillance">Planetary Surveillance</a>
+        <a href="tutorials.html" class="rams-nav-chip" style="background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-weight: 700;">Tutorials &rarr;</a>
+        <a href="intuition.html">Monograph</a>
+        <a href="#benchmarks">Benchmarks</a>
+        <a href="#surveillance">Surveillance</a>
         <a href="#reproducibility">Reproducibility</a>
-        <a href="https://brc-analytics.org" target="_blank" rel="noopener" class="rams-nav-chip">BRC-Analytics &nearr;</a>
-        <a href="AGENT.MD">AGENT.md</a>
         <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
       </nav>
     </div>
@@ -57,62 +53,33 @@
           Real-time recombination detection from sequence coordinate manifolds.
         </h1>
         <p class="rams-lede">
-          RhizAeon is an open-source framework for detecting reticulate evolution, homologous recombination, and viral chimeras directly from nucleotide sequence manifolds—without constructing phylogenetic guide trees or running combinatorial Markov chain Monte Carlo (MCMC) simulations.
+          RhizAeon is an open-source framework for detecting reticulate evolution, homologous recombination, and viral chimeras directly from sequence coordinate manifolds—computing exact single-base crossover boundaries in sub-second time without guide trees or MCMC heuristics.
         </p>
-        <div class="rams-narrative">
-          <p>
-            Standard phylogenetic tools detect recombination by scanning sequence triplets across sliding windows ($\mathcal{O}(N^3 \cdot L)$) or sampling bifurcating trees across Candidate partitions ($\mathcal{O}(N^4)$). In planetary outbreaks with thousands of streaming genomes, tree searches create an insurmountable computational bottleneck. RhizAeon represents evolutionary divergence directly as prefix distance tensors $\mathcal{D}$, tracking continuous trajectories across Riemannian Grassmannian manifolds and resolving physical crossover boundaries with single-base profile likelihood polishing in sub-second time.
-          </p>
-        </div>
 
-        <!-- Prominent Method Intuition Callout -->
-        <div style="background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%); border-radius: 10px; padding: 1.4rem 1.8rem; margin: 1.8rem 0 2.2rem 0; color: #ffffff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.2rem; box-shadow: 0 4px 18px rgba(3, 105, 161, 0.22); border: 1px solid #0284c7;">
-          <div style="flex: 1; min-width: 320px;">
-            <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #bae6fd; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.4rem;">
-              <span style="display: inline-block; width: 8px; height: 8px; background: #38bdf8; border-radius: 50%;"></span>
-              THEORETICAL TREATISE &bull; METHODOLOGICAL INTUITION
-            </div>
-            <h2 style="font-size: 1.35rem; font-weight: 800; margin: 0 0 0.4rem 0; color: #ffffff; letter-spacing: -0.01em;">
-              Learn How the Method Works: Geometric Intuition &amp; Dual-Tier Architecture
-            </h2>
-            <p style="font-size: 0.88rem; color: #e0f2fe; margin: 0; line-height: 1.5; max-width: 780px;">
-              Read the full 26-page illustrated guide explaining how sequence divergence forms continuous metric manifolds, how kinetic energy fields detect recombination without guide trees, and how Tier 2 attention networks resolve star topologies and ultra-short gene conversions across HIV-1 and SARS-CoV-2.
-            </p>
-          </div>
-          <div style="display: flex; gap: 0.75rem; align-items: center; flex-shrink: 0;">
-            <a href="intuition.html" style="background: #ffffff; color: #0369a1; font-weight: 700; font-size: 0.9rem; padding: 0.7rem 1.3rem; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 6px rgba(0,0,0,0.12); transition: transform 0.15s ease;">
-              <span>Read Full Method Guide</span>
-              <span style="font-size: 1.1rem;">&rarr;</span>
+        <!-- Compact Action & Install Strip -->
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin: 1.6rem 0 2rem 0; padding: 0.9rem 1.3rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.04);">
+          <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;">
+            <a href="tutorials.html" style="background: #0284c7; color: #ffffff; font-weight: 700; font-size: 0.88rem; padding: 0.55rem 1.15rem; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; box-shadow: 0 1px 3px rgba(2, 132, 199, 0.25);">
+              <span>Tutorial Suite (4 Tracks)</span>
+              <span>&rarr;</span>
             </a>
-            <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 600; font-size: 0.88rem; padding: 0.7rem 1.1rem; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
-              <span>PDF (26 pp) &nearr;</span>
+            <a href="intuition.html" style="background: #f8fafc; color: #334155; font-weight: 600; font-size: 0.88rem; padding: 0.55rem 1.05rem; border-radius: 6px; border: 1px solid #cbd5e1; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;">
+              <span>Monograph (26 pp)</span>
+            </a>
+            <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="color: #64748b; font-size: 0.85rem; font-weight: 500; text-decoration: none; padding: 0.5rem 0.6rem; display: inline-flex; align-items: center; gap: 0.3rem;">
+              <span>PDF &nearr;</span>
             </a>
           </div>
-        </div>
 
-        <!-- Software Access & Deployment: CLI / HyphAeon Ecosystem -->
-        <div class="rams-access-strip">
-          <div class="rams-access-cell">
-            <div class="rams-access-label">CLI &bull; Python Package Index</div>
-            <div class="rams-access-terminal">
-              <span class="rams-prompt">$</span>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="display: inline-flex; align-items: center; background: #0f172a; border-radius: 6px; padding: 0.45rem 0.85rem; font-family: var(--font-mono); font-size: 0.82rem; color: #f8fafc; gap: 0.5rem;">
+              <span style="color: #38bdf8;">$</span>
               <code>pip install rhizaeon</code>
-              <button class="rams-copy-pill" onclick="navigator.clipboard.writeText('pip install rhizaeon'); this.innerText='COPIED'; setTimeout(() => this.innerText='COPY', 2000);">COPY</button>
+              <button class="rams-copy-pill" onclick="navigator.clipboard.writeText('pip install rhizaeon'); this.innerText='COPIED'; setTimeout(() => this.innerText='COPY', 2000);" style="margin-left: 0.4rem; padding: 0.15rem 0.45rem; font-size: 0.7rem;">COPY</button>
             </div>
-            <p class="rams-access-sub">
-              Part of the <a href="https://github.com/veg/HyphAeon" target="_blank" rel="noopener">HyphAeon</a> foundation ecosystem &bull; <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">veg/rhizaeon &nearr;</a>
-            </p>
-          </div>
-          <div class="rams-access-divider"></div>
-          <div class="rams-access-cell">
-            <div class="rams-access-label">Online Streaming Implementation &bull; Zero Server Transmission</div>
-            <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="rams-access-btn">
-              <span>Explore GitHub Repository</span>
-              <span>&nearr;</span>
+            <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" style="font-size: 0.85rem; color: #0284c7; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+              <span>GitHub &nearr;</span>
             </a>
-            <p class="rams-access-sub">
-              Open source &bull; Complete replication scripts &bull; 11 curated empirical and simulated suites
-            </p>
           </div>
         </div>
 
