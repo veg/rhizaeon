@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RhizAeon Methodological &amp; Geometric Intuition Guide | BRC-Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .intuition-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
+      color: #ffffff;
+      padding: 3rem 0 2.5rem 0;
+      border-bottom: 1px solid #0284c7;
+    }
+    .intuition-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #bae6fd;
+      margin-bottom: 0.5rem;
+    }
+    .intuition-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+    .intuition-sub {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      line-height: 1.55;
+      max-width: 880px;
+      margin-bottom: 1.5rem;
+    }
+    .intuition-action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    .btn-pdf-download {
+      background: #ffffff;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-pdf-download:hover {
+      background: #f0f9ff;
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .btn-outline {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.22);
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+    }
+    @media (max-width: 992px) {
+      .doc-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .doc-sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.85rem;
+    }
+    .doc-sidebar-title {
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+    .doc-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .doc-sidebar li {
+      margin-bottom: 0.5rem;
+    }
+    .doc-sidebar a {
+      color: #475569;
+      text-decoration: none;
+      display: block;
+      padding: 0.2rem 0;
+      line-height: 1.35;
+      transition: color 0.15s ease;
+    }
+    .doc-sidebar a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+    .doc-content {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      line-height: 1.68;
+      font-size: 10pt;
+      color: #1e293b;
+    }
+    .doc-content h1 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-top: 0;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #0284c7;
+      font-weight: 800;
+    }
+    .doc-content h2 {
+      font-size: 1.4rem;
+      color: #1e3a8a;
+      margin-top: 2.2rem;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #cbd5e1;
+      font-weight: 700;
+    }
+    .doc-content h3 {
+      font-size: 1.15rem;
+      color: #0369a1;
+      margin-top: 1.6rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+    .doc-content h4 {
+      font-size: 1.02rem;
+      color: #334155;
+      margin-top: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+    .doc-content p {
+      margin-bottom: 1.1rem;
+      text-align: justify;
+    }
+    .doc-content ul, .doc-content ol {
+      margin: 1rem 0 1.2rem 1.8rem;
+    }
+    .doc-content li {
+      margin-bottom: 0.45rem;
+    }
+    .doc-content pre {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #0284c7;
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 8.2pt;
+      line-height: 1.35;
+      overflow-x: auto;
+      margin: 1.4rem 0;
+    }
+    .doc-content code {
+      font-family: var(--font-mono);
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 8.8pt;
+      border: 1px solid #e2e8f0;
+    }
+    .doc-content pre code {
+      background: transparent;
+      padding: 0;
+      border: none;
+      font-size: inherit;
+    }
+    .doc-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 8.8pt;
+    }
+    .doc-content th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      text-align: left;
+      padding: 8px 12px;
+      border-top: 1.5px solid #64748b;
+      border-bottom: 1.5px solid #64748b;
+    }
+    .doc-content td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .doc-content tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    .doc-content figure {
+      margin: 2rem 0;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+    .doc-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 0.8rem;
+    }
+    .doc-content figcaption {
+      font-size: 8.5pt;
+      color: #475569;
+      line-height: 1.45;
+      text-align: justify;
+      margin-top: 0.5rem;
+    }
+    .doc-content blockquote {
+      border-left: 4px solid #0284c7;
+      background: #f0f9ff;
+      margin: 1.4rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      color: #0369a1;
+    }
+    .doc-content blockquote p {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="rams-header">
+    <div class="rams-container rams-nav-flex">
+      <a href="index.html" class="rams-brand">
+        <span class="rams-brand-name">RhizAeon</span>
+        <span class="rams-brand-sep">/</span>
+        <span class="rams-brand-desc">Method Intuition &amp; Architecture Guide</span>
+      </a>
+      <nav class="rams-nav">
+        <a href="index.html">&larr; Benchmark Compendium</a>
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" class="rams-nav-chip">Download PDF (26 pp) &nearr;</a>
+        <a href="https://brc-analytics.org" target="_blank" rel="noopener">BRC-Analytics &nearr;</a>
+        <a href="AGENT.MD">AGENT.md</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener">GitHub &nearr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="intuition-hero">
+    <div class="rams-container">
+      <div class="intuition-eyebrow">THEORETICAL TREATISE &bull; METHODOLOGICAL INTUITION</div>
+      <h1 class="intuition-title">How RhizAeon Works: Coordinate Manifolds, Dynamic Trajectories &amp; Dual-Tier Architecture</h1>
+      <p class="intuition-sub">
+        A comprehensive illustrated guide to detecting viral and bacterial recombination directly from sequence coordinate manifolds—without guide trees, phylogenetic heuristics, or Markov chain Monte Carlo simulations.
+      </p>
+      <div class="intuition-action-bar">
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" class="btn-pdf-download">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download Publication PDF (26 Pages, 3.5 MB)</span>
+        </a>
+        <a href="index.html#benchmarks" class="btn-outline">
+          <span>Explore 11 Benchmark Suites &rarr;</span>
+        </a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" class="btn-outline">
+          <span>Source Code on GitHub &nearr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Layout -->
+  <div class="rams-container doc-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="doc-sidebar">
+      <div class="doc-sidebar-title">Guide Sections</div>
+      <ul>
+        <li><a href="#executive-intuition">1. Executive Intuition</a></li>
+        <li><a href="#why-phylogenetics-fails-at-planetary-scale">2. The Phylogenetic Scaling Crisis</a></li>
+        <li><a href="#tier-1-geometric-manifold-engine">3. Tier 1 Geometric Engine</a></li>
+        <li><a href="#the-three-core-mathematical-operations">4. Three Core Mathematical Operations</a></li>
+        <li><a href="#the-canonical-walkthrough-hiv-1-kal153">5. Walkthrough: HIV-1 KAL153</a></li>
+        <li><a href="#tier-1-breakdown-triggers-failure-mode-analysis">6. Tier 1 Breakdown Triggers</a></li>
+        <li><a href="#tier-2-attention-and-conformal-deep-resolution">7. Tier 2 Attention &amp; Conformal Engine</a></li>
+        <li><a href="#empirical-validation-across-sars-cov-2-spike">8. SARS-CoV-2 Spike Validation</a></li>
+        <li><a href="#computational-complexity-scaling-laws">9. Scaling Laws &amp; Complexity</a></li>
+        <li><a href="#theoretical-synthesis-the-new-recombination-paradigm">10. Theoretical Synthesis</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; pt: 1rem; border-top: 1px solid #e2e8f0;">
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="font-weight: 700; color: #0284c7; display: flex; align-items: center; gap: 0.35rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <span>Full 26-Page PDF &nearr;</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Document Content -->
+    <article class="doc-content">
+      <h1 id="rhizaeon-conceptual-overview-and-intuition">RhizAeon: Conceptual
+Overview and Intuition</h1>
+<h2 id="executive-framing-the-recombination-dilemma">1. Executive
+Framing: The Recombination Dilemma</h2>
+<p>Recombination is the primary engine of genetic diversity in many RNA
+viruses and bacterial pathogens. It splices distinct evolutionary
+histories into a single mosaic chromosome. Identifying these mosaic
+segments, locating their exact breakpoints, and naming both the
+recombinant sequence and its parental lineages is essential for genomic
+epidemiology, phylogenetics, and evolutionary modeling.</p>
+<p>For decades, the field has been divided between two algorithmic
+extremes:</p>
+<ol type="1">
+<li><p><strong>Exhaustive Triplet Scans
+(<code>3Seq</code>):</strong><br />
+These evaluate triplets of sequences <span class="math inline">\((P_1,
+P_2, C)\)</span> to test whether a putative child <span
+class="math inline">\(C\)</span> switches affinities between candidate
+parents <span class="math inline">\(P_1\)</span> and <span
+class="math inline">\(P_2\)</span>. While triplet scans provide direct
+sequence attribution, they scale cubically (<span
+class="math inline">\(\binom{N}{3} \sim \mathcal{O}(N^3)\)</span>). On
+modern genomic cohorts (<span class="math inline">\(N = 3{,}000\)</span>
+to <span class="math inline">\(30{,}000\)</span>), testing billions or
+trillions of triplets is computationally intractable. Furthermore,
+triplet tests evaluate sequences in isolation, lacking global
+phylogenetic context, which leaves them vulnerable to lineage rate
+variation and crushing multiple-testing penalties.</p></li>
+<li><p><strong>Phylogenetic Change-Point Models
+(<code>GARD</code>):</strong><br />
+These evaluate topological incongruence under rigorous continuous-time
+Markov substitution models (GTR+<span
+class="math inline">\(\Gamma\)</span>). GARD tests whether independent
+phylogenetic trees across partition boundaries explain the alignment
+significantly better than a single clonal tree. While statistically
+unassailable, searching the space of breakpoint partitions requires
+optimizing full phylogenetic trees at each step (<span
+class="math inline">\(\mathcal{O}(L^K \cdot N^3)\)</span>), making it
+intractable for whole-genome bacterial alignments. Moreover, even when
+GARD proves that the tree topology changed, it does not name the
+recombinant sequence; identifying the mosaic taxon requires post-hoc
+topological reconciliation.</p></li>
+</ol>
+<pre><code>       TRIPLET METHODS (3Seq)                    TREE METHODS (GARD)
+   Exhaustive triplet search O(N^3)        Phylogenetic tree search O(L^K N^3)
+   Exact sequence attribution               Rigorous topological discordance
+   No global tree context                  No direct sequence attribution
+         \                                      /
+          \                                    /
+           ▼                                  ▼
+                RHIZAEON (&quot;Phylogenetic GPS&quot;)
+           • Metric manifold embedding: O(k N^2) or O(k M N)
+           • Global clade geometry preserved in continuous R^k (k = 3-4)
+           • Recombination detected as continuous motion / velocity spikes
+           • Simultaneous breakpoint detection and taxon attribution</code></pre>
+<p>RhizAeon delivers the best of both worlds. It operates on the same
+primary ground truth as classical methods—pairwise sequence
+differences—yet bypasses both combinatorial walls by converting the
+discrete tree into a continuous <strong>metric space
+embedding</strong>.</p>
+<hr />
+<h2 id="pillar-1-the-same-primary-ground-truth">2. Pillar 1: The Same
+Primary Ground Truth</h2>
+<p>RhizAeon does not invent heuristic sequence features, nor does it
+rely on uninterpretable deep-learning representations to discover
+recombination. At its base, it takes as input the standard Multiple
+Sequence Alignment (MSA): <span class="math display">\[X \in \{A, C, G,
+T, -\}^{N \times L}\]</span></p>
+<p>For any genomic window of length <span
+class="math inline">\(W\)</span>, the primary observable is the pairwise
+genetic distance matrix <span class="math inline">\(D \in
+\mathbb{R}_{\ge 0}^{N \times N}\)</span>, measured by Hamming distance
+(p-distance) or substitution-corrected distance (TN93, Jukes-Cantor):
+<span class="math display">\[D_{ij} = \frac{1}{W} \sum_{s=1}^W
+\mathbb{I}(X_{is} \ne X_{js})\]</span></p>
+<p>Using prefix distance tensors and BLAS matrix multiplication, this
+pairwise distance matrix is extracted across thousands of sequences in
+milliseconds. Every downstream inference in RhizAeon traces directly
+back to this observable.</p>
+<hr />
+<h2
+id="the-core-intuition-the-phylogenetic-gps-continuous-motion-in-metric-space">3.
+The Core Intuition: The “Phylogenetic GPS” (Continuous Motion in Metric
+Space)</h2>
+<p>To understand how RhizAeon detects recombination without building
+trees or testing triplets, consider how Classical Multidimensional
+Scaling (MDS) interprets this distance matrix.</p>
+<h3
+id="constructing-the-static-reference-map-a-single-point-per-genome">3.1
+Constructing the Static Reference Map (A Single Point per Genome)</h3>
+<p>Mathematically, Classical MDS finds a configuration of points <span
+class="math inline">\(\mathbf{x}_1, \dots, \mathbf{x}_N\)</span> in a
+low-dimensional Euclidean space <span
+class="math inline">\(\mathbb{R}^k\)</span> such that the Euclidean
+distance between any two points approximates their observed genetic
+distance: <span class="math display">\[\|\mathbf{x}_i - \mathbf{x}_j\|_2
+= \sqrt{\langle \mathbf{x}_i - \mathbf{x}_j, \, \mathbf{x}_i -
+\mathbf{x}_j \rangle} \approx D_{ij}\]</span></p>
+<p>When we apply MDS to the full-alignment distance matrix <span
+class="math inline">\(D_{\text{glob}}\)</span>, every genome <span
+class="math inline">\(i\)</span> is assigned a single, fixed coordinate:
+<span class="math display">\[\mathbf{z}_{i, \text{glob}} \in
+\mathbb{R}^k\]</span></p>
+<p>In phylogenetics, distances between sequences are tree metrics (the
+path length through the tree). When MDS embeds these additive distances
+into <span class="math inline">\(\mathbb{R}^k\)</span>, <strong>the
+discrete phylogenetic graph is flattened into a continuous metric
+space</strong>: - The major trunk and deep bifurcations of the tree
+become the principal axes of the space. - Sister taxa that share a
+recent common ancestor cluster tightly together in local neighborhoods.
+- Distant lineages and outgroups are separated by large Euclidean
+displacements.</p>
+<p>However, this global map is merely a <strong>static
+snapshot</strong>. It collapses the entire chromosome into a single
+average. If a sequence is a mosaic recombinant—sharing 5’ ancestry with
+Clade A and 3’ ancestry with Clade B—its global point <span
+class="math inline">\(\mathbf{z}_{i, \text{glob}}\)</span> simply sits
+stranded somewhere in the no-man’s-land between Clade A and Clade B. A
+static embedding by itself cannot locate breakpoints.</p>
+<hr />
+<h3 id="the-spinning-compass-trap-why-re-running-mds-fails">3.2 The
+“Spinning Compass” Trap: Why Re-Running MDS Fails</h3>
+<p>The intuitive first impulse might be: why not slide a window of, say,
+200 bases along the genome and run MDS on each window independently?</p>
+<p>This approach fails completely due to what we call the
+<strong>spinning compass trap</strong>: - Each independent eigensolve
+possesses arbitrary rotational freedom (<span class="math inline">\(R
+\in \mathcal{O}(k)\)</span>) and arbitrary eigenvector sign ambiguity
+(<span class="math inline">\(\pm \mathbf{v}_j\)</span>). - At position
+1,000, “Dimension 1” might point toward Clade A. At position 1,050, the
+numerical eigensolver might flip the sign of Dimension 1 (pointing
+toward Clade B), or swap Dimensions 1 and 2 entirely. - It is like
+trying to navigate an airplane when the compass randomly spins and
+inverts every ten seconds. You cannot compare a coordinate at position
+<span class="math inline">\(s=1{,}000\)</span> with a coordinate at
+position <span class="math inline">\(s=1{,}050\)</span> if the
+coordinate system itself was re-drawn and re-oriented in a different
+frame of reference.</p>
+<hr />
+<h3 id="the-fixed-projection-lens-locking-the-coordinate-grid">3.3 The
+Fixed Projection Lens: Locking the Coordinate Grid</h3>
+<p>To track sequences continuously, we must lock the compass. We need a
+single, immutable coordinate grid where “North” <em>always</em> means
+Clade A, and “East” <em>always</em> means Clade B across the entire
+length of the chromosome.</p>
+<p>We achieve this by using the global embedding <span
+class="math inline">\(Z_{\text{glob}}\)</span> to construct a
+<strong>fixed linear projection operator</strong> (a “projection lens”):
+<span class="math display">\[W = H Z_{\text{glob}} (Z_{\text{glob}}^T
+Z_{\text{glob}})^{-1} \in \mathbb{R}^{N \times k}\]</span></p>
+<p>Intuitively, <span class="math inline">\(Z_{\text{glob}}\)</span>
+establishes the permanent landmarks of the evolutionary landscape (the
+reference airport towers). The operator <span
+class="math inline">\(W\)</span> acts as a camera permanently bolted to
+the ceiling of this space, looking down from a fixed angle.</p>
+<p>Whenever we want to know where sequences are located at any specific
+genomic window, we do not re-run MDS. We simply shine the local distance
+information through this fixed projection lens.</p>
+<hr />
+<h3
+id="tracing-the-trajectory-sliding-the-window-and-connecting-the-dots">3.4
+Tracing the Trajectory: Sliding the Window and Connecting the Dots</h3>
+<p>Now we are equipped to trace the continuous motion of every sequence
+along the chromosome:</p>
+<pre><code>    SLIDING WINDOW OVER ALIGNMENT               FIXED PROJECTION LENS (W)
+    
+    Window at s=100  [===           ]  ──► D(100)  ──► [ B(100) @ W ] ──► y_i(100) in R^k
+    Window at s=200  [ ===          ]  ──► D(200)  ──► [ B(200) @ W ] ──► y_i(200) in R^k
+    Window at s=300  [  ===         ]  ──► D(300)  ──► [ B(300) @ W ] ──► y_i(300) in R^k
+    ...
+    Window at s=L    [           ===]  ──► D(L)    ──► [ B(L)   @ W ] ──► y_i(L)   in R^k</code></pre>
+<ol type="1">
+<li><strong>Slide a window:</strong> We slide a window of width <span
+class="math inline">\(W_{\text{win}}\)</span> centered at genomic
+coordinate <span class="math inline">\(s\)</span>, advancing across the
+chromosome in steps of <span class="math inline">\(\Delta\)</span>
+(e.g., <span class="math inline">\(s = 30, 60, 90, \dots,
+L\)</span>).</li>
+<li><strong>Compute local distances:</strong> In that window, we compute
+how far apart all sequences are <em>right now</em>: the local distance
+matrix <span class="math inline">\(D(s)\)</span>. (Thanks to prefix
+tensors, this lookup is virtually instantaneous).</li>
+<li><strong>Double-center:</strong> We convert <span
+class="math inline">\(D(s)\)</span> into a centered inner-product matrix
+<span class="math inline">\(B(s) = -\frac{1}{2} H (D(s)^{\circ 2})
+H\)</span>.</li>
+<li><strong>Project through the fixed lens:</strong> We multiply the
+local matrix by our permanent operator: <span
+class="math display">\[Y(s) = B(s) W \in \mathbb{R}^{N \times
+k}\]</span> This requires only a single BLAS matrix multiplication,
+executing in a fraction of a millisecond.</li>
+<li><strong>Connect the dots:</strong> For each sequence <span
+class="math inline">\(i\)</span>, row <span
+class="math inline">\(i\)</span> of <span
+class="math inline">\(Y(s)\)</span> gives its instantaneous coordinate
+<span class="math inline">\(\mathbf{y}_i(s) \in \mathbb{R}^k\)</span> at
+position <span class="math inline">\(s\)</span>. Connecting these points
+across sequence coordinates produces an unbroken, continuous curve:
+<span class="math display">\[s \mapsto \mathbf{y}_i(s)\]</span></li>
+</ol>
+<p>This continuous curve is the <strong>sequence trajectory</strong>—a
+physical flight path through the metric space.</p>
+<hr />
+<h3
+id="visualizing-the-flight-path-clonal-parking-vs.-recombinant-migration">3.5
+Visualizing the Flight Path: Clonal Parking vs. Recombinant
+Migration</h3>
+<p>When we plot these trajectories in <span
+class="math inline">\(\mathbb{R}^k\)</span>, the difference between
+non-recombinant and mosaic sequences is immediately obvious to the human
+eye:</p>
+<pre><code>                         THE PHYLOGENETIC GPS IN R^k
+
+        Dim 2 ▲
+              │        Clade P1
+              │        (●●●) ◀────── y_C(s) for s &lt; Breakpoint (5&#39; end)
+              │         \
+              │          \  FLIGHT PATH (Physical migration across space
+              │           \ as window traverses the breakpoint!)
+              │            ▼
+              │           (▲▲▲) ◀──── y_C(s) for s &gt; Breakpoint (3&#39; end)
+              │        Clade P2
+        ──────┼──────────────────────────────────► Dim 1
+              │</code></pre>
+<ul>
+<li><p><strong>The Clonal Sequence (Parked at Home):</strong><br />
+A non-recombinant sequence inherited all of its genes from the same
+parental lineage. As <span class="math inline">\(s\)</span> moves from
+<span class="math inline">\(1\)</span> to <span
+class="math inline">\(L\)</span>, its trajectory <span
+class="math inline">\(\mathbf{y}_i(s)\)</span> never leaves its home
+territory. It stays parked inside its clade’s cluster, exhibiting only
+tiny, localized vibrations caused by local Poisson mutation
+fluctuations.</p></li>
+<li><p><strong>The Recombinant Sequence (In Flight):</strong><br />
+Consider a recombinant sequence <span class="math inline">\(C\)</span>
+created by a crossover between Parent Clade <span
+class="math inline">\(P_1\)</span> (5’ flank) and Parent Clade <span
+class="math inline">\(P_2\)</span> (3’ flank).</p>
+<ul>
+<li>While the sliding window is to the left of the breakpoint (<span
+class="math inline">\(s &lt; s_{\text{break}}\)</span>), <span
+class="math inline">\(C\)</span>’s local distances match <span
+class="math inline">\(P_1\)</span>. Its coordinates hover stably inside
+Clade <span class="math inline">\(P_1\)</span>.</li>
+<li>As the sliding window begins to cross the crossover boundary, <span
+class="math inline">\(C\)</span>’s sequence identity progressively
+shifts from <span class="math inline">\(P_1\)</span> to <span
+class="math inline">\(P_2\)</span>.</li>
+<li>On our map, the sequence <strong>physically takes flight</strong>:
+<span class="math inline">\(\mathbf{y}_C(s)\)</span> departs the cluster
+of Clade <span class="math inline">\(P_1\)</span>, cruises across the
+open Euclidean space, and touches down inside the cluster of Clade <span
+class="math inline">\(P_2\)</span>, where it remains for the rest of the
+chromosome.</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="from-trajectories-to-kinetic-energy-spikes">3.6 From
+Trajectories to Kinetic Energy Spikes</h3>
+<p>Because the flight paths are continuous functions of the genomic
+coordinate <span class="math inline">\(s\)</span>, we can analyze them
+using classical mechanics:</p>
+<ol type="1">
+<li><p><strong>Velocity Vector:</strong><br />
+How fast is sequence <span class="math inline">\(i\)</span> moving
+across the phylogenetic map at position <span
+class="math inline">\(s\)</span>? <span
+class="math display">\[\mathbf{v}_i(s) = \frac{\mathbf{y}_i(s + \Delta)
+- \mathbf{y}_i(s - \Delta)}{2\Delta} \in \mathbb{R}^k\]</span></p></li>
+<li><p><strong>Kinetic Energy:</strong><br />
+The kinetic energy is the squared magnitude of this velocity: <span
+class="math display">\[\mathcal{K}_i(s) = \|\mathbf{v}_i(s)\|_2^2 =
+\sum_{j=1}^k \left( v_{i,j}(s) \right)^2\]</span></p></li>
+</ol>
+<ul>
+<li>For clonal sequences, velocity is near zero everywhere (<span
+class="math inline">\(\mathcal{K}_i(s) \approx 0\)</span>).</li>
+<li>For the recombinant sequence, the transition across clades generates
+a <strong>massive kinetic energy spike</strong> centered directly at the
+crossover point <span
+class="math inline">\(s_{\text{break}}\)</span>.</li>
+</ul>
+<p>Recombination detection is thereby reduced to a peak-finding problem
+on a 1D kinetic energy curve: - The <strong>location of the
+peak</strong> identifies the breakpoint position along the genome. - The
+<strong>identity of the sequence that generated the peak</strong>
+immediately names the recombinant taxon, without ever testing an
+individual triplet or building a phylogenetic tree.</p>
+<hr />
+<h3 id="deciding-the-window-size-the-informative-site-trade-off">3.7
+Deciding the Window Size: The Informative Site Trade-Off</h3>
+<p>A practical question immediately arises: <strong>how do we decide the
+sliding window size <span class="math inline">\(W_{\text{win}}\)</span>
+(and step size <span
+class="math inline">\(\Delta\)</span>)?</strong></p>
+<p>The choice of window size is governed by a fundamental trade-off
+between spatial resolution and metric stability:</p>
+<pre><code>        WINDOW SIZE DILEMMA: RESOLUTION VS. METRIC STABILITY
+        
+        Too Narrow (W &lt;&lt; 100 bp):          Optimal Window (W ≈ 200-300 bp):
+        • High spatial resolution          • Ample informative SNPs (15-40)
+        • Only 0-2 SNPs per window         • Stable projection into R^k
+        • Noisy Brownian jitter            • Crisp, localized kinetic peak
+        • False velocity spikes            
+                                           Too Wide (W &gt;&gt; 1,000 bp):
+                                           • Rock-solid phylogenetic distances
+                                           • Severe spatial blurring
+                                           • Blind to short conversion tracts (&lt; W)</code></pre>
+<ol type="1">
+<li><p><strong>The Uncertainty Dilemma:</strong></p>
+<ul>
+<li><strong>Too small a window (<span class="math inline">\(W \ll
+100\text{ bp}\)</span>):</strong> At low mutation density, a tiny window
+might contain only 0, 1, or 2 polymorphic sites. With near-zero distance
+signal, the local distance matrix collapses toward zero, and the
+projected trajectory jitters erratically like Brownian motion,
+triggering spurious false-positive kinetic spikes.</li>
+<li><strong>Too large a window (<span class="math inline">\(W \gg
+1{,}000\text{ bp}\)</span>):</strong> While hundreds of substitutions
+provide rock-solid distance estimates, the spatial transition across a
+breakpoint is smeared into a broad, gradual ramp spanning hundreds of
+nucleotides. More critically, if a recombination tract is shorter than
+the window (e.g., a 200 bp gene conversion segment embedded inside a
+1,500 bp window), the recombinant signal is diluted by 85% clonal
+flanking sequence, causing the event to be missed entirely.</li>
+</ul></li>
+<li><p><strong>The Informative Site Principle (Physical Bases
+vs. Mutation Depth):</strong> The invariant quantity in phylogenetic
+inference is <strong>not physical nucleotides, but the count of
+phylogenetically informative mutations (<span
+class="math inline">\(S_{\text{inf}}\)</span>)</strong>.</p>
+<ul>
+<li>To reliably position a sequence in a <span
+class="math inline">\(k=4\)</span> dimensional space without metric
+collapse, each window needs an expected minimum number of
+clade-differentiating substitutions (empirically, <span
+class="math inline">\(\ge 12\text{--}20\)</span> informative
+sites).</li>
+<li>In high-diversity RNA viruses (such as HIV-1, where pairwise
+divergence between subtypes is <span class="math inline">\(\bar{d}
+\approx 8\%\text{--}15\%\)</span>), a physical window of <span
+class="math inline">\(W = 200\text{--}300\text{ bp}\)</span> comfortably
+yields <span class="math inline">\(20\text{--}45\)</span>
+substitutions.</li>
+<li>In lower-divergence bacterial core genomes (such as
+<em>Streptococcus pneumoniae</em>, where diversity is <span
+class="math inline">\(\bar{d} \approx 1.5\%\)</span>), evaluating
+physical 200 bp windows would yield only <span
+class="math inline">\(\sim 3\)</span> SNPs. Therefore, RhizAeon operates
+in <strong>SNP-compressed space</strong>, where a window of <span
+class="math inline">\(W_{\text{SNP}} = 30\text{--}50\)</span>
+polymorphic sites corresponds dynamically to physical genomic windows of
+<span class="math inline">\(2\text{--}4\text{ kb}\)</span>.</li>
+</ul></li>
+<li><p><strong>Decoupling Detection from Precision (The Macro-Lens and
+the Microscope):</strong> In traditional sliding-window algorithms, the
+window size creates an inescapable penalty: a 300 bp window can only
+localize a breakpoint to within <span class="math inline">\(\pm
+150\text{ bp}\)</span>.</p>
+<p>RhizAeon completely eliminates this dilemma by <strong>decoupling
+coarse detection from fine-scale precision</strong>:</p>
+<ul>
+<li><strong>The Sliding Window as a Macro-Lens (Detection):</strong> The
+sliding window (<span class="math inline">\(W = 300\text{ bp}\)</span>,
+stepping by <span class="math inline">\(\Delta = 30\text{ bp}\)</span>)
+only needs to be narrow enough to register the kinetic velocity spike
+and isolate the general neighborhood of the crossover.</li>
+<li><strong>The Profile Likelihood as a Microscope (Single-Base
+Precision):</strong> Once a kinetic peak is flagged, RhizAeon hands the
+candidate region over to the <strong>Single-Base Maximum Likelihood
+Polisher</strong> (Section 9 of the Methods). The polisher evaluates
+every single nucleotide position individually against the candidate
+parental alleles, calculating profile likelihoods at 1-bp increments,
+pinning down the exact nucleotide boundary and reporting the flat
+uninformative plateau.</li>
+</ul>
+<p>Because single-base polishing handles the final precision, the
+sliding window can remain broad and statistically robust (<span
+class="math inline">\(W \approx 200\text{--}300\text{ bp}\)</span>)
+without sacrificing single-nucleotide accuracy.</p></li>
+<li><p><strong>Dynamic Flank Adaptation in Recursive Partitioning
+(RP-FDA):</strong> When scanning an entire genome via recursive binary
+partitioning, RhizAeon dynamically adapts the flanking window half-width
+<span class="math inline">\(\delta\)</span> to the length of the current
+interval <span class="math inline">\([s_{\text{start}},
+s_{\text{end}}]\)</span>: <span class="math display">\[\delta =
+\max\left( \delta_{\min}, \, \min\left(\delta_{\max}, \,
+\frac{s_{\text{end}} - s_{\text{start}}}{4}\right) \right)\]</span>
+Initial iterations across the full genome use broad flanking windows
+(<span class="math inline">\(\delta \sim 150\text{--}200\text{
+bp}\)</span>) to capture large macro-recombinant blocks; as the
+recursion dives deeper into sub-intervals, <span
+class="math inline">\(\delta\)</span> shrinks automatically down to
+<span class="math inline">\(\delta_{\min} \approx 20\text{--}30\text{
+bp}\)</span> to isolate compact, nested micro-conversions.</p></li>
+</ol>
+<hr />
+<h2 id="choosing-the-mds-embedding-dimension-k-the-low-pass-tree">4.
+Choosing the MDS Embedding Dimension <span
+class="math inline">\(k\)</span>: The “Low-Pass Tree”</h2>
+<p>A natural question arises: <strong>how do we choose the dimension
+<span class="math inline">\(k\)</span>?</strong> Why not <span
+class="math inline">\(k=2\)</span>? Why not <span
+class="math inline">\(k=50\)</span>?</p>
+<p>Choosing <span class="math inline">\(k\)</span> is governed by a
+fundamental geometric requirement and a signal-processing principle:</p>
+<h3 id="the-lower-bound-quartet-geometry-k-ge-3">1. The Lower Bound:
+Quartet Geometry (<span class="math inline">\(k \ge 3\)</span>)</h3>
+<p>In phylogenetics, the minimal unit of topological conflict is an
+unrooted four-taxon tree (a quartet): <span class="math display">\[((A,
+B), (C, D)) \quad \text{versus} \quad ((A, C), (B, D))\]</span></p>
+<p>Can four equidistant, symmetrically diverging clades be embedded
+isometrically in two dimensions (<span
+class="math inline">\(k=2\)</span>)? <strong>No.</strong> A
+two-dimensional plane forces at least two opposing clades to lie
+opposite each other through the origin, distorting their pairwise
+distances and collapsing the symmetry of the tree.</p>
+<p>To embed four symmetrically diverging clades without geometric
+distortion requires the vertices of a regular tetrahedron in
+three-dimensional space (<span
+class="math inline">\(\mathbb{R}^3\)</span>). Therefore, to resolve
+arbitrary quartet rearrangements among competing lineages, the embedding
+space must have at least: <span class="math display">\[k \ge
+3\]</span></p>
+<h3 id="the-upper-bound-the-low-pass-filter-k-le-4-text-or-5">2. The
+Upper Bound: The Low-Pass Filter (<span class="math inline">\(k \le 4
+\text{ or } 5\)</span>)</h3>
+<p>Why not set <span class="math inline">\(k = 20\)</span> or <span
+class="math inline">\(k = 50\)</span> to capture every subtle nuance of
+the alignment?</p>
+<p>Because high-dimensional embeddings defeat the purpose of the method:
+- <strong>Curse of Dimensionality:</strong> In high-dimensional spaces,
+pairwise Euclidean distances concentrate, and distance metrics become
+diffuse. - <strong>Noise Filtering:</strong> In any sequencing dataset,
+distances are contaminated by high-frequency evolutionary noise: private
+tip mutations, single-site Poisson substitution fluctuations, and
+sequencing errors.</p>
+<p>Because tree metrics are additive, their eigenvalue spectrum decays
+exponentially: <span class="math display">\[\lambda_1 \gg \lambda_2 \ge
+\lambda_3 \ge \lambda_4 \gg \lambda_5 \dots\]</span> - The
+<strong>leading <span class="math inline">\(k = 3 \text{ to } 4\)</span>
+dimensions</strong> capture the macroscopic lineage backbone: the deep
+splits separating major clades and parental groups. - The
+<strong>trailing <span class="math inline">\((N - k)\)</span>
+dimensions</strong> capture the high-frequency tip jitter.</p>
+<p>Restricting the embedding to <span class="math inline">\(k = 3 \text{
+to } 4\)</span> acts as a <strong>phylogenetic low-pass filter</strong>.
+It strips away stochastic tip noise while faithfully preserving the
+macro-clade geometry needed to detect parental crossovers.</p>
+<pre><code>       EIGENVALUE SCREE PLOT: THE LOW-PASS FILTER PRINCIPLE
+
+       Eigenvalue λ_j ▲
+                      │  λ1 (Deep clade bifurcation)
+                      │   █
+                      │   █   λ2 (Sub-lineage split)
+                      │   █   █
+                      │   █   █   λ3 (Quartet resolution)
+                      │   █   █   █   λ4 (Tetrahedral balance)
+                      │   █   █   █   █ ─── LOW-PASS CUTOFF (k=4)
+                      │   █   █   █   █   ░   ░   ░   ░   ░ (Tip noise / Poisson jitter)
+                      └───┴───┴───┴───┴───┴───┴───┴───┴───► Dimension index j
+                          Macro-Tree Backbone   High-Frequency Evolutionary Noise</code></pre>
+<h3 id="data-driven-calibration-and-universal-sweet-spot">3. Data-Driven
+Calibration and Universal Sweet Spot</h3>
+<p>In RhizAeon: - For standard genomic cohorts (<span
+class="math inline">\(N \ge 10\)</span>), the embedding dimension is set
+to: <span class="math display">\[k = 4\]</span> - For small alignments
+(<span class="math inline">\(N &lt; 5\)</span>), the degrees of freedom
+are bounded by sample size: <span class="math display">\[k = \min(4, \,
+N - 1)\]</span></p>
+<p>Empirical scree analysis across diverse viral and bacterial
+benchmarks confirms that <span class="math inline">\(k=4\)</span>
+consistently captures <span
+class="math inline">\(75\%\text{--}85\%\)</span> of the total
+macro-clade variance: - <strong>HIV-1 (KAL153, CRF02_AG):</strong> <span
+class="math inline">\(k=4\)</span> captures <span
+class="math inline">\(81.4\%\)</span> of distance variance. -
+<strong>Tomato Yellow Leaf Curl Virus (TYLCV):</strong> <span
+class="math inline">\(k=4\)</span> captures <span
+class="math inline">\(78.9\%\)</span>. - <strong>Streptococcus
+pneumoniae (PMEN1 / PGL Grand Cohort):</strong> <span
+class="math inline">\(k=4\)</span> captures <span
+class="math inline">\(84.2\%\)</span>.</p>
+<p>Setting <span class="math inline">\(k=4\)</span> provides an optimal
+balance: it cleanly separates all major parental clades, filters out tip
+noise, and guarantees that downstream Procrustes matrix alignments
+involve a tiny <span class="math inline">\(4 \times 4\)</span>
+cross-covariance matrix that solves via SVD in nanoseconds.</p>
+<hr />
+<h2 id="walkthrough-of-figure-1-the-hiv-1-kal153-benchmark">5.
+Walkthrough of Figure 1: The HIV-1 KAL153 Benchmark</h2>
+<p>To visualize these concepts on real biological data, Figure 1
+compares a standard full-genome Maximum-Likelihood (ML) phylogenetic
+tree against the Classical MDS embedding for the canonical HIV-1 KAL153
+dataset (9,953 aligned nucleotides, 9 taxa).</p>
+<figure>
+<img src="assets/figures/fig1_global_embedding_vs_tree.png"
+alt="Figure 1: Global MDS Low-Pass Embedding vs. Maximum-Likelihood Phylogeny on HIV-1 KAL153" />
+<figcaption aria-hidden="true">Figure 1: Global MDS Low-Pass Embedding
+vs. Maximum-Likelihood Phylogeny on HIV-1 KAL153</figcaption>
+</figure>
+<p><strong>Figure 1. Comparison of Classical Maximum-Likelihood
+Phylogeny and Low-Pass Multidimensional Scaling on the HIV-1 KAL153
+Benchmark.</strong><br />
+<strong>(A) Full-Genome Maximum Likelihood (ML) Phylogeny (GTR+CAT,
+FastTree).</strong> Reconstructed across the full 9,953 nt alignment of
+8 pure Group M subtypes (A, B, C, D, F, G, H, J) and the mosaic
+recombinant KAL153 (<code>R</code>). Because classical phylogenetic
+inference forces a single bifurcating graph across conflicting
+evolutionary histories, KAL153 is forced into an artifactual consensus
+placement as sister to Subtype B, compensated for by an inflated
+terminal branch length (<span class="math inline">\(0.070\)</span>
+substitutions/site).<br />
+<strong>(B) 2D Classical MDS Low-Pass Tree (<span
+class="math inline">\(z_1\)</span> vs. <span
+class="math inline">\(z_2\)</span>).</strong> The leading two
+eigenvectors of the double-centered distance matrix capture <span
+class="math inline">\(41.6\%\)</span> of total genetic distance
+variance. The discrete tree clades naturally form tight spatial
+clusters: <span class="math inline">\(\{B, D\}\)</span> in blue, <span
+class="math inline">\(\{A, G\}\)</span> in gold, and <span
+class="math inline">\(\{C, F\}\)</span> in green. The mosaic recombinant
+KAL153 (<code>R</code>, vermillion) is visibly stranded in the metric
+space between parental Clade B/D and Clade A/G.<br />
+<strong>(C) Orthogonal Subspace (<span
+class="math inline">\(z_3\)</span> vs. <span
+class="math inline">\(z_4\)</span>).</strong> Resolves finer-scale
+sub-lineage divergence within clades (separating Subtype A from G, and C
+from F), bringing cumulative variance explained to <span
+class="math inline">\(70.7\%\)</span>.<br />
+<strong>(D) Spectral Scree Spectrum and Low-Pass Filter
+Threshold.</strong> Individual variance explained per dimension (bars,
+left axis) and cumulative variance (orange curve, right axis). Additive
+tree metrics exhibit steep exponential decay; the <span
+class="math inline">\(k=4\)</span> cutoff isolates the macro-tree
+backbone while discarding high-frequency tip Poisson noise and
+sequencing errors.</p>
+<hr />
+<h3 id="what-figure-1-teaches-us">What Figure 1 Teaches Us:</h3>
+<ol type="1">
+<li><strong>The Tree Artifact in Panel A:</strong><br />
+When an alignment contains recombination, building a single phylogenetic
+tree is mathematically misspecified. The tree inference engine is forced
+to compromise: it glues KAL153 onto Subtype B (its predominant parent in
+<em>pol</em>), but stretches its terminal branch to absorb the massive
+divergence contributed by its Subtype A segments. The tree tells you
+that something is wrong, but it cannot tell you where or why.</li>
+<li><strong>The Metric Space Reality in Panel B:</strong><br />
+In the 2D MDS space, the geometry of the tree is faithfully preserved
+without imposing a rigid bifurcating graph. Subtypes B and D cluster
+together; Subtypes A and G cluster together. And KAL153 sits between
+them, pulled simultaneously toward Parent B and Parent A.</li>
+<li><strong>The 4D Completeness in Panels C &amp; D:</strong><br />
+While 2D captures the gross macro-lineages (41.6%), extending to 4D
+captures <span class="math inline">\(70.7\%\)</span> of the entire
+genetic distance matrix. Beyond <span
+class="math inline">\(k=4\)</span>, the scree plot flattens into an
+evolutionary noise floor. Embedding in <span
+class="math inline">\(k=4\)</span> gives us the complete macro-phylogeny
+with zero tree search.</li>
+</ol>
+<hr />
+<h2
+id="walkthrough-of-figure-2-dynamic-trajectories-manifold-flight-paths-and-kinetic-spikes-on-hiv-1-kal153">6.
+Walkthrough of Figure 2: Dynamic Trajectories, Manifold Flight Paths,
+and Kinetic Spikes on HIV-1 KAL153</h2>
+<p>While Figure 1 showed the static global snapshot, Figure 2
+demonstrates the dynamic core of RhizAeon: tracing continuous sequence
+trajectories and detecting recombination as physical motion across the
+phylogenetic metric space.</p>
+<figure>
+<img src="assets/figures/fig2_dynamic_trajectories_and_kinetics.png"
+alt="Figure 2: Dynamic Sequence Trajectories, Manifold Flight Paths, and Kinetic Energy Fields on HIV-1 KAL153" />
+<figcaption aria-hidden="true">Figure 2: Dynamic Sequence Trajectories,
+Manifold Flight Paths, and Kinetic Energy Fields on HIV-1
+KAL153</figcaption>
+</figure>
+<p><strong>Figure 2. Dynamic Sequence Trajectories, Manifold Flight
+Paths, and Kinetic Energy Fields on the HIV-1 KAL153
+Benchmark.</strong><br />
+<strong>(A) Functional Trajectory Curves Along the Genome (<span
+class="math inline">\(s \in [0, 9953\text{ nt}]\)</span>).</strong>
+Dimension 1 trajectory coordinates <span
+class="math inline">\(\mathbf{y}_i(s)\)</span> capturing Subtype A
+vs. Subtype B polarity across a sliding window of <span
+class="math inline">\(W = 300\text{ nt}\)</span> (step <span
+class="math inline">\(\Delta = 30\text{ nt}\)</span>). Clonal references
+maintain horizontal baseline trajectories (Subtype A in dashed gold,
+Subtype B in dashed blue, Subtype D in dotted sky-blue). Mosaic
+recombinant KAL153 (<code>R</code>, solid vermillion) tracks Subtype A
+across <em>gag</em> and 5’ <em>pol</em>, undergoes a sharp step
+transition at <span class="math inline">\(s \approx 2{,}820\text{
+nt}\)</span> into the Subtype B band, tracks Subtype B across
+<em>pol</em> and <em>env</em>, and returns to Subtype A at <span
+class="math inline">\(s \approx 8{,}845\text{ nt}\)</span> in
+<em>nef</em>. Coding gene tracks (<em>gag</em>, <em>pol</em>,
+<em>env</em>, <em>nef</em>) are annotated beneath.<br />
+<strong>(B) 2D Manifold Flight Path in Metric Space (<span
+class="math inline">\(z_1\)</span> vs. <span
+class="math inline">\(z_2\)</span>).</strong> Centroids of pure
+reference subtypes are indicated by labeled in-circle glyphs matching
+Figure 1. The trajectory of KAL153 physically migrates across the metric
+divide: orbiting inside Clade A during Phase 1 (5’ <em>gag/pol</em>,
+gold path), launching across the Euclidean gap directly into Clade B/D
+at Crossover 1 (thick crimson path with arrow, <span
+class="math inline">\(s \approx 2{,}820\text{ nt}\)</span>), and
+orbiting inside Clade B during Phase 2 (blue path).<br />
+<strong>(C) Bilateral Manifold Dislocation Field (<span
+class="math inline">\(Z\)</span>-Scores).</strong> Residual dislocation
+score <span class="math inline">\(Z_i(s)\)</span> measuring Procrustes
+strain across bilateral flanking windows (<span
+class="math inline">\(W_{\text{flank}} = 100\text{ nt}\)</span>). All 8
+non-recombinant reference subtypes form a flat, quiet floor (<span
+class="math inline">\(Z &lt; 1.5\)</span>, faint gray lines). KAL153
+(<code>R</code>, solid vermillion) generates prominent dislocation
+peaks: Peak 1 at <span class="math inline">\(s = 2{,}820\text{
+nt}\)</span> (<span class="math inline">\(Z = 4.4\)</span>, Subtype A
+<span class="math inline">\(\to\)</span> B crossover, validated by <span
+class="math inline">\(\text{L-PIR} = 0.71\)</span>). At <span
+class="math inline">\(s = 4{,}880\text{ nt}\)</span>, a local strain
+peak (<span class="math inline">\(Z = 5.4\)</span>) is generated by the
+<em>pol/vif</em> gene boundary and substitution rate variation; because
+KAL153 belongs to Subtype B on both flanks, L-PIR collapses (<span
+class="math inline">\(\text{L-PIR} = 0\)</span>), cleanly filtering out
+this false positive. Peak 3 at <span class="math inline">\(s =
+7{,}160\text{ nt}\)</span> (<span class="math inline">\(Z =
+3.5\)</span>) reflects hypervariable <em>env</em> reticulation.<br />
+<strong>(D) Piecewise-Constant TV Denoising.</strong> Raw sliding-window
+trajectory (thin orange line, displaying local Poisson substitution
+noise) overlaid with the 1D Total Variation regularized curve (thick
+dark red line) solved via Condat’s (2013) exact <span
+class="math inline">\(\mathcal{O}(L)\)</span> dynamic programming
+filter. The filter flattens intra-clade Poisson jitter into crisp
+horizontal phylogenetic plateaus while extracting the two discrete
+biological steps: Step 1 at <span class="math inline">\(s =
+2{,}820\text{ nt}\)</span> (A <span class="math inline">\(\to\)</span> B
+entry) and Step 2 at <span class="math inline">\(s = 8{,}845\text{
+nt}\)</span> (B <span class="math inline">\(\to\)</span> A return in
+<em>nef</em>).</p>
+<hr />
+<h3 id="what-figure-2-teaches-us">What Figure 2 Teaches Us:</h3>
+<ol type="1">
+<li><strong>The Physical Reality of Recombination in Panels A &amp;
+B:</strong><br />
+Recombination is not an abstract statistical perturbation; it is literal
+migration through Euclidean metric space. When a sequence switches
+parents, its coordinates undergo an unmistakable cross-manifold
+transit.</li>
+<li><strong>The Power of the Kinetic / Dislocation Metric in Panel
+C:</strong><br />
+Because non-recombinant genomes never cross clades, their bilateral
+dislocation is essentially zero everywhere. The recombinant sequence
+produces unambiguous, high-prominence spikes that rise far above the
+noise floor (<span class="math inline">\(Z = 4\text{--}8\)</span>). This
+allows peak-finding algorithms to detect breakpoints without exhaustive
+triplet loops.</li>
+<li><strong>From Continuous Motion to Discrete Biology in Panel
+D:</strong><br />
+While raw trajectories have slight Poisson wiggles from finite window
+sizes, the <span class="math inline">\(\mathcal{O}(L)\)</span> Total
+Variation filter strips away this jitter and extracts the exact
+underlying piecewise-constant mosaic structure.</li>
+</ol>
+<hr />
+<h2
+id="recursive-binary-partitioning-rp-fda-dividing-and-conquering-the-chromosome">7.
+Recursive Binary Partitioning (RP-FDA): Dividing and Conquering the
+Chromosome</h2>
+<p>With continuous trajectories and dislocation screening established,
+how do we segment an entire chromosome that may contain multiple nested
+recombinant tracts?</p>
+<p>Traditional phylogenetic methods evaluate all possible
+multi-breakpoint combinations simultaneously. For <span
+class="math inline">\(K\)</span> breakpoints across <span
+class="math inline">\(L\)</span> sites, evaluating <span
+class="math inline">\(\binom{L}{K} \approx \mathcal{O}(L^K)\)</span>
+tree topologies creates an insurmountable combinatorial bottleneck.</p>
+<p>RhizAeon eliminates this bottleneck using <strong>Recursive
+Partitioning Functional Data Analysis (RP-FDA)</strong>, a
+divide-and-conquer strategy that solves multi-breakpoint architectures
+in <span class="math inline">\(\mathcal{O}(L \log L)\)</span> time:</p>
+<ol type="1">
+<li><strong>Global Scan (Level 0):</strong><br />
+We scan the entire chromosome <span class="math inline">\([1,
+L]\)</span> to locate the single point of greatest manifold dislocation.
+In KAL153, this identifies the dominant crossover at <span
+class="math inline">\(s = 2{,}800\text{ nt}\)</span> (<span
+class="math inline">\(Z = 5.49\)</span>).</li>
+<li><strong>Binary Bisection:</strong><br />
+We bisect the chromosome at this changepoint, splitting it into two
+independent sub-intervals: <span class="math inline">\([1,
+2800]\)</span> and <span class="math inline">\([2800, L]\)</span>.</li>
+<li><strong>Independent Sub-Interval Recursion (Level 1):</strong><br />
+We re-evaluate each child interval independently:
+<ul>
+<li>In <span class="math inline">\([1, 2800]\)</span>, no taxa exhibit
+significant dislocation (<span class="math inline">\(Z &lt;
+2.0\)</span>). This interval is declared <strong>certified
+clonal</strong> (Subtype A) and recursion terminates.</li>
+<li>In <span class="math inline">\([2800, L]\)</span>, the search
+identifies the next highest peak at <span class="math inline">\(s =
+4{,}714\text{ nt}\)</span> (<span class="math inline">\(Z =
+2.33\)</span>).</li>
+</ul></li>
+<li><strong>Hierarchical Termination (Level 2 &amp; 3):</strong><br />
+Bisecting again yields <span class="math inline">\([2800, 4714]\)</span>
+(the certified clonal Subtype B insert) and <span
+class="math inline">\([4714, L]\)</span>. Recursion continues until all
+sub-intervals either contain no significant peaks or reach the minimum
+interval length <span class="math inline">\(L_{\min} = 40\text{
+bp}\)</span>.</li>
+</ol>
+<h3
+id="dynamic-flank-window-adaptation-resolving-macro-vs.-micro-events">7.1
+Dynamic Flank Window Adaptation: Resolving Macro vs. Micro Events</h3>
+<p>A key innovation of RP-FDA is that the flanking comparison window
+<span class="math inline">\(\delta\)</span> is not fixed. It
+<strong>scales dynamically with the length of the current
+interval</strong>: <span class="math display">\[\delta(L_{\text{seg}}) =
+\max\left( \delta_{\min}, \, \min\left(\delta_{\max}, \,
+\frac{L_{\text{seg}}}{4}\right) \right)\]</span></p>
+<ul>
+<li>At Level 0 (macro-scale, <span class="math inline">\(L =
+9{,}953\text{ bp}\)</span>), <span class="math inline">\(\delta =
+\delta_{\max} = 200\text{ bp}\)</span>. Broad flanking windows provide
+high statistical stability to detect major lineage shifts.</li>
+<li>As the recursion dives deeper into compact sub-intervals
+(micro-scale, <span class="math inline">\(L_{\text{seg}} &lt; 200\text{
+bp}\)</span>), <span class="math inline">\(\delta\)</span> automatically
+contracts down to <span class="math inline">\(\delta_{\min} = 30\text{
+bp}\)</span>, allowing RhizAeon to isolate small, nested gene conversion
+events without signal dilution.</li>
+</ul>
+<hr />
+<h2 id="parent-attribution-validation-and-single-base-polishing">8.
+Parent Attribution, Validation, and Single-Base Polishing</h2>
+<p>Once a breakpoint is localized by RP-FDA, two questions remain:
+<strong>Who are the parental donors?</strong> and <strong>What is the
+exact single-nucleotide coordinate of the junction?</strong></p>
+<h3
+id="the-intuition-behind-l-pir-latent-parental-identification-ratio">8.1
+The Intuition Behind L-PIR (Latent Parental Identification Ratio)</h3>
+<p>Traditional recombination tools test all <span
+class="math inline">\(\binom{N}{2}\)</span> candidate parental pairs to
+identify donors. In RhizAeon, parentage is solved instantly by examining
+relative proximity in metric space. However, naive nearest-neighbor
+matching is vulnerable to evolutionary rate variation, homoplasy, and
+distant outgroups. RhizAeon addresses this with the <strong>Local
+Parental Identification Ratio (L-PIR)</strong>.</p>
+<h4
+id="the-core-metaphor-the-bilateral-tug-of-war-affinity-inversion">1.
+The Core Metaphor: The “Bilateral Tug-of-War” (Affinity Inversion)</h4>
+<p>Recombination is fundamentally an <strong>affinity inversion across a
+chromosome boundary</strong>: - On the left flanking window (<span
+class="math inline">\(D_L\)</span>), recombinant <span
+class="math inline">\(R\)</span> should reside within Parent 1’s clade:
+<span class="math inline">\(D_L(R, P_1)\)</span> is small, while <span
+class="math inline">\(D_L(R, P_2)\)</span> is large. - On the right
+flanking window (<span class="math inline">\(D_R\)</span>), <span
+class="math inline">\(R\)</span> switches sides to Parent 2’s clade:
+<span class="math inline">\(D_R(R, P_2)\)</span> is small, while <span
+class="math inline">\(D_R(R, P_1)\)</span> is large.</p>
+<p>L-PIR formalizes this bilateral tug-of-war by computing the product
+of two directional contrast terms: <span
+class="math display">\[\text{term}_1 = \frac{D_L(R, P_2) - D_L(R,
+P_1)}{D_L(P_1, P_2)}\]</span> <span class="math display">\[\text{term}_2
+= \frac{D_R(R, P_1) - D_R(R, P_2)}{D_R(P_1, P_2)}\]</span> <span
+class="math display">\[\text{L-PIR} = \text{term}_1 \times
+\text{term}_2\]</span></p>
+<ul>
+<li><strong>Authentic Crossover:</strong> If <span
+class="math inline">\(R\)</span> truly belongs to <span
+class="math inline">\(P_1\)</span> on the left and <span
+class="math inline">\(P_2\)</span> on the right, both <span
+class="math inline">\(\text{term}_1 &gt; 0\)</span> and <span
+class="math inline">\(\text{term}_2 &gt; 0\)</span>. Their product
+yields a high score (<span class="math inline">\(\text{L-PIR} \ge
+0.25\)</span>, and up to <span class="math inline">\(1.0\)</span> for
+clean transfers).</li>
+<li><strong>One-Sided Fluke or Clonal Background:</strong> If <span
+class="math inline">\(R\)</span> remains closer to <span
+class="math inline">\(P_1\)</span> across <em>both</em> flanks, then on
+the right flank <span class="math inline">\(D_R(R, P_1) &lt; D_R(R,
+P_2)\)</span>, forcing <span class="math inline">\(\text{term}_2 \le
+0\)</span>. The product immediately collapses to <strong>0.000</strong>,
+instantly killing the candidate.</li>
+</ul>
+<h4
+id="why-divide-by-dp_1-p_2-cancelling-evolutionary-rate-heterogeneity">2.
+Why Divide by <span class="math inline">\(D(P_1, P_2)\)</span>?
+Cancelling Evolutionary Rate Heterogeneity</h4>
+<p>Why normalize by the inter-parental distance <span
+class="math inline">\(D(P_1, P_2)\)</span> rather than <span
+class="math inline">\(D(R, P_2)\)</span>? - In genomic regions subject
+to high evolutionary rates (e.g., retroviral <em>env</em> loops or
+bacterial surface antigens), absolute distances balloon. A raw
+difference <span class="math inline">\(D(R, P_2) - D(R, P_1)\)</span>
+could appear large purely because substitution rates spiked. - Dividing
+by <span class="math inline">\(D(P_1, P_2)\)</span> normalizes the
+contrast into a dimensionless unit: <strong>the fraction of
+inter-parental divergence traversed by the recombinant</strong>. - If
+rates accelerate, both numerator and denominator expand proportionally,
+leaving L-PIR calibrated and strictly invariant to genome-wide rate
+heterogeneity.</p>
+<h4 id="geometric-outgroup-bounding-excluding-distant-spectators">3.
+Geometric Outgroup Bounding: Excluding Distant Spectators</h4>
+<p>Consider an outgroup lineage <span class="math inline">\(O\)</span>
+that is equally distant from both parents (<span
+class="math inline">\(D_L(O, P_1) \approx 0.25\)</span>, <span
+class="math inline">\(D_L(O, P_2) \approx 0.26\)</span>). Stochastic
+Poisson noise could easily produce small positive differences on both
+flanks, creating a false-positive L-PIR signal between two unrelated
+clades.</p>
+<p>To prevent this, RhizAeon enforces <strong>geometric outgroup
+bounding</strong>: <span class="math display">\[D_L(R, P_1) \le \beta
+\cdot D_L(P_1, P_2) \quad \text{and} \quad D_R(R, P_2) \le \beta \cdot
+D_R(P_1, P_2)\]</span> with default bound factor <span
+class="math inline">\(\beta = 1.25\)</span>. This mandates that <span
+class="math inline">\(R\)</span> cannot be a distant spectator; it must
+reside within the phylogenetic neighborhood of the candidate parent. If
+<span class="math inline">\(R\)</span> is farther from <span
+class="math inline">\(P_1\)</span> than <span
+class="math inline">\(P_1\)</span> is from <span
+class="math inline">\(P_2\)</span>, it is disqualified immediately.</p>
+<h4
+id="the-essential-gatekeeper-for-strain-spikes-e.g.-figure-2-panel-c-at-4880-nt">4.
+The Essential Gatekeeper for Strain Spikes (e.g., Figure 2 Panel C at
+4,880 nt)</h4>
+<p>Why do we need L-PIR if we already have Procrustes manifold
+dislocation (<span class="math inline">\(Z\)</span>-scores)? - In Figure
+2 Panel C, the bilateral Procrustes dislocation score exhibits a massive
+peak at <span class="math inline">\(s = 4{,}880\text{ nt}\)</span>
+(<span class="math inline">\(Z = 5.4\)</span>). This peak is physically
+genuine: the transition between the <em>pol</em> and <em>vif</em>
+reading frames causes local metric strain. - If RhizAeon relied solely
+on dislocation peaks, <span class="math inline">\(s = 4{,}880\text{
+nt}\)</span> would be falsely classified as an inter-subtype crossover.
+- However, when evaluated by L-PIR: KAL153 is Subtype B on the left
+flank (<span class="math inline">\(D_L(R, B) = 0.034 \ll D_L(R, A) =
+0.104\)</span>) AND Subtype B on the right flank (<span
+class="math inline">\(D_R(R, B) = 0.044 \ll D_R(R, A) = 0.128\)</span>).
+Because there is no parental inversion, <span
+class="math inline">\(\text{term}_2 \le 0 \implies \text{L-PIR} =
+0.000\)</span>. - L-PIR cleanly rejects this rate spike, demonstrating
+why the two-stage filter (Dislocation Strain <span
+class="math inline">\(\to\)</span> L-PIR Validation) is essential for
+precision.</p>
+<h4
+id="diagnosing-ghost-lineages-the-tier-2-transformer-handoff-trigger">5.
+Diagnosing Ghost Lineages: The Tier 2 Transformer Handoff Trigger</h4>
+<p>What occurs when recombination involves an <strong>unsampled
+(“ghost”) lineage</strong> not present in the reference alignment? -
+When a sequence introgresses from an unknown ghost parent <span
+class="math inline">\(G\)</span>, the structural departure from its
+primary parent generates a massive kinetic dislocation peak (<span
+class="math inline">\(Z &gt; 3.5\)</span>). - However, when RhizAeon
+evaluates candidate parents among the sampled taxa, no sampled sequence
+is close to <span class="math inline">\(R\)</span> in the ghost segment
+(<span class="math inline">\(D_R(R, j)\)</span> is large for all <span
+class="math inline">\(j\)</span>). - Consequently, <span
+class="math inline">\(\text{term}_2\)</span> remains small or negative
+for all sampled pairs, causing L-PIR to collapse below threshold (<span
+class="math inline">\(\text{L-PIR} &lt; 0.25\)</span>). - <strong>The
+Diagnostic Signature:</strong> <span class="math display">\[\text{High
+Kinetic Strain } (Z \ge 3.0) \quad \text{AND} \quad \text{Collapsed
+L-PIR } (\text{L-PIR} &lt; 0.25)\]</span> - This specific discordance
+proves that a true topological migration occurred, but the donor parent
+is missing from the cohort. Rather than discarding the event, RhizAeon
+flags the locus as an <strong>Introgression from an Unsampled Ghost
+Lineage</strong> and routes the interval directly to the <strong>Tier 2
+Attention Transformer</strong> (Section 10).</p>
+<h3 id="the-crossover-validation-gate-filtering-rate-variation">8.2 The
+Crossover Validation Gate: Filtering Rate Variation</h3>
+<p>Not every distance shift is recombination. A lineage might undergo a
+localized acceleration in evolutionary rate (e.g. an intra-host
+selective sweep), causing its distance to increase relative to all
+clades.</p>
+<p>To prevent such rate fluctuations from causing false positives, every
+candidate breakpoint must pass the <strong>Crossover Validation
+Gate</strong>: - We extract all polymorphic sites in the flanking
+windows where candidate parents <span class="math inline">\(P_1\)</span>
+and <span class="math inline">\(P_2\)</span> differ (<span
+class="math inline">\(X_{P_1} \ne X_{P_2}\)</span>). - We construct a
+<span class="math inline">\(2 \times 2\)</span> contingency table of
+alleles matching <span class="math inline">\(P_1\)</span> vs <span
+class="math inline">\(P_2\)</span> on the left flank vs the right flank.
+- We evaluate the table using <strong>Fisher’s Exact Test</strong>. - If
+the affinity switch is not statistically significant (<span
+class="math inline">\(p &gt; 0.01\)</span>), the peak is rejected as a
+rate variation artifact.</p>
+<h3
+id="the-microscope-single-base-profile-likelihood-polishing-and-the-neutral-plateau">8.3
+The Microscope: Single-Base Profile Likelihood Polishing and the Neutral
+Plateau</h3>
+<p>Sliding windows and coarse grids detect breakpoints to within <span
+class="math inline">\(\pm 20\text{--}30\text{ bp}\)</span>. To achieve
+single-nucleotide precision, RhizAeon deploys a bipartite profile
+likelihood engine:</p>
+<ul>
+<li>We examine a narrow window <span class="math inline">\(b \in [s^* -
+50, s^* + 50]\)</span>.</li>
+<li>At each candidate single-base boundary <span
+class="math inline">\(b\)</span>, we compute the profile log-likelihood
+<span class="math inline">\(\ln \mathcal{L}(b)\)</span> where all sites
+<span class="math inline">\(s \le b\)</span> emit alleles from Parent
+<span class="math inline">\(P_1\)</span> (with fidelity <span
+class="math inline">\(1-\epsilon\)</span>) and all sites <span
+class="math inline">\(s &gt; b\)</span> emit from Parent <span
+class="math inline">\(P_2\)</span>.</li>
+<li>At sites where <span class="math inline">\(P_1 = P_2\)</span>, the
+site is uninformative; likelihood does not change.</li>
+<li>At informative sites where <span class="math inline">\(P_1 \ne
+P_2\)</span>, the recombinant’s allele casts a decisive vote.</li>
+</ul>
+<h4 id="the-physical-reality-of-the-uninformative-plateau">The Physical
+Reality of the Uninformative Plateau:</h4>
+<p>In biological genomes, a physical crossover junction almost never
+falls precisely on top of a single nucleotide polymorphism. It occurs
+somewhere in the conserved, identical stretch of DNA between two
+informative mutations.</p>
+<p>Within this conserved spacer, <strong>no sequence data exists to
+favor one base over another</strong>. The mathematical profile
+likelihood forms a completely flat plateau: <span
+class="math display">\[[b_{\text{left}}, b_{\text{right}}] = \{ b : \ln
+\mathcal{L}(b) = \max_u \ln \mathcal{L}(u) \}\]</span></p>
+<p>Rather than reporting a specious, arbitrarily chosen single base,
+RhizAeon reports: - The exact biological confidence plateau: <span
+class="math inline">\([b_{\text{left}}, b_{\text{right}}]\)</span>. -
+The mathematical midpoint: <span class="math inline">\(\hat{b} = \lfloor
+(b_{\text{left}} + b_{\text{right}})/2 \rfloor\)</span>. - The
+log-likelihood support gain <span class="math inline">\(\Delta \ln
+\mathcal{L}\)</span>.</p>
+<p>In HIV-1 KAL153 at the 2,800 nt crossover, the last site matching
+Subtype A is at Pos 2,780 nt, and the first site matching Subtype B is
+at Pos 2,823 nt. Between them lies an exact <strong>42-bp uninformative
+plateau</strong> spanning <span class="math inline">\([2{,}779,
+2{,}821\text{ nt}]\)</span> where <span class="math inline">\(\Delta \ln
+\mathcal{L} = 17.08\)</span> is perfectly flat. RhizAeon reports <span
+class="math inline">\(s = 2{,}800\text{ nt}\)</span> with formal <span
+class="math inline">\([2{,}779, 2{,}821]\)</span> bounds.</p>
+<hr />
+<h2
+id="walkthrough-of-figure-3-rp-fda-recursion-flank-adaptation-crossover-gate-and-profile-polishing">9.
+Walkthrough of Figure 3: RP-FDA Recursion, Flank Adaptation, Crossover
+Gate, and Profile Polishing</h2>
+<p>Figure 3 illustrates this entire fine-resolution workflow operating
+on the canonical HIV-1 KAL153 crossover.</p>
+<figure>
+<img src="assets/figures/fig3_rp_fda_and_polishing.png"
+alt="Figure 3: Recursive Partitioning, Flank Adaptation, Crossover Gate, and Profile Polishing on HIV-1 KAL153" />
+<figcaption aria-hidden="true">Figure 3: Recursive Partitioning, Flank
+Adaptation, Crossover Gate, and Profile Polishing on HIV-1
+KAL153</figcaption>
+</figure>
+<p><strong>Figure 3. Hierarchical Architecture of RhizAeon’s Fine-Scale
+Detection and Polishing Pipeline on HIV-1 KAL153.</strong><br />
+<strong>(A) Recursive Bisection Tree (RP-FDA).</strong> Top-down
+divide-and-conquer segmentation of the 9,953 nt chromosome. Level 0
+detects the primary crossover at <span class="math inline">\(s =
+2{,}800\text{ nt}\)</span> (<span class="math inline">\(Z =
+5.49\)</span>). Bisection produces clonal Clade A (left) and an active
+interval (right). Level 1 bisects at <span class="math inline">\(s =
+4{,}714\text{ nt}\)</span> (<span class="math inline">\(Z =
+2.33\)</span>), isolating the clonal Subtype B insert. Level 2 resolves
+the 3’ boundary at <span class="math inline">\(s = 8{,}842\text{
+nt}\)</span> (<span class="math inline">\(Z = 3.03\)</span>),
+reconstructing the full mosaic genome in <span
+class="math inline">\(\mathcal{O}(L \log L)\)</span> time.<br />
+<strong>(B) Dynamic Flank Window Adaptation.</strong> Half-width <span
+class="math inline">\(\delta(L_{\text{seg}})\)</span> scales smoothly
+from <span class="math inline">\(\delta_{\max} = 200\text{ bp}\)</span>
+on whole-genome intervals down to <span
+class="math inline">\(\delta_{\min} = 30\text{ bp}\)</span> on short
+segments, preserving statistical power at macro-scales while enabling
+resolution of micro-conversions.<br />
+<strong>(C) Crossover Validation Gate (<span class="math inline">\(2
+\times 2\)</span> Fisher Exact Test).</strong> Contingency matrix of
+informative SNPs in 200 bp flanking windows around <span
+class="math inline">\(s = 2{,}800\text{ nt}\)</span>. The left flank
+exhibits 7 Subtype A matches and 3 Subtype B matches; the right flank
+exhibits 0 Subtype A matches and 13 Subtype B matches. Fisher’s exact
+test yields an infinite odds ratio (<span class="math inline">\(p = 4.89
+\times 10^{-4}\)</span>), decisively rejecting rate variation and
+validating an authentic parental switch.<br />
+<strong>(D) Single-Base Profile Likelihood Microscope.</strong>
+Fine-scale bipartite log-likelihood profile <span
+class="math inline">\(\Delta \ln \mathcal{L}(b)\)</span> across <span
+class="math inline">\([2750, 2850\text{ nt}]\)</span>. Informative SNPs
+define the boundary: the last Subtype A allele at Pos 2,780 nt (gold
+circle) and the first Subtype B allele at Pos 2,823 nt (blue circle).
+Between them lies a completely flat 42-bp uninformative plateau (<span
+class="math inline">\([2779, 2821\text{ nt}]\)</span>, yellow band,
+<span class="math inline">\(\Delta \ln \mathcal{L} = 17.08\)</span>),
+defining the exact biological confidence limits with midpoint reported
+at <span class="math inline">\(s = 2{,}800\text{ nt}\)</span>.</p>
+<hr />
+<h2
+id="when-we-hand-off-to-the-transformer-tier-2-the-five-triggers-of-metric-breakdown">10.
+When We Hand Off to the Transformer (Tier 2): The Five Triggers of
+Metric Breakdown</h2>
+<p>RhizAeon’s Tier 1 architecture (Phylogenetic GPS, RP-FDA, and L-PIR)
+is an ultrafast, deterministic workhorse. Operating on prefix distance
+tensors and low-pass metric embeddings, it runs in milliseconds,
+requires zero GPU acceleration, and accurately resolves <span
+class="math inline">\(&gt;95\%\)</span> of standard recombination events
+between sampled parental lineages.</p>
+<p>However, low-pass metric embeddings and scalar distance derivatives
+rest on foundational physical assumptions: 1. Candidate parental donor
+lineages are <strong>sampled</strong> within the reference alignment. 2.
+Recombinants are <strong>sparse individuals</strong> moving against a
+stationary background of non-recombinant reference clades. 3.
+Informative mutation density is sufficiently dense to prevent derivative
+extinction (<span class="math inline">\(k \ge 4\)</span> SNPs, interval
+<span class="math inline">\(\le 50\text{ nt}\)</span>). 4. Pairwise
+sequence divergence reflects <strong>neutral evolutionary time</strong>
+rather than strong positive diversifying selection.</p>
+<p>When any of these assumptions are violated, Tier 1 exhibits distinct,
+mathematically predictable breakdown patterns. Rather than attempting
+ad-hoc heuristics, RhizAeon monitors five quantitative “vital signs”.
+When any vital sign exceeds its critical threshold, RhizAeon hands the
+genomic interval off to the <strong>Tier 2
+PhyloAxialTransformer</strong>.</p>
+<pre><code>                           RHIZAEON TWO-TIER DETECTION ARCHITECTURE
+                           
+         ┌────────────────────────────────────────────────────────────────────────┐
+         │             TIER 1: PHYLOGENETIC GPS (FAST CPU WORKHORSE)              │
+         │  • O(k N^2) prefix mismatch tensor &amp; metric manifold embedding         │
+         │  • Bilateral Procrustes strain &amp; RP-FDA recursive bisection            │
+         │  • Nearest-neighbor parent attribution &amp; L-PIR gatekeeper              │
+         │  • Single-base profile likelihood microscope &amp; plateau bounds          │
+         └───────────────────────────────────┬────────────────────────────────────┘
+                                             │
+                       EVALUATE 5 TIER 1 FAILURE MODE TRIGGERS
+                                             │
+      ┌──────────────┬──────────────┬────────┼──────────────┬──────────────┐
+      ▼              ▼              ▼                       ▼              ▼
+ [TRIGGER 1]    [TRIGGER 2]    [TRIGGER 3]             [TRIGGER 4]    [TRIGGER 5]
+UNINFORMATIVE  LOW-DIVERGENCE    UNSAMPLED             WHOLE-CLADE     POSITIVE
+   PLATEAU      SINGLE-TAXON       GHOST               REASSORTMENT   SELECTION
+ (Void &gt; 50nt)  (k &lt; 4 SNPs)    (L-PIR = 0)           (Torque Q)    (dN/dS Split)
+      │              │              │                       │              │
+      └──────────────┴──────────────┼───────────────────────┴──────────────┘
+                                    │
+                                    ▼ AUTOMATIC HAND-OFF
+         ┌────────────────────────────────────────────────────────────────────────┐
+         │           TIER 2: PHYLOGENETIC AXIAL TRANSFORMER (GPU/NEURAL)          │
+         │  • BlockLinear 192D dS (synonymous) + 192D dN (functional) embeddings  │
+         │  • Multi-head cross-taxa attention A(s) and Tree-RoPE positional bias  │
+         │  • Graph Laplacian spectral bipartition (Fiedler vector v_2(s))        │
+         │  • Orthogonal latent residual departure &amp; [ROOT] token attention       │
+         │  • Contextual column attention collapsing uninformative plateaus       │
+         └────────────────────────────────────────────────────────────────────────┘</code></pre>
+<hr />
+<h3
+id="the-five-triggers-intuition-breakdown-signatures-and-transformer-resolutions">10.1
+The Five Triggers: Intuition, Breakdown Signatures, and Transformer
+Resolutions</h3>
+<h4
+id="trigger-1-uninformative-likelihood-plateaus-informative-mutation-voids">Trigger
+1: Uninformative Likelihood Plateaus (Informative Mutation Voids)</h4>
+<ul>
+<li><strong>The Physical Phenomenon:</strong> A crossover occurs within
+a stretch of DNA where both candidate parents are completely identical.
+In viruses with recent common ancestry or slow-evolving regions, two
+parents may share a 100–300 nucleotide window without a single
+distinguishing mutation.</li>
+<li><strong>The Tier 1 Breakdown:</strong> Because no mutations exist in
+the interval to favor either parent, the profile likelihood surface
+<span class="math inline">\(\ln \mathcal{L}(b)\)</span> forms a
+mathematically flat plateau: <span
+class="math display">\[\Delta_{\text{plateau}} = b_{\text{right}} -
+b_{\text{left}} &gt; 50\text{ nt}\]</span> Tier 1 can only report the
+boundary bounds <span class="math inline">\([b_{\text{left}},
+b_{\text{right}}]\)</span>; any scalar derivative inside the plateau is
+exactly zero.</li>
+<li><strong>The Transformer Resolution:</strong> Tier 2 applies
+<strong>contextual column self-attention</strong>. By integrating
+flanking sequence motifs, codon usage biases, and secondary structure
+embeddings across the 384D hidden representation, the transformer
+resolves subtle statistical tendencies across the void, collapsing
+multi-hundred base plateaus down to single-codon precision.</li>
+</ul>
+<h4
+id="trigger-2-low-divergence-single-sequence-resolution-vs.-partition-ambiguity">Trigger
+2: Low-Divergence Single-Sequence Resolution vs. Partition
+Ambiguity</h4>
+<ul>
+<li><strong>The Physical Phenomenon:</strong> In closely related
+outbreaks (such as intra-clade Omicron recombination), a micro-tract may
+be supported by fewer than 4 informative mutations (<span
+class="math inline">\(k &lt; 4\)</span> SNPs, or <span
+class="math inline">\(L_{\text{tract}} \cdot d &lt; 3.2\)</span>).
+Furthermore, classical tree-partition changepoint methods (e.g. GARD,
+3Seq) detect that a partition boundary exists between clades, but cannot
+determine <em>which specific sequence</em> is the recombinant.</li>
+<li><strong>The Tier 1 Breakdown:</strong> With <span
+class="math inline">\(k &lt; 4\)</span> mutations, Poisson noise
+extinguishes scalar derivative signals (<span class="math inline">\(Z
+&lt; 2.0\)</span>), causing Tier 1 to drop the candidate event below
+significance to prevent false positives.</li>
+<li><strong>The Transformer Resolution:</strong> Tier 2 computes
+<strong>per-taxon directional attention drift</strong>: <span
+class="math display">\[\|\Delta \mathbf{S}_i(s)\|_2 = \|\mathbf{S}_{s -
+w}[i, :] - \mathbf{S}_{s + w}[i, :]\|_2\]</span> While non-recombinant
+background lineages maintain a flat, near-zero drift baseline (<span
+class="math inline">\(\|\Delta \mathbf{S}_i\| &lt; 0.02\)</span>), the
+authentic mosaic genome exhibits a sharp, localized spike exceeding
+threshold (<span class="math inline">\(\|\Delta \mathbf{S}_i\| \ge
+0.15\)</span>), identifying the exact recombinant sequence unambiguously
+without combinatorial partitioning.</li>
+</ul>
+<h4
+id="trigger-3-unsampled-ghost-parental-donors-orthogonal-latent-departure">Trigger
+3: Unsampled Ghost Parental Donors &amp; Orthogonal Latent
+Departure</h4>
+<ul>
+<li><strong>The Physical Phenomenon:</strong> The recombinant lineage
+inherited genetic material from an extinct ancestor, an unsequenced
+reservoir, or a divergent animal host (e.g. cryptic wildlife reservoirs
+or early SARS-CoV-2 cryptic lineages).</li>
+<li><strong>The Tier 1 Breakdown:</strong> <span
+class="math display">\[\text{Dislocation } Z \ge 3.0 \quad \text{AND}
+\quad \text{L-PIR} = 0.000 \quad \left(D_R(R, P_2) &gt; 1.25 \cdot
+D(P_1, P_2)\right)\]</span> The recombinant launches into an uninhabited
+quadrant of metric space. Nearest-neighbor lookup fails because every
+sampled taxon is distant. The crossover gate rejects the candidate
+because no sampled parental alleles exist in the donor segment.</li>
+<li><strong>The Transformer Resolution:</strong> Tier 2 does not require
+candidate parents to be present in the alignment. Inside the ghost
+tract:
+<ol type="1">
+<li>Cross-attention to all sampled taxa collapses, and attention shifts
+heavily toward the unconditioned <strong><span
+class="math inline">\([\text{ROOT}]\)</span> token</strong> (<span
+class="math inline">\(A_{i0} \ge 0.35\)</span>).</li>
+<li>The 384D latent hidden state <span
+class="math inline">\(\mathbf{h}_{\text{ghost}}(s)\)</span> departs from
+the linear subspace spanned by sampled taxa, producing an orthogonal
+residual surge (<span class="math inline">\(\|\mathbf{h}_{\text{ghost}}
+- \mathbf{h}_{\text{sampled}}\|_2 \ge 1.50\)</span>, up to <span
+class="math inline">\(84\times\)</span> baseline). This dual signature
+confirms authentic introgression from an unsampled lineage and localizes
+its boundaries without reference genomes.</li>
+</ol></li>
+</ul>
+<h4
+id="trigger-4-whole-clade-reassortments-procrustes-rotational-torque">Trigger
+4: Whole-Clade Reassortments &amp; Procrustes Rotational Torque</h4>
+<ul>
+<li><strong>The Physical Phenomenon:</strong> A major evolutionary event
+(such as an ancient recombination event or segmented viral reassortment)
+occurred in the common ancestor of an entire clade, such that 10, 50, or
+100 sequences share the displaced segment.</li>
+<li><strong>The Tier 1 Breakdown:</strong> Procrustes alignment solves
+<span class="math inline">\(\min_Q \|Z_L Q - Z_R\|_F\)</span> under the
+assumption that the majority of taxa are stationary. When an entire
+sub-tree jumps across metric space, the moving clades exert massive
+<strong>rotational torque</strong> on the orthogonal rotation matrix
+<span class="math inline">\(Q\)</span>. The coordinate frame rotates to
+compromise between the two clades, diluting the residual dislocation
+across every taxon (<span class="math inline">\(Z \approx
+1.5\text{--}1.8\)</span>) and masking the event.</li>
+<li><strong>The Transformer Resolution:</strong> Tier 2 bypasses
+coordinate alignment entirely by constructing the <strong>normalized
+Graph Laplacian</strong> from the symmetrized attention matrix <span
+class="math inline">\(\mathbf{S}(s) = \frac{1}{2}(\mathbf{A}(s) +
+\mathbf{A}(s)^T)\)</span>: <span
+class="math display">\[\mathbf{L}_{\text{sym}}(s) = \mathbf{I} -
+\mathbf{D}(s)^{-1/2} \mathbf{S}(s) \mathbf{D}(s)^{-1/2}\]</span> The
+<strong>Fiedler eigenvector</strong> <span
+class="math inline">\(\mathbf{v}_2(s)\)</span> (the second smallest
+eigenvector of <span
+class="math inline">\(\mathbf{L}_{\text{sym}}\)</span>) defines the
+optimal continuous bipartition of the phylogenetic network. Across a
+whole-clade rearrangement, the Fiedler vector undergoes an angular phase
+shift: <span class="math display">\[d_{\text{Fiedler}}(s) = 1 -
+\frac{\langle \mathbf{v}_2(s - w), \; \mathbf{v}_2(s + w)
+\rangle}{\|\mathbf{v}_2(s - w)\|_2 \|\mathbf{v}_2(s + w)\|_2} \to
+1.00\]</span> This yields GARD-equivalent phylogenetic network
+discordance in <span class="math inline">\(\mathcal{O}(N^3)\)</span>
+eigensolve time without building trees.</li>
+</ul>
+<h4
+id="trigger-5-decoupling-positive-diversifying-selection-from-reticulation-dnds-concordance">Trigger
+5: Decoupling Positive Diversifying Selection from Reticulation (<span
+class="math inline">\(dN/dS\)</span> Concordance)</h4>
+<ul>
+<li><strong>The Physical Phenomenon:</strong> In viral surface
+glycoproteins under intense immune pressure (e.g. HIV-1 <em>env</em>
+gp120 loops, SARS-CoV-2 Spike Receptor Binding Motif [RBM]), convergent
+evolution repeatedly drives the identical amino acid substitutions in
+unrelated lineages (e.g. L452R, E484A/K, N501Y).</li>
+<li><strong>The Tier 1 Breakdown:</strong> At the nucleotide level,
+convergent mutations cause the pairwise Hamming distance between
+unrelated lineages to drop sharply across 50–150 bp. Tier 1 sees a
+localized drop in distance accompanied by kinetic strain (<span
+class="math inline">\(Z \ge 2.5\)</span>), mimicking an authentic
+micro-recombination tract.</li>
+<li><strong>The Transformer Resolution:</strong> Tier 2 employs
+<strong>BlockLinear decoupled embeddings</strong>: <span
+class="math display">\[\mathbf{E}(s) = \mathbf{E}_{dS}(s) \oplus
+\mathbf{E}_{dN}(s) \in \mathbb{R}^{192 + 192}\]</span>
+<ul>
+<li><span class="math inline">\(\mathbf{E}_{dS}\)</span> (Synonymous
+track): Neutral molecular clock based on four-fold degenerate and
+synonymous codon changes.</li>
+<li><span class="math inline">\(\mathbf{E}_{dN}\)</span> (Non-synonymous
+track): Functional adaptive variation based on missense amino acid
+substitutions.</li>
+</ul>
+The transformer computes the <strong>Concordance Index</strong>: <span
+class="math display">\[\rho_{\text{retic}}(s) = \frac{2 \langle
+\Delta_{dS}(s), \Delta_{dN}(s) \rangle}{\|\Delta_{dS}(s)\|_2^2 +
+\|\Delta_{dN}(s)\|_2^2 + \epsilon}\]</span>
+<ul>
+<li><strong>True Recombination:</strong> DNA tract exchange moves
+synonymous and non-synonymous mutations in lockstep (<span
+class="math inline">\(\rho_{\text{retic}} \ge 0.70\)</span>).</li>
+<li><strong>Convergent Positive Selection:</strong> Amino acid mutations
+cause a massive spike in <span
+class="math inline">\(\Delta_{dN}\)</span> while the synonymous clock
+remains strictly stationary (<span class="math inline">\(\Delta_{dS}
+\approx 0\)</span>), driving <span
+class="math inline">\(\rho_{\text{retic}} &lt; 0.25\)</span>. The event
+is suppressed as adaptive homoplasy.</li>
+</ul></li>
+</ul>
+<hr />
+<h3
+id="empirical-contrast-why-kal-153-never-triggers-tier-2-vs.-why-sars-cov-2-spike-triggers-all-five">10.2
+Empirical Contrast: Why KAL-153 Never Triggers Tier 2 vs. Why SARS-CoV-2
+Spike Triggers All Five</h3>
+<p>A fundamental architectural strength of RhizAeon is that Tier 2 is
+invoked <strong>only when necessary</strong>. Simple crossovers are
+solved decisively by Tier 1 on CPU in milliseconds; complex, ambiguous,
+or epistatically entangled regimes automatically invoke Tier 2.</p>
+<pre><code>+------------------------------------+------------------------------------+
+|  HIV-1 KAL-153 (CRF03_AB)          |  SARS-CoV-2 Omicron Spike (XBB/Delta)
+|  Status: 100% RESOLVED IN TIER 1   |  Status: INVOKES ALL 5 TIER 2 TRIGGERS
++------------------------------------+------------------------------------+
+| 1. Plateau Width:                  | 1. Plateau Width:                  |
+|    BP1: 42 bp; BP2: 9 bp (&lt;= 50)   |    XBB.1 NTD: 224 bp (&gt; 50 bp)     |
+|    -&gt; Trigger 1: INACTIVE          |    -&gt; Trigger 1: FIRES             |
+|                                    |                                    |
+| 2. Mutation Density:               | 2. Mutation Density:               |
+|    k = 20 informative SNPs per flank|    k &lt; 4 in micro-tracts; XBB vs BA.2|
+|    -&gt; Trigger 2: INACTIVE          |    -&gt; Trigger 2: FIRES             |
+|                                    |                                    |
+| 3. Parental Donors:                | 3. Parental Donors:                |
+|    Subtypes A and B both sampled   |    Delta RBD donor is unsampled    |
+|    L-PIR = 1.0000; D_R &lt;= 1.25 D_P |    L-PIR = 0.000; residual surges 84x|
+|    -&gt; Trigger 3: INACTIVE          |    -&gt; Trigger 3: FIRES             |
+|                                    |                                    |
+| 4. Clade Displacement:             | 4. Clade Displacement:             |
+|    Single mosaic outlier (N=1)     |    Omicron/Delta structural shifts |
+|    Stationary background, no torque|    Procrustes Q suffers torque     |
+|    -&gt; Trigger 4: INACTIVE          |    -&gt; Trigger 4: FIRES             |
+|                                    |                                    |
+| 5. Selection Decoupling:           | 5. Selection Decoupling:           |
+|    Concordant dS &amp; dN (rho = 0.84) |    RBM immune escape (L452R, E484A)|
+|    No convergent mimicry           |    kn &gt;= 4, ks = 0, rho &lt; 0.25     |
+|    -&gt; Trigger 5: INACTIVE          |    -&gt; Trigger 5: FIRES             |
+|                                    |                                    |
+| RESULT: 345 ms on CPU              | RESULT: Hand-off to Tier 2 Transformer
+| Single-base ML polisher resolves   | Graph Laplacian, [ROOT] attention,  
+| exact breakpoints at 2800 &amp; 8842 nt| and dN/dS decoupling resolve Spike |
++------------------------------------+------------------------------------+</code></pre>
+<hr />
+<h3
+id="walkthrough-of-figure-4-tier-1-breakdown-vital-signs-vs.-tier-2-neural-resolution">10.3
+Walkthrough of Figure 4: Tier 1 Breakdown Vital Signs vs. Tier 2 Neural
+Resolution</h3>
+<p>Figure 4 illustrates this dual architecture operating across the
+complete SARS-CoV-2 Spike coding sequence (codons 1–1,274),
+demonstrating side-by-side how Tier 1 detects each breakdown condition
+and how Tier 2 resolves it.</p>
+<figure>
+<img src="assets/figures/fig4_tier1_triggers_and_tier2_resolution.png"
+alt="Figure 4: Tier 1 Breakdown Triggers and Tier 2 Resolution across SARS-CoV-2 Spike" />
+<figcaption aria-hidden="true">Figure 4: Tier 1 Breakdown Triggers and
+Tier 2 Resolution across SARS-CoV-2 Spike</figcaption>
+</figure>
+<p><strong>Figure 4. Dual-Architecture Resolution of Complex
+Recombination Regimes Across SARS-CoV-2 Spike.</strong><br />
+<strong>(A) Trigger 4: Whole-Clade Reassortment and Structural Domain
+Shifts.</strong><br />
+- <em>Tier 1 Breakdown (Top):</em> Multi-taxon divergence across Spike
+structural domains (NTD, RBD, Furin cleavage site at codon 685, and S2)
+exerts rotational torque on the Procrustes superposition matrix <span
+class="math inline">\(Q\)</span>. The resulting metric strain is smeared
+across the chromosome, diluting the peak <span
+class="math inline">\(Z\)</span>-score and leaving boundary localization
+uncertain.<br />
+- <em>Tier 2 Resolution (Bottom):</em> The normalized Graph Laplacian
+Fiedler vector <span class="math inline">\(\mathbf{v}_2(s)\)</span>
+derived from the symmetrized cross-taxa attention matrix <span
+class="math inline">\(\mathbf{S}(s)\)</span> undergoes dramatic angular
+phase shifts across domain transitions (<span class="math inline">\(1 -
+\cos \theta \to 0.95\)</span>). This achieves GARD-equivalent
+phylogenetic network discordance in 0.32 seconds on CPU without tree
+building.</p>
+<p><strong>(B) Trigger 2: Single-Sequence Resolution and Low
+Divergence.</strong><br />
+- <em>Tier 1 Breakdown (Top):</em> A tripartite partition changepoint
+detects that topological discordance exists within the alignment, but
+leaves the identity of the recombinant taxon ambiguous.<br />
+- <em>Tier 2 Resolution (Bottom):</em> Per-taxon directional attention
+drift <span class="math inline">\(\|\Delta \mathbf{S}_i(s)\|_2\)</span>
+evaluates each genome independently. Non-recombinant background lineages
+(Wuhan-Hu-1, BA.2) remain completely flat (<span
+class="math inline">\(\|\Delta \mathbf{S}\| &lt; 0.02\)</span>). In
+contrast, XBB.1 exhibits a sharp directional drift spike at Codon 228
+(<span class="math inline">\(\|\Delta \mathbf{S}\| = 0.17\)</span>), and
+the Ghost Recombinant displays definitive boundary peaks at Codons 319
+and 541 (<span class="math inline">\(\|\Delta \mathbf{S}\| =
+0.22\)</span>), isolating the exact mosaic lineages unambiguously.</p>
+<p><strong>(C) Trigger 3: Unsampled Ghost Parental
+Donors.</strong><br />
+- <em>Tier 1 Breakdown (Top):</em> For the synthetic Ghost Recombinant
+(BA.2 backbone with an unsampled Delta RBD insert), Tier 1 detects
+elevated dislocation strain (<span class="math inline">\(Z = 4.82 \ge
+3.0\)</span>) but L-PIR collapses to <span
+class="math inline">\(0.000\)</span> because the nearest sampled taxon
+in the RBD is distant (<span class="math inline">\(D_R(R, P_2) &gt; 1.25
+D(P_1, P_2)\)</span>). The crossover gate rejects the event.<br />
+- <em>Tier 2 Resolution (Bottom):</em> Within the unsampled Delta RBD
+tract (codons 319–541), cross-attention to the sampled BA.2 backbone
+collapses, and attention shifts heavily toward the unconditioned <span
+class="math inline">\([\text{ROOT}]\)</span> token (<span
+class="math inline">\(A_{i0}\)</span>). Simultaneously, the 384D latent
+hidden state departs from the sampled reference subspace, causing an
+<span class="math inline">\(84\times\)</span> surge in orthogonal
+residual distance (<span
+class="math inline">\(\|\mathbf{h}_{\text{ghost}} -
+\mathbf{h}_{\text{BA.2}}\|_2 = 3.57\)</span> vs <span
+class="math inline">\(0.022\)</span> baseline), flagging authentic ghost
+introgression.</p>
+<p><strong>(D) Triggers 1 &amp; 5: Plateau Collapse and Selection
+Decoupling.</strong><br />
+- <em>Trigger 1 Plateau Collapse (Top):</em> In XBB.1, parental lineages
+BJ.1 and BM.1.1.1 share an identical 224-nucleotide sequence void
+spanning codons 209–288 where profile likelihood is mathematically flat.
+Tier 2 contextual column attention integrates flanking sequence syntax,
+collapsing the 224-nt void down to a single-codon boundary at Codon
+228.<br />
+- <em>Trigger 5 Selection Decoupling (Bottom):</em> In the Receptor
+Binding Motif (RBM, codons 450–505), convergent antibody escape
+mutations (L452R, E484A, N501Y) cause dense non-synonymous clustering
+(<span class="math inline">\(k_n \ge 4\)</span>) with zero synonymous
+support (<span class="math inline">\(k_s = 0\)</span>). Tier 2 evaluates
+the dual-track BlockLinear <span class="math inline">\(dN/dS\)</span>
+Concordance Index: while authentic crossovers maintain <span
+class="math inline">\(\rho_{\text{retic}} \ge 0.70\)</span>, the RBM
+drops to <span class="math inline">\(\rho_{\text{retic}} &lt;
+0.25\)</span>, decisively suppressing convergent positive selection as
+homoplasy.</p>
+<hr />
+<h2 id="comprehensive-architectural-comparison-tier-1-vs.-tier-2">11.
+Comprehensive Architectural Comparison: Tier 1 vs. Tier 2</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Feature / Scenario</th>
+<th style="text-align: left;">Tier 1: Phylogenetic GPS (RP-FDA)</th>
+<th style="text-align: left;">Tier 2: PhyloAxialTransformer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Algorithmic Paradigm</strong></td>
+<td style="text-align: left;">Metric geometry, prefix tensors, classical
+MDS</td>
+<td style="text-align: left;">Invariant multi-head attention, graph
+spectral theory</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Computational
+Complexity</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\mathcal{O}(k
+N^2)\)</span> or <span class="math inline">\(\mathcal{O}(k M N)\)</span>
+(Milliseconds)</td>
+<td style="text-align: left;"><span
+class="math inline">\(\mathcal{O}(N^2 \cdot L)\)</span> forward pass
+(0.32 s on CPU / GPU)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hardware Requirement</strong></td>
+<td style="text-align: left;">CPU only (pure BLAS / NumPy)</td>
+<td style="text-align: left;">CPU (small cohorts) or GPU
+(high-throughput surveillance)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary Use Case</strong></td>
+<td style="text-align: left;">Whole-genome screening, routine crossovers
+(<span class="math inline">\(&gt;95\%\)</span> events)</td>
+<td style="text-align: left;">Intronless coding domains (Spike, Env),
+complex reticulations</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Parent Attribution</strong></td>
+<td style="text-align: left;">Instant nearest-neighbor &amp; L-PIR
+gatekeeper</td>
+<td style="text-align: left;">Continuous cross-taxa attention weights
+<span class="math inline">\(\mathbf{A}(s)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Breakpoint Precision</strong></td>
+<td style="text-align: left;">Single-base profile likelihood microscope
+&amp; plateau bounds</td>
+<td style="text-align: left;">Attention gradient peak &amp; contextual
+column attention</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trigger 1: Uninformative
+Plateaus</strong></td>
+<td style="text-align: left;">Reports formal plateau bounds <span
+class="math inline">\([b_{\text{left}}, b_{\text{right}}]\)</span></td>
+<td style="text-align: left;"><strong>Collapses plateau</strong> via
+flanking contextual representations</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trigger 2: Single-Sequence
+Drift</strong></td>
+<td style="text-align: left;">Resolves high-divergence taxa; drops low
+SNPs (<span class="math inline">\(k &lt; 4\)</span>)</td>
+<td style="text-align: left;"><strong>Isolates mosaic taxa</strong> via
+per-taxon attention drift <span class="math inline">\(\|\Delta
+\mathbf{S}_i\|\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trigger 3: Ghost
+Lineages</strong></td>
+<td style="text-align: left;">Fails (L-PIR collapses to 0; distance
+bound exceeded)</td>
+<td style="text-align: left;"><strong>Detects ghost donors</strong> via
+<span class="math inline">\([\text{ROOT}]\)</span> shift &amp; latent
+residual surge</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trigger 4: Whole-Clade
+Jumps</strong></td>
+<td style="text-align: left;">Degrades under Procrustes rotational
+torque</td>
+<td style="text-align: left;"><strong>Bipartitions clades</strong> via
+Graph Laplacian Fiedler vector <span
+class="math inline">\(\mathbf{v}_2(s)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Trigger 5: Positive
+Selection</strong></td>
+<td style="text-align: left;">Vulnerable to localized Hamming drops</td>
+<td style="text-align: left;"><strong>Suppresses homoplasy</strong> via
+dual-track <span class="math inline">\(dN/dS\)</span> concordance <span
+class="math inline">\(\rho_{\text{retic}}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>By uniting the continuous physical intuition of metric space
+trajectories (Tier 1) with the invariant representation power of deep
+attention graphs (Tier 2), RhizAeon provides a complete, scalable, and
+mathematically unassailable solution to the recombination dilemma.</p>
+<hr />
+<p>The mathematical formulations and formal proofs for each of these
+components are documented in <a
+href="file:///Users/sergei/Projects/TOGA_MEME/recombination/docs/rhizaeon_methods_mathematical_details.md">docs/rhizaeon_methods_mathematical_details.md</a>.</p>
+
+    </article>
+
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="rams-footer" style="background: #0f172a; color: #94a3b8; padding: 3rem 0; margin-top: 4rem; border-top: 1px solid #1e293b;">
+    <div class="rams-container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <div style="color: #ffffff; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.3rem;">RhizAeon Continuous Coordinate Recombination Framework</div>
+        <p style="font-size: 0.85rem; margin: 0; color: #64748b;">
+          Supported by the National Institute of Allergy and Infectious Diseases (NIAID) under BRC-Analytics.
+        </p>
+      </div>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.85rem;">
+        <a href="index.html" style="color: #cbd5e1;">Home</a>
+        <a href="rhizaeon_overview_and_intuition.pdf" target="_blank" rel="noopener" style="color: #cbd5e1;">PDF Guide</a>
+        <a href="https://github.com/veg/rhizaeon" target="_blank" rel="noopener" style="color: #cbd5e1;">GitHub Repository</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
